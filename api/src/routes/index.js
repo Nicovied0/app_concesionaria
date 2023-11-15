@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 
-const uploadImage = require("./uploadFile");
+const userRoute = require("./user");
+const carRoute = require("./car");
 
 
-router.use("/uploadImage", uploadImage);
+router.use("/user", userRoute);
+router.use("/cars", carRoute);
 
 module.exports = router;
