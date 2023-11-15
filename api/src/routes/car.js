@@ -13,12 +13,10 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Agregar un nuevo automóvil asociado a una concesionaria
 router.post("/", async (req, res) => {
   const { brand, model, year, color, price, dealershipName } = req.body;
 
   try {
-    // Verificar si la concesionaria existe por su nombre
     console.log("Nombre de la concesionaria:", dealershipName);
     const dealership = await Dealership.findOne({ name: dealershipName });
 
