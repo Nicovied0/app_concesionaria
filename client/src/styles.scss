@@ -1,2 +1,72 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-style: inherit;
+  font-weight: 100;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+  scroll-behavior: smooth !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+html,
+iframe,
+legend,
+li,
+ol,
+p,
+pre,
+textarea,
+ul {
+  border: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+:root {
+  --shark-50: #f4f6f7;
+  --shark-100: #e3e7ea;
+  --shark-200: #cbd3d6;
+  --shark-300: #a6b4ba;
+  --shark-400: #7a8c96;
+  --shark-500: #5f717b;
+  --shark-600: #515f69;
+  --shark-700: #465058;
+  --shark-800: #3e454c;
+  --shark-900: #373d42;
+  --shark-950: #212529;
+  --secondary: #ec6907;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
