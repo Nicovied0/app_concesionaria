@@ -18,8 +18,10 @@ router.post("/", async (req, res) => {
   const { brand, model, year, color, price, dealershipName } = req.body;
 
   try {
-    // Verificar si la concesionaria existe
-    const dealership = await Dealership.findById(dealershipName);
+    // Verificar si la concesionaria existe por su nombre
+    console.log("Nombre de la concesionaria:", dealershipName);
+    const dealership = await Dealership.findOne({ name: dealershipName });
+
     if (!dealership) {
       return res.status(404).json({ error: "Concesionaria no encontrada" });
     }
@@ -27,15 +29,18 @@ router.post("/", async (req, res) => {
     const newCar = new Car({ brand, model, year, color, price, dealershipName });
     const savedCar = await newCar.save();
 
-    // Asociar el automóvil a la concesionaria
     dealership.cars.push(savedCar._id);
     await dealership.save();
 
-    res.status(201).json(savedCar);
+
+    const updatedDealership = await Dealership.findById(dealership._id).populate("cars");
+
+    res.status(201).json({ car: savedCar, dealership: updatedDealership });
   } catch (error) {
-    console.error("Error al agregar un automóvil:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
+
 
 module.exports = router;

@@ -19,9 +19,8 @@ const carSchema = new mongoose.Schema({
     required: true,
   },
   dealershipName: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Dealership',
-    required: true
+    type: String,
+    required: true,
   }
 });
 
