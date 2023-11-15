@@ -14,7 +14,17 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { brand, model, year, color, price, dealershipName } = req.body;
+  const {
+    brand,
+    model,
+    year,
+    color,
+    price,
+    dealershipName,
+    state,
+    city,
+    country,
+  } = req.body;
 
   try {
     console.log("Nombre de la concesionaria:", dealershipName);
@@ -24,21 +34,30 @@ router.post("/", async (req, res) => {
       return res.status(404).json({ error: "Concesionaria no encontrada" });
     }
 
-    const newCar = new Car({ brand, model, year, color, price, dealershipName });
+    const newCar = new Car({
+      brand,
+      model,
+      year,
+      color,
+      price,
+      dealershipName,
+      state,
+      city,
+      country,
+    });
     const savedCar = await newCar.save();
 
     dealership.cars.push(savedCar._id);
     await dealership.save();
 
-
-    const updatedDealership = await Dealership.findById(dealership._id).populate("cars");
+    const updatedDealership = await Dealership.findById(
+      dealership._id
+    ).populate("cars");
 
     res.status(201).json({ car: savedCar, dealership: updatedDealership });
   } catch (error) {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
-
-
 
 module.exports = router;

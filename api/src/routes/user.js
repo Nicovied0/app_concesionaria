@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Users = require("../models/User");
+const User = require("../models/User");
 
 // Obtener todos los USUARIOS
 router.get("/", async (req, res) => {
   try {
-    const todos = await Users.find();
+    const todos = await User.find();
     console.log("Se llamó a la ruta /USERS");
     res.json(todos);
   } catch (error) {
@@ -38,7 +38,9 @@ router.put("/:id", async (req, res) => {
 
     // Aquí podrías validar los datos actualizados si es necesario
 
-    const updatedUser = await Users.findByIdAndUpdate(userId, updatedUserData, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedUserData, {
+      new: true,
+    });
 
     if (!updatedUser) {
       return res.status(404).json({ error: "Usuario no encontrado" });
@@ -49,6 +51,50 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     console.error("Error al actualizar el usuario", error);
     res.status(500).json({ error: "Error al actualizar el usuario" });
+  }
+});
+
+router.post("/", async (req, res) => {
+  const {
+    name,
+    imagen,
+    email,
+    phone,
+    password,
+    role,
+    actived,
+    description,
+    dealership,
+  } = req.body;
+
+  try {
+    // Verificar si ya existe un usuario con el mismo email
+    const existingUser = await User.findOne({ email });
+
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ error: "Ya existe un usuario con ese correo electrónico" });
+    }
+
+    const newUser = new User({
+      name,
+      imagen,
+      email,
+      phone,
+      password,
+      role,
+      actived,
+      description,
+      dealership,
+    });
+
+    const savedUser = await newUser.save();
+
+    res.status(201).json(savedUser);
+  } catch (error) {
+    console.error("Error al agregar un usuario:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
   }
 });
 

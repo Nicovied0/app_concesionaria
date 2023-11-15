@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, phone, location } = req.body;
+  const { name, phone, location, state, city, country } = req.body;
 
   try {
     // Verificar si ya existe una concesionaria con el mismo nombre
@@ -41,7 +41,14 @@ router.post("/", async (req, res) => {
         .json({ error: "Ya existe una concesionaria con ese nombre" });
     }
 
-    const newDealership = new Dealership({ name, phone, location });
+    const newDealership = new Dealership({
+      name,
+      phone,
+      location,
+      state,
+      city,
+      country,
+    });
     const savedDealership = await newDealership.save();
 
     res.status(201).json(savedDealership);

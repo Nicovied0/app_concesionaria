@@ -9,13 +9,25 @@ const dealershipSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  location: {
-    type: Number,
+  country: {
+    type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
     required: true,
   },
   cars: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Car',
+  }],
+  admins:[{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
   }]
 });
 

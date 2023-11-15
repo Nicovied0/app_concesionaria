@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  number: {
+  phone: {
     type: String,
   },
   password: {
@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
   },
   description: {
     type: String,
+  },
+  dealership: {
+    type: String,
+    default: null,
   },
 
   createdAt: {
