@@ -1,0 +1,76 @@
+{
+    "NAV": {
+      "HOME": "Home",
+      "ABOUT_US": "About us",
+      "COMMUNITY": "Community",
+      "PAID_VERSION": "Paid version",
+      "CONTACT": "Contact"
+    },
+    "HOME": {
+      "TITLE": "We are responsible for transmitting security and transparency.",
+      "DESCRIPTION": "Alarm Geo Fire gives you the peace of mind you need in emergency situations. Offering a free version and a paid version to suit your needs."
+    },
+    "COMUNITY": {
+      "TITLE": "What do you expect to be a part of?",
+      "DESCRIPTION": "We are a global community. Inclusive, supportive and collaborative."
+    },
+    "TESTIMONIALS": {
+      "TITLE": "What do our users think?"
+    },
+    "NEW_TESTIMONIALS": {
+      "TITLE": "Do you want to leave us your testimony?",
+      "DESCRIPTION": "We love knowing what works and what doesn't, by getting in touch you help us improve a lot. Not to mention how amazing it is to hear that our users find the app useful!",
+      "BUTTON": "Send testimonial"
+    },
+    "BUSINESS": {
+      "TITLE": "Upgrade to our premium version",
+      "DESCRIPTION": "Get greater control and advanced features with our paid subscription. Join us!"
+    },
+    "PRICING": {
+      "TITLE": "We adjust to your needs",
+      "DESCRIPTION": "There is a plan for every type of organization",
+      "PRICE_ONE": "Subscription for large companies",
+      "PRICE_TWO": "Subscription for government and public sector",
+      "PRICE_THREE": "Special subscription for MSMEs and NGOs",
+      "BUTTON": "Request a quote"
+    },
+    "CONTACT": {
+      "TITLE": "Contact the team",
+      "DESCRIPTION": "We love staying in touch with you!"
+    },
+    "CONTACT_FORM": {
+      "TITLE": "Do you have questions or want to be part of the team?",
+      "DESCRIPTION": "Complete the form and we will contact you as soon as possible",
+      "BUTTON": "Send",
+      "SELECT":"Select",
+      "PRO":"Hire Alarm Geo Fire Premium",
+      "WORK_WITH_US":"Join the team",
+      "TESTIMONIALS":"Testimony",
+      "OTHER":"Other",
+      "PUNCTUATION":"Punctuation",
+      "EMAIL":"Email",
+      "NAME":"Name",
+      "CONSULTATION":"Consultation"
+    },
+    "DETAILS": {
+      "TITLE": "How does it work?",
+      "DESCRIPTION": {
+        "TITLE_CONECTION": "No connection required",
+        "DESCRIPTION_CONECTION": "Certain features do not require an internet connection.",
+        "TITLE_MORE": "And much more!",
+        "DESCRIPTION_MORE": "Don't miss everything we're working on.",
+        "TITLE_SETTINGS": "Useful tools",
+        "DESCRIPTION_SETTINGS": "Designed to serve you in any everyday situation."
+      }
+    },
+    "SPONSOR": {
+      "TITLE": "Be part of supporting Alarm Geo Fire",
+      "SUBTITLE": "Be a sponsor",
+      "DESCRIPTION": "Thanks to the people who contribute to the project, we can impact the lives of thousands of people throughout the entire planet.",
+      "BUTTON": "Contact"
+    },
+    "ABOUT_US": {
+      "TITLE": "About us",
+      "DESCRIPTION": "Alarm Geo Fire is a solution developed by NO TECH, an Argentine company that seeks to change the world with technology. Stay up to date with the latest news here!"
+    }
+  }
