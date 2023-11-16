@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeviewComponent } from './view/homeview/homeview.component';
 
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { HomeviewComponent } from './view/homeview/homeview.component';
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    HttpClientModule,
+    TranslateModule.forChild(),
   ]
 })
 export class HomeModule { }

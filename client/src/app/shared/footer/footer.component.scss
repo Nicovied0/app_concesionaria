@@ -17,25 +17,7 @@
     padding: 2rem 0;
   }
   
-  .wave {
-    position: absolute;
-    width: 100%;
-    height: 100px;
-    background: #3c31dd;
-    z-index: 123;
-  }
   
-  .wave::before {
-    content: "";
-    display: block;
-    position: absolute;
-    border-radius: 100% 50%;
-    width: 100%;
-    height: 100px;
-    background-color: #3c31dd;
-    right: 0;
-    top: -100px;
-  }
   
   .footer__texts-grup {
     display: flex;

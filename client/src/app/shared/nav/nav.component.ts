@@ -25,11 +25,12 @@ export class NavComponent {
     this.router.navigate(['/vehicles'])
     this.noShowBurger()
   }
+  
   goContact() {
     this.router.navigate(['/contact'])
     this.noShowBurger()
   }
-  
+
   goDashboard() {
     this.router.navigate(['/dashboard'])
     this.noShowBurger()
