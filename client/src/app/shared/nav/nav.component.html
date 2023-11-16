@@ -1,37 +1,37 @@
 <div class="nav">
-    <img src="assets/icons/title.svg" class="nav__icon" (click)="goHome()" />
-    <div class="nav__links" [ngClass]="{ active: active }">
-      <h2 class="nav__links-comunidad" (click)="goHome()" *ngIf="active">
-        {{ "NAV.HOME" | translate }}
-      </h2>
-      <h2 class="nav__links-comunidad" (click)="goComunity()">
-        {{ "NAV.COMMUNITY" | translate }}
-      </h2>
-      <h2 class="nav__links-business" (click)="goBussines()">
-        {{ "NAV.PAID_VERSION" | translate }}
-      </h2>
-      <h2 class="nav__links-nosotros" (click)="goAboutUs()">
-        {{ "NAV.ABOUT_US" | translate }}
-      </h2>
-      <h2 class="nav__links-contacto" (click)="goContact()">
-        {{ "NAV.CONTACT" | translate }}
-      </h2>
-      <img
-        class="nav__links-lenguaje"
-        src="../../../assets/icons/es.png"
-        (click)="changeLanguage('es')"
-        *ngIf="enOn"
-      />
-      <img
-        class="nav__links-lenguaje"
-        src="../../../assets/icons/en.png"
-        (click)="changeLanguage('en')"
-        *ngIf="esOn"
-      />
-    </div>
-    <div class="nav__burguer" (click)="showBurger()">
-      <div class="nav__burguer-line-1" [ngClass]="{ active: active }"></div>
-      <div class="nav__burguer-line-2" [ngClass]="{ active: active }"></div>
-      <div class="nav__burguer-line-3" [ngClass]="{ active: active }"></div>
-    </div>
+  <img src="assets/icons/title.svg" class="nav__icon" (click)="goHome()" />
+  <div class="nav__links" [ngClass]="{ active: active }">
+    <h2 class="nav__links-comunidad" (click)="goHome()" *ngIf="active">
+      {{ "NAV.HOME" | translate }}
+    </h2>
+    <h2 class="nav__links-comunidad" (click)="goComunity()">
+      {{ "NAV.COMMUNITY" | translate }}
+    </h2>
+    <h2 class="nav__links-business" (click)="goBussines()">
+      {{ "NAV.PAID_VERSION" | translate }}
+    </h2>
+    <h2 class="nav__links-nosotros" (click)="goAboutUs()">
+      {{ "NAV.ABOUT_US" | translate }}
+    </h2>
+    <h2 class="nav__links-contacto" (click)="goContact()">
+      {{ "NAV.CONTACT" | translate }}
+    </h2>
+    <img
+      class="nav__links-lenguaje"
+      src="../../../assets/icons/es.png"
+      (click)="changeLanguage('es')"
+      *ngIf="enOn"
+    />
+    <img
+      class="nav__links-lenguaje"
+      src="../../../assets/icons/en.png"
+      (click)="changeLanguage('en')"
+      *ngIf="esOn"
+    />
   </div>
+  <div class="nav__burguer" (click)="showBurger()">
+    <div class="nav__burguer-line-1" [ngClass]="{ active: active }"></div>
+    <div class="nav__burguer-line-2" [ngClass]="{ active: active }"></div>
+    <div class="nav__burguer-line-3" [ngClass]="{ active: active }"></div>
+  </div>
+</div>

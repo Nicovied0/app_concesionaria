@@ -5,23 +5,10 @@
 </div>
 
 <div *ngIf="showLoader === true">
-  <div>
-    <div>
-      <div class="body">
-        <div class="wave" *ngIf="showLoader">
-          <img
-            class="img"
-            src="../assets/icons/navWave.png"
-            *ngIf="showLoader"
-          />
-        </div>
-      </div>
-    </div>
-    <div class="cuerpo">
-      <app-nav></app-nav>
-      <router-outlet></router-outlet>
-      <app-footer></app-footer>
-    </div>
+  <div class="cuerpo">
+    <app-nav></app-nav>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </div>
 </div>
 

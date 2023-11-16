@@ -1,6 +1,6 @@
 .footer {
     min-height: 10rem;
-    background-color: #3d47f0;
+    background-color: var(--shark-1000);
     color: #fff;
   }
   
@@ -47,6 +47,9 @@
   .footer__texts-grup-notech {
     height: 1.3rem;
     margin: 1rem 0;
+  }
+  .footer__texts-copy{
+    font-size: .7rem
   }
   
   @media screen and (max-width: 480px) {
