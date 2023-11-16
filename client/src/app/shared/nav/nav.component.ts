@@ -15,28 +15,26 @@ export class NavComponent {
   enOn = false;
   esOn = true;
 
-  goComunity() {
-    this.router.navigate(['/community'])
+
+  goHome() {
+    this.router.navigate([''])
     this.noShowBurger()
   }
 
-  goHome() {
+  goVehicles() {
+    this.router.navigate(['/vehicles'])
+    this.noShowBurger()
+  }
+  goContact() {
+    this.router.navigate(['/contact'])
+    this.noShowBurger()
+  }
+  
+  goDashboard() {
     this.router.navigate(['/dashboard'])
     this.noShowBurger()
   }
 
-  goBussines() {
-    this.router.navigate(['forBusiness'])
-    this.noShowBurger()
-  }
-  goAboutUs() {
-    this.router.navigate(['aboutUs'])
-    this.noShowBurger()
-  }
-  goContact() {
-    this.router.navigate(['contact'])
-    this.noShowBurger()
-  }
 
   showBurger() {
     this.active = !this.active;

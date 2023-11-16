@@ -4,17 +4,15 @@
     <h2 class="nav__links-comunidad" (click)="goHome()" *ngIf="active">
       {{ "NAV.HOME" | translate }}
     </h2>
-    <h2 class="nav__links-comunidad" (click)="goComunity()">
-      {{ "NAV.COMMUNITY" | translate }}
-    </h2>
-    <h2 class="nav__links-business" (click)="goBussines()">
-      {{ "NAV.PAID_VERSION" | translate }}
-    </h2>
-    <h2 class="nav__links-nosotros" (click)="goAboutUs()">
+
+    <h2 class="nav__links-nosotros" (click)="goVehicles()">
       {{ "NAV.ABOUT_US" | translate }}
     </h2>
     <h2 class="nav__links-contacto" (click)="goContact()">
       {{ "NAV.CONTACT" | translate }}
+    </h2>
+    <h2 class="nav__links-contacto" (click)="goDashboard()">
+      dashboard
     </h2>
     <img
       class="nav__links-lenguaje"
