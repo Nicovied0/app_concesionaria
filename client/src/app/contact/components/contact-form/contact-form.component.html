@@ -1,55 +1,59 @@
 <div class="contenedor">
-  <div class="contact-form">
-    <div class="contact-form__container">
-      <div class="contact-form__group">
-        <div class="contact-form__label contact-form__label--name">
-          Nombre<span class="contact-form__required">*</span>
+    <div class="contact-form">
+      <form [formGroup]="contactForm" class="contact-form__container" (ngSubmit)="onSubmit()">
+        <div class="contact-form__group">
+          <div class="contact-form__label contact-form__label--name">
+            Nombre<span class="contact-form__required">*</span>
+          </div>
+          <input
+            type="text"
+            formControlName="name"
+            class="contact-form__input contact-form__input--name"
+            placeholder="Escribe tu nombre"
+          />
         </div>
-        <div
-          class="contact-form__input contact-form__input--name"
-          contenteditable="true"
-          placeholder="Escribe tu nombre"
-        ></div>
-      </div>
-      <div class="contact-form__group">
-        <div class="contact-form__label contact-form__label--email">
-          Email<span class="contact-form__required">*</span>
+        <div class="contact-form__group">
+          <div class="contact-form__label contact-form__label--email">
+            Email<span class="contact-form__required">*</span>
+          </div>
+          <input
+            type="email"
+            formControlName="email"
+            class="contact-form__input contact-form__input--email"
+            placeholder="Escribe tu Email"
+          />
         </div>
-        <div
-          class="contact-form__input contact-form__input--email"
-          contenteditable="true"
-          placeholder="Escribe tu Email"
-        ></div>
-      </div>
-      <div class="contact-form__group">
-        <div class="contact-form__label contact-form__label--asunto">
-          Asunto<span class="contact-form__required">*</span>
+        <div class="contact-form__group">
+          <div class="contact-form__label contact-form__label--asunto">
+            Asunto<span class="contact-form__required">*</span>
+          </div>
+          <input
+            type="text"
+            formControlName="subject"
+            class="contact-form__input contact-form__input--asunto"
+            placeholder="Escribe un asunto"
+          />
         </div>
-        <div
-          class="contact-form__input contact-form__input--asunto"
-          contenteditable="true"
-          placeholder="Escribe un asunto"
-        ></div>
-      </div>
-      <div class="contact-form__group">
-        <div class="contact-form__label contact-form__label--mensaje">
-          Mensaje<span class="contact-form__required">*</span>
+        <div class="contact-form__group">
+          <div class="contact-form__label contact-form__label--mensaje">
+            Mensaje<span class="contact-form__required">*</span>
+          </div>
+          <textarea
+            formControlName="message"
+            class="contact-form__input contact-form__input--mensaje"
+            placeholder="Deja aquí tu comentario..."
+          ></textarea>
         </div>
-        <div
-          class="contact-form__input contact-form__input--mensaje"
-          contenteditable="true"
-          placeholder="Deja aquí tu comentario..."
-        ></div>
-      </div>
-      <div class="contact-form__group">
-        <div class="contact-form__btn contact-form__btn--submit">
-          <p>Enviar</p>
+        <div class="contact-form__group">
+          <button type="submit" class="contact-form__btn contact-form__btn--submit">
+            Enviar
+          </button>
+          <div class="contact-form__aviso">
+            <span class="contact-form__required">*</span>Los campos son
+            obligatorios.
+          </div>
         </div>
-        <div class="contact-form__aviso">
-          <span class="contact-form__required">*</span>Los campos son
-          obligatorios.
-        </div>
-      </div>
+      </form>
     </div>
   </div>
-</div>
+  

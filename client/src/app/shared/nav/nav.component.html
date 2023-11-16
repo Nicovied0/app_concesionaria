@@ -1,5 +1,6 @@
 <div class="nav">
-  <img src="assets/icons/title.svg" class="nav__icon" (click)="goHome()" />
+  <!-- <img src="assets/icons/title.svg" class="nav__icon" (click)="goHome()" /> -->
+  <h2 class="nav__icon" (click)="goHome()" >AutoMarket</h2>
   <div class="nav__links" [ngClass]="{ active: active }">
     <h2 class="nav__links-comunidad" (click)="goHome()" *ngIf="active">
       {{ "NAV.HOME" | translate }}
