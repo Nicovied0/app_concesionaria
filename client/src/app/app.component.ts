@@ -11,7 +11,7 @@ import { Router, NavigationEnd } from '@angular/router';
   providers: [MessageService]
 })
 export class AppComponent {
-  title = 'client';
+  title = 'AutoMarket';
 
   showLoader: any = null
   ruta: any = true

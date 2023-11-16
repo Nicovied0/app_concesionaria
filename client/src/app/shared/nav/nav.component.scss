@@ -38,7 +38,10 @@
   transform: scale(1.1);
   transition: 0.5s ease-in-out 0.5s;
 }
-
+.nav__icon{
+  color: var(--shark-50);
+  font-size: 2rem;
+}
 .nav__burguer {
   display: none;
 }
