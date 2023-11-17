@@ -3,22 +3,28 @@
 }
 
 .home__contenedor {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
   min-height: 80vh;
 }
-
-.home__principal {
-  width: 50%;
-  min-height: 30rem;
-  padding: 1rem;
+.home__principal-img {
+  width: 100%;
+  object-fit: cover;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+}
+.home__principal-contenedor {
+  position: absolute;
   display: flex;
+  z-index: 10;
+  color: var(--shark-50);
   flex-direction: column;
+  padding: 5rem;
   align-items: flex-start;
+  height: 100vh;
   justify-content: center;
+}
+.home__principal {
+  height: 100vh;
 }
 
 .home__principal-title {
