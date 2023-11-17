@@ -1,19 +1,19 @@
-<div>
-  <div *ngFor="let vehicle of vehicles" class="" style="width: 300px;">
-    <img src={{vehicle.images[0]}} style="width: 100%;"/>
-    <div>
+<div class="vehicles">
+  <div *ngFor="let vehicle of vehicles" class="vehicles__card" >
+    <img src={{vehicle.images[0]}}  class="vehicles__card-img"/>
+    <div class="vehicles__card-div">
       <p>{{ vehicle.brand }}</p>
       <p>{{ vehicle.model }}</p>
     </div>
-    <div>
+    <div class="vehicles__card-div">
       <p>{{ vehicle.year }} |</p>
       <p>{{ vehicle.kilometres }} km</p>
     </div>
-    <div>
+    <div class="vehicles__card-div">
       <p>{{ vehicle.city }} |</p>
       <p>{{ vehicle.state }}</p>
     </div>
-    <div>
+    <div class="vehicles__card-div">
       <p>{{ vehicle.price }}</p>
     </div>
   </div>
