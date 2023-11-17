@@ -7,11 +7,13 @@ import { HomeviewComponent } from './view/homeview/homeview.component';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { PromotionsComponent } from './components/promotions/promotions.component';
+import { DealershipsComponent } from './components/dealerships/dealerships.component';
 
 @NgModule({
   declarations: [
     HomeviewComponent,
     PromotionsComponent,
+    DealershipsComponent,
   ],
   imports: [
     CommonModule,
