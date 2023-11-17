@@ -9,6 +9,10 @@ const carSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  images: {
+    type: [String],
+    default: ["https://cdn-icons-png.flaticon.com/512/4635/4635904.png"], // Valor por defecto, en este caso, un arreglo con una URL de imagen
+  },
   year: {
     type: Number,
     required: true,

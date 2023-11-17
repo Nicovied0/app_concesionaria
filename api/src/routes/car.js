@@ -17,13 +17,16 @@ router.post("/", async (req, res) => {
   const {
     brand,
     model,
+    images,
     year,
     color,
     price,
+    kilometres,
     dealershipName,
     state,
     city,
     country,
+    
   } = req.body;
 
   try {
@@ -37,13 +40,15 @@ router.post("/", async (req, res) => {
     const newCar = new Car({
       brand,
       model,
+      images,
       year,
       color,
       price,
+      kilometres,
       dealershipName,
       state,
       city,
-      country,
+      country
     });
     const savedCar = await newCar.save();
 
