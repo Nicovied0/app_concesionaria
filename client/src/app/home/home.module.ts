@@ -6,10 +6,12 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeviewComponent } from './view/homeview/homeview.component';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { PromotionsComponent } from './components/promotions/promotions.component';
 
 @NgModule({
   declarations: [
     HomeviewComponent,
+    PromotionsComponent,
   ],
   imports: [
     CommonModule,
