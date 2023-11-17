@@ -20,6 +20,10 @@ const carSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  kilometres:{
+    type:Number,
+    required:true
+  },
   dealershipName: {
     type: String,
     required: true,

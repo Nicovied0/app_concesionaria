@@ -1,6 +1,20 @@
 <div>
   <div *ngFor="let vehicle of vehicles">
-    <h2>name</h2>
-    <p>{{ vehicle.brand }}</p>
+    <img />
+    <div>
+      <p>{{ vehicle.brand }}</p>
+      <p>{{ vehicle.model }}</p>
+    </div>
+    <div>
+      <p>{{ vehicle.year }} |</p>
+      <p>{{ vehicle.kilometres }} km</p>
+    </div>
+    <div>
+      <p>{{ vehicle.city }} |</p>
+      <p>{{ vehicle.state }}</p>
+    </div>
+    <div>
+      <p>{{ vehicle.price }}</p>
+    </div>
   </div>
 </div>

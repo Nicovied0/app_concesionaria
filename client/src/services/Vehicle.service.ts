@@ -26,4 +26,9 @@ import { HttpClient } from '@angular/common/http';
     year: number;
     color: string;
     price: number;
+    dealershipName:string,
+    country:string,
+    state:string,
+    city:string,
+    kilometres:number
   }
