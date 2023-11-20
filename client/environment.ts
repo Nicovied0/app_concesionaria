@@ -1,4 +1,3 @@
 export const environment = {
     production: true,
-    backUrl: "https://alarmgeofireback.up.railway.app"
-  };
+    backUrl: "https://app-concesionaria.vercel.app"  };

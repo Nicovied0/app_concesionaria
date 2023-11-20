@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment';
 
 @Injectable({
     providedIn: 'root'
   })
   export class VehiclesService {
-    private linkUrl =  "http://localhost:3001/cars";
+    private linkUrl =   environment.backUrl +"/cars";
   
     constructor(private http: HttpClient) { }
   
