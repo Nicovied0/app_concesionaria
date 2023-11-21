@@ -24,10 +24,13 @@
   justify-content: flex-start;
   margin-top: 10px;
 }
-.vehicles__card-div-p{
+
+.vehicles__card-div-p {
   margin: 0 2px;
+  white-space: nowrap;
 }
-.vehicles__card-div-precio{
+
+.vehicles__card-div-precio {
   color: green;
   font-size: 2rem;
   font-weight: 700;

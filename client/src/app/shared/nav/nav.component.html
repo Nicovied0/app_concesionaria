@@ -13,17 +13,18 @@
       {{ "NAV.CONTACT" | translate }}
     </h2>
     <h2 class="nav__links-contacto" (click)="goDashboard()">
-      dashboard
+      {{ "NAV.PROFILE" | translate }}
+      
     </h2>
     <img
       class="nav__links-lenguaje"
-      src="../../../assets/icons/es.png"
+      src="../../../assets/images/es.png"
       (click)="changeLanguage('es')"
       *ngIf="enOn"
     />
     <img
       class="nav__links-lenguaje"
-      src="../../../assets/icons/en.png"
+      src="../../../assets/images/en.png"
       (click)="changeLanguage('en')"
       *ngIf="esOn"
     />
