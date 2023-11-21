@@ -5,13 +5,14 @@ const Dealership = require("../models/Dealership");
 
 router.get("/", async (req, res) => {
   try {
-    const cars = await Car.find().populate("dealershipName");
+    const cars = await Car.find();
     res.json(cars);
   } catch (error) {
     console.error("Error al obtener automóviles:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
 
 router.post("/", async (req, res) => {
   const {
@@ -67,7 +68,7 @@ router.post("/", async (req, res) => {
     const carId = req.params.id;
 
     try {
-      const car = await Car.findById(carId).populate("dealershipName");
+      const car = await Car.findById(carId);
 
       if (!car) {
         return res.status(404).json({ error: "Automóvil no encontrado" });
@@ -79,27 +80,27 @@ router.post("/", async (req, res) => {
       res.status(500).json({ error: "Error interno del servidor" });
     }
   });
-});
 
-router.put("/:id", async (req, res) => {
-  const carId = req.params.id;
-  const updateData = req.body; // Datos para actualizar el automóvil
+  router.put("/:id", async (req, res) => {
+    const carId = req.params.id;
+    const updateData = req.body; // Datos para actualizar el automóvil
 
-  try {
-    // Buscar el automóvil por su ID y actualizarlo
-    const updatedCar = await Car.findByIdAndUpdate(carId, updateData, {
-      new: true,
-    });
+    try {
+      // Buscar el automóvil por su ID y actualizarlo
+      const updatedCar = await Car.findByIdAndUpdate(carId, updateData, {
+        new: true,
+      });
 
-    if (!updatedCar) {
-      return res.status(404).json({ error: "Automóvil no encontrado" });
+      if (!updatedCar) {
+        return res.status(404).json({ error: "Automóvil no encontrado" });
+      }
+
+      res.json(updatedCar); // Devolver el automóvil actualizado como respuesta
+    } catch (error) {
+      console.error("Error al actualizar automóvil:", error);
+      res.status(500).json({ error: "Error interno del servidor" });
     }
-
-    res.json(updatedCar); // Devolver el automóvil actualizado como respuesta
-  } catch (error) {
-    console.error("Error al actualizar automóvil:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
+  });
 });
 
 module.exports = router;
