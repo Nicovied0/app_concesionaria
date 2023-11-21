@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { VehiclesService } from './../../../../services/Vehicle.service';
 
@@ -6,9 +7,9 @@ import { VehiclesService } from './../../../../services/Vehicle.service';
   templateUrl: './vehicle.component.html',
   styleUrls: ['./vehicle.component.scss']
 })
-export class VehicleComponent implements OnInit{
+export class VehicleComponent implements OnInit {
 
-  constructor(private  vehiclesService : VehiclesService){}
+  constructor(private vehiclesService: VehiclesService, private router: Router) { }
 
   vehicles: any = []
 
@@ -16,12 +17,18 @@ export class VehicleComponent implements OnInit{
     this.getVehicles()
   }
 
-  getVehicles(){
-      this.vehiclesService.getVehicles().subscribe(
-        res =>{
-          this.vehicles = res
-        }
-      )
+  getVehicles() {
+    this.vehiclesService.getVehicles().subscribe(
+      res => {
+        this.vehicles = res
+        console.log(this.vehicles)
+      }
+    )
   }
+
+  goDetail(id: any) {
+    this.router.navigate(['/vehicles/', id]);
+  }
+
 
 }

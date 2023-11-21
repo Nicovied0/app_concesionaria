@@ -49,6 +49,11 @@ const carSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
+  sell:{
+    type:Boolean,
+    required:true,
+    default:false
+  }
 });
 
 const Car = mongoose.model("Car", carSchema);

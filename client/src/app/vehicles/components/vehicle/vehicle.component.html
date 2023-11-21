@@ -1,5 +1,5 @@
 <div class="vehicles">
-  <div *ngFor="let vehicle of vehicles" class="vehicles__card">
+  <div *ngFor="let vehicle of vehicles" class="vehicles__card" (click)="goDetail(vehicle._id)">
     <img src="{{ vehicle.images[0] }}" class="vehicles__card-img" />
     <div class="vehicles__card-div">
       <p class="vehicles__card-div-p" >{{ vehicle.brand }}</p>

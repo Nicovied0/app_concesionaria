@@ -63,6 +63,24 @@ router.post("/", async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: "Error interno del servidor" });
   }
+
+  
+  router.get("/:id", async (req, res) => {
+    const carId = req.params.id;
+  
+    try {
+      const car = await Car.findById(carId).populate("dealershipName");
+  
+      if (!car) {
+        return res.status(404).json({ error: "Automóvil no encontrado" });
+      }
+  
+      res.json(car);
+    } catch (error) {
+      console.error("Error al obtener automóvil por ID:", error);
+      res.status(500).json({ error: "Error interno del servidor" });
+    }
+  });
 });
 
 module.exports = router;
