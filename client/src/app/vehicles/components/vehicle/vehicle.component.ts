@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { VehiclesService } from './../../../../services/Vehicle.service';
+import { VehiclesService,Vehicles  } from './../../../../services/Vehicle.service';
 
 @Component({
   selector: 'app-vehicle',
@@ -11,7 +11,7 @@ export class VehicleComponent implements OnInit {
 
   constructor(private vehiclesService: VehiclesService, private router: Router) { }
 
-  vehicles: any = []
+  vehicles: Vehicles[] = []; 
   show : any = null
 
   ngOnInit() {
