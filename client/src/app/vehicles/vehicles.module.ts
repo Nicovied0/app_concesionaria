@@ -1,3 +1,4 @@
+import { LoaderComponent } from './../shared/loader/loader.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,7 +11,6 @@ import { DetailviewComponent } from './view/detailview/detailview.component';
 import { FiltersComponent } from './components/filters/filters.component';
 
 import { TranslateModule } from '@ngx-translate/core';
-import { LoaderComponent } from '../shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +18,9 @@ import { LoaderComponent } from '../shared/loader/loader.component';
     VehicleDetailComponent,
     HomeviewComponent,
     DetailviewComponent,
-    FiltersComponent,
-    LoaderComponent
+    FiltersComponent
   ],
   imports: [
-    
     CommonModule,
     VehiclesRoutingModule,
     HttpClientModule,
