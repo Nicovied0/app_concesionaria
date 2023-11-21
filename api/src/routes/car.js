@@ -101,6 +101,24 @@ router.post("/", async (req, res) => {
       res.status(500).json({ error: "Error interno del servidor" });
     }
   });
+
+
+
+  router.get("/", async (req, res) => {
+    try {
+      let sortOrder = 1; // Orden ascendente por defecto
+      if (req.query.sort === 'desc') {
+        sortOrder = -1; // Si se especifica 'desc', se ordenará de mayor a menor
+      }
+  
+      const cars = await Car.find().sort({ price: sortOrder });
+      res.json(cars);
+    } catch (error) {
+      console.error("Error al obtener automóviles:", error);
+      res.status(500).json({ error: "Error interno del servidor" });
+    }
+  });
+  
 });
 
 module.exports = router;

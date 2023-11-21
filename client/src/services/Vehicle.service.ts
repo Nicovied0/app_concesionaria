@@ -17,14 +17,23 @@ import { environment } from '../../environment';
         catchError(() => of([]))
       );
     }
+    
 
     getVehicleDetail(id:any): Observable<Vehicles[]> {
       return this.http.get<Vehicles[]>(this.linkUrl + id).pipe(
         catchError(() => of([]))
       );
     }
+
+    getVehiclesSortedByPrice(): Observable<Vehicles[]> {
+      const sortByPriceUrl = `${this.linkUrl}?sort=price`;
+      return this.http.get<Vehicles[]>(sortByPriceUrl).pipe(
+        catchError(() => of([]))
+      );
+    }
   
   }
+  
   
   export interface Vehicles {
     active: boolean;
