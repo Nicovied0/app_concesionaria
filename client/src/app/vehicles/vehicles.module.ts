@@ -11,6 +11,8 @@ import { DetailviewComponent } from './view/detailview/detailview.component';
 import { FiltersComponent } from './components/filters/filters.component';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadersComponent } from './components/loaders/loaders.component';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { TranslateModule } from '@ngx-translate/core';
     VehicleDetailComponent,
     HomeviewComponent,
     DetailviewComponent,
-    FiltersComponent
+    FiltersComponent,
+    LoadersComponent,
+    
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,5 @@
 <div *ngIf="show == null">
-
+  <app-loaders></app-loaders>
 </div>
 
 <div class="vehicles" *ngIf="show">
@@ -19,7 +19,7 @@
     </div>
     <div class="vehicles__card-div">
       <p class="vehicles__card-div-p">{{ vehicle.city }} |</p>
-      <p class="vehicles__card-div-p">{{ vehicle.state }}</p>
+      <p class="vehicles__card-div-p">{{ vehicle.state }}</p>w
     </div>
     <div class="vehicles__card-div">
       <p class="vehicles__card-div-precio">${{ vehicle.price }}</p>
