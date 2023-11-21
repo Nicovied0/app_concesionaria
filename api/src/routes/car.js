@@ -26,7 +26,6 @@ router.post("/", async (req, res) => {
     state,
     city,
     country,
-    
   } = req.body;
 
   try {
@@ -48,7 +47,7 @@ router.post("/", async (req, res) => {
       dealershipName,
       state,
       city,
-      country
+      country,
     });
     const savedCar = await newCar.save();
 
@@ -64,23 +63,43 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 
-  
   router.get("/:id", async (req, res) => {
     const carId = req.params.id;
-  
+
     try {
       const car = await Car.findById(carId).populate("dealershipName");
-  
+
       if (!car) {
         return res.status(404).json({ error: "Automóvil no encontrado" });
       }
-  
+
       res.json(car);
     } catch (error) {
       console.error("Error al obtener automóvil por ID:", error);
       res.status(500).json({ error: "Error interno del servidor" });
     }
   });
+});
+
+router.put("/:id", async (req, res) => {
+  const carId = req.params.id;
+  const updateData = req.body; // Datos para actualizar el automóvil
+
+  try {
+    // Buscar el automóvil por su ID y actualizarlo
+    const updatedCar = await Car.findByIdAndUpdate(carId, updateData, {
+      new: true,
+    });
+
+    if (!updatedCar) {
+      return res.status(404).json({ error: "Automóvil no encontrado" });
+    }
+
+    res.json(updatedCar); // Devolver el automóvil actualizado como respuesta
+  } catch (error) {
+    console.error("Error al actualizar automóvil:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
 });
 
 module.exports = router;
