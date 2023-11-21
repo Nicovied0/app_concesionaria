@@ -12,6 +12,7 @@ export class VehicleComponent implements OnInit {
   constructor(private vehiclesService: VehiclesService, private router: Router) { }
 
   vehicles: any = []
+  show : any = null
 
   ngOnInit() {
     this.getVehicles()
@@ -22,6 +23,7 @@ export class VehicleComponent implements OnInit {
       res => {
         this.vehicles = res
         console.log(this.vehicles)
+        this.show = true
       }
     )
   }

@@ -24,9 +24,9 @@ const carSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  kilometres:{
-    type:Number,
-    required:true
+  kilometres: {
+    type: Number,
+    required: true,
   },
   dealershipName: {
     type: String,
@@ -49,11 +49,16 @@ const carSchema = new mongoose.Schema({
     required: true,
     default: true,
   },
-  sell:{
-    type:Boolean,
-    required:true,
-    default:false
-  }
+  sell: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  counterVisits: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
 });
 
 const Car = mongoose.model("Car", carSchema);

@@ -10,10 +10,25 @@
   align-items: center;
   padding: 1rem 2rem;
   min-height: 80vh;
+  background: #282828;
+  background: linear-gradient(180deg, #282828, #ffffff);
+}
+.home__principal-title{
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .home__principal {
-  width: 50%;
+  width: 30%;
+  min-height: 30rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+.home__principal2 {
+  width: 60%;
   min-height: 30rem;
   padding: 1rem;
   display: flex;
@@ -42,7 +57,7 @@
   flex-direction: row;
 }
 
-.imgContacto {
+.img {
   width: 100%;
   border-radius: 20px;
   object-fit: cover;
@@ -69,16 +84,22 @@
     align-items: center;
     justify-content: space-evenly;
   }
-  .home__principal {
+  .home__principal,
+  .home__principal2 {
     width: 100%;
-    min-height: auto;
   }
 
   .home__inferior {
     margin-top: 0;
   }
-  .imgContacto {
-    border-radius: 10px;
+  .home__contenedor{
+    background-image: url("https://autocity.com.ar/wp-content/uploads/2023/05/DSC_0588-1440x521.jpg");
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+  .img {
+   display: none;
   }
 }
 
