@@ -59,6 +59,11 @@ const carSchema = new mongoose.Schema({
     required: true,
     default: 0,
   },
+  condition: {
+    type: String,
+    required: true,
+    default: "new",
+  },
 });
 
 const Car = mongoose.model("Car", carSchema);

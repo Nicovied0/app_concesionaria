@@ -65,5 +65,6 @@ import { environment } from '../../environment';
     city:string,
     kilometres:number,
     _id:String,
-    images:String
+    images:String,
+    condition:String
   }
