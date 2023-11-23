@@ -9,6 +9,7 @@ import { environment } from '../../environment';
   })
   export class VehiclesService {
     private linkUrl =   environment.backUrl +"/cars";
+    private linkUrlFilters = environment.backUrl + "/filter"
   
     constructor(private http: HttpClient) { }
   
@@ -25,12 +26,28 @@ import { environment } from '../../environment';
       );
     }
 
-    getVehiclesSortedByPrice(): Observable<Vehicles[]> {
-      const sortByPriceUrl = `${this.linkUrl}?sort=price`;
+    getVehiclesSortedByAsc(): Observable<Vehicles[]> {
+      const sortByPriceUrl = `${this.linkUrlFilters}?sort=may`;
       return this.http.get<Vehicles[]>(sortByPriceUrl).pipe(
         catchError(() => of([]))
       );
     }
+
+    
+    getVehiclesSortedByDes(): Observable<Vehicles[]> {
+      const sortByPriceUrl = `${this.linkUrlFilters}?sort=men`;
+      return this.http.get<Vehicles[]>(sortByPriceUrl).pipe(
+        catchError(() => of([]))
+      );
+    }
+
+    getVehiclesSortedByVisits(): Observable<Vehicles[]> {
+      const sortByPriceUrl = `${this.linkUrlFilters}?sort=visits`;
+      return this.http.get<Vehicles[]>(sortByPriceUrl).pipe(
+        catchError(() => of([]))
+      );
+    }
+  
   
   }
   
