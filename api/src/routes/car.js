@@ -31,7 +31,8 @@ router.post("/", async (req, res) => {
       state,
       city,
       country,
-      condition
+      condition,
+      counterVisits
     } = req.body;
 
     // Encontrar la concesionaria por su nombre
@@ -54,7 +55,8 @@ router.post("/", async (req, res) => {
       state,
       city,
       country,
-      condition
+      condition,
+      counterVisits
     });
 
     // Guardar el auto en la base de datos

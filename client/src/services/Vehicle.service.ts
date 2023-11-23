@@ -67,4 +67,5 @@ import { environment } from '../../environment';
     _id:String,
     images:String,
     condition:String
+    counterVisits:any
   }

@@ -1,30 +1,25 @@
 <div class="filter-container">
-    <div class="sort-section">
-      <h2>Ordenar por</h2>
-      <p (click)="orderAsc()">De menor a mayor precio</p>
-      <p (click)="orderDesc()">De mayor a menor precio</p>
-      <p (click)="orderVisits()">De mas vistos</p>
-    </div>
-    <div class="filter-section">
-      <h2>Filtrar por</h2>
-      <div class="filter-options">
-        <div>
-          <h3>Condicion</h3>
-          <p>Nuevos</p>
-          <p>Usados</p>
-        </div>
-        <div>
-          <h3>Provincias</h3>
-          <p>Cordoba</p>
-          <p>Mendoza</p>
-        </div>
-        <div>
-          <h3>Marcas</h3>
-          <p>Chevrolet</p>
-          <p>Fiat</p>
-          <p>Ford</p>
-        </div>
+  <div class="sort-section">
+    <h2>Ordenar por</h2>
+    <p (click)="orderAsc()">De menor a mayor precio</p>
+    <p (click)="orderDesc()">De mayor a menor precio</p>
+    <p (click)="orderVisits()">De más vistos</p>
+  </div>
+  <div class="filter-section">
+    <h2>Filtrar por</h2>
+    <div class="filter-options">
+      <div>
+        <h3>Condicion</h3>
+        <p (click)="applyFilterByCondition('new')">Nuevos</p>
+        <p (click)="applyFilterByCondition('used')">Usados</p>
+      </div>
+      <div>
+        <h3>Marcas</h3>
+        <p (click)="applyFilterByBrand('Chevrolet')">Chevrolet</p>
+        <p (click)="applyFilterByBrand('Fiat')">Fiat</p>
+        <p (click)="applyFilterByBrand('Ford')">Ford</p>
+        <p (click)="applyFilterByBrand('Toyota')">Toyota</p>
       </div>
     </div>
   </div>
-  
+</div>

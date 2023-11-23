@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { VehiclesService, Vehicles } from './../../../../services/Vehicle.service';
 import { VehicleSharedService } from 'src/services/VehicleSharedService';
 import { takeUntil } from 'rxjs/operators';
@@ -12,6 +12,8 @@ import { Subject } from 'rxjs';
 })
 export class VehicleComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
+  filteredVehicles: Vehicles[] = [];
+  originalVehicles: Vehicles[] = []; 
 
   constructor(
     private vehiclesService: VehiclesService,
@@ -20,46 +22,40 @@ export class VehicleComponent implements OnInit, OnDestroy {
   ) {}
 
   vehicles: Vehicles[] = [];
-  show: any = null;
   loading = false;
 
   ngOnInit() {
     this.getVehicles();
-    this.subscribeToVehicleUpdates();
-    this.subscribeToLoadingState();
+    this.subscribeToFilteredVehicles();
   }
-
+  
   private getVehicles() {
-    this.vehicleSharedService.setLoading(true);
+    this.loading = true;
 
     this.vehiclesService.getVehicles().subscribe(
       res => {
-        this.vehicles = res;
-        this.show = true;
-        this.vehicleSharedService.updateVehicles(this.vehicles);
-        this.vehicleSharedService.setLoading(false);
+        this.originalVehicles = res.slice(); // Guardar una copia de los vehículos originales
+        this.applyFilter(this.originalVehicles); // Aplicar filtros al recibir los vehículos
+        this.loading = false;
       },
       error => {
         console.error('Error fetching vehicles:', error);
-        this.vehicleSharedService.setLoading(false);
+        this.loading = false;
       }
     );
   }
-
-  private subscribeToVehicleUpdates() {
-    this.vehicleSharedService.vehicles$
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((vehicles) => {
-        this.vehicles = vehicles;
-      });
+  
+  private subscribeToFilteredVehicles() {
+    this.vehicleSharedService.filteredVehicles$.subscribe((filteredVehicles) => {
+      // Aplicar filtros cada vez que haya cambios en los filtros
+      this.applyFilter(filteredVehicles);
+    });
   }
 
-  private subscribeToLoadingState() {
-    this.vehicleSharedService.loading$
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((loading) => {
-        this.loading = loading;
-      });
+  private applyFilter(filteredVehicles: Vehicles[]) {
+    // Si no hay filtros aplicados, mostrar todos los vehículos originales
+    this.filteredVehicles = filteredVehicles.length ? filteredVehicles : this.originalVehicles;
+    console.log('Vehículos filtrados actualizados en el componente hermano:', this.filteredVehicles);
   }
 
   goDetail(id: any) {

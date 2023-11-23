@@ -1,11 +1,11 @@
-<div *ngIf="show == null || loading">
+<div *ngIf="loading">
   <app-loaders></app-loaders>
 </div>
 
-<div *ngIf="show" class="vehicles">
-  <ng-container *ngIf="vehicles.length > 0; else skeletonCards">
+<div class="vehicles">
+  <ng-container *ngIf="filteredVehicles.length > 0; else skeletonCards">
     <div
-      *ngFor="let vehicle of vehicles"
+      *ngFor="let vehicle of filteredVehicles"
       class="vehicles__card"
       (click)="goDetail(vehicle._id)"
     >
