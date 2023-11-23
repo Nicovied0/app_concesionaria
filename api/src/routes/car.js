@@ -93,10 +93,10 @@ router.get("/:id", async (req, res) => {
 // Actualizar un auto por su ID
 router.put("/:id", async (req, res) => {
   const carId = req.params.id;
-  const updateData = req.body; // Datos para actualizar el auto
+  const updateData = req.body; 
 
   try {
-    // Buscar el auto por su ID y actualizarlo
+
     const updatedCar = await Car.findByIdAndUpdate(carId, updateData, {
       new: true,
     });
@@ -105,30 +105,13 @@ router.put("/:id", async (req, res) => {
       return res.status(404).json({ error: "Automóvil no encontrado" });
     }
 
-    res.json(updatedCar); // Devolver el auto actualizado como respuesta
+    res.json(updatedCar);
   } catch (error) {
     console.error("Error al actualizar un auto:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
 
-// Ordenar autos por precio
-router.get("/order", async (req, res) => {
-  try {
-    let sortOrder = 1; // Por defecto, orden ascendente
 
-    if (req.query.sort === 'higher') {
-      sortOrder = -1; // Orden descendente para precios más altos primero
-    } else if (req.query.sort === 'less') {
-      sortOrder = 1; // Orden ascendente para precios más bajos primero
-    }
-
-    const cars = await Car.find().sort({ price: sortOrder });
-    res.json(cars);
-  } catch (error) {
-    console.error("Error al obtener automóviles:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
-  }
-});
 
 module.exports = router;

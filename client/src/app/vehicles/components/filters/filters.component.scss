@@ -1,0 +1,40 @@
+.filter-container {
+    display: flex;
+flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    border-right: 2px solid #ccc;
+  }
+  
+  .sort-section,
+  .filter-section {
+    flex: 0 0 48%;
+  }
+  
+  .sort-section h2,
+  .filter-section h2 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .sort-section p {
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+  
+  .filter-options div {
+    margin-bottom: 15px;
+  }
+  
+  .filter-options h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .filter-options p {
+    cursor: pointer;
+    margin-bottom: 5px;
+  }
+  

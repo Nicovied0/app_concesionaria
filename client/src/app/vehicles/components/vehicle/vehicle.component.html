@@ -2,27 +2,39 @@
   <app-loaders></app-loaders>
 </div>
 
-<div class="vehicles" *ngIf="show">
-  <div
-    *ngFor="let vehicle of vehicles"
-    class="vehicles__card"
-    (click)="goDetail(vehicle._id)"
-  >
-    <img src="{{ vehicle.images[0] }}" class="vehicles__card-img" />
-    <div class="vehicles__card-div">
-      <p class="vehicles__card-div-p">{{ vehicle.brand }}</p>
-      <p class="vehicles__card-div-p">{{ vehicle.model }}</p>
+<div *ngIf="show" class="vehicles">
+  <ng-container *ngIf="vehicles.length > 0; else skeletonCards">
+    <div *ngFor="let vehicle of vehicles" class="vehicles__card" (click)="goDetail(vehicle._id)">
+      <img src="{{ vehicle.images[0] }}" class="vehicles__card-img" />
+      <div class="vehicles__card-div">
+        <p class="vehicles__card-div-p">{{ vehicle.brand }}</p>
+        <p class="vehicles__card-div-p">{{ vehicle.model }}</p>
+      </div>
+      <div class="vehicles__card-div">
+        <p class="vehicles__card-div-p">{{ vehicle.year }} |</p>
+        <p class="vehicles__card-div-p">{{ vehicle.kilometres }} km</p>
+      </div>
+      <div class="vehicles__card-div">
+        <p class="vehicles__card-div-p">{{ vehicle.city }} |</p>
+        <p class="vehicles__card-div-p">{{ vehicle.state }}</p>
+      </div>
+      <div class="vehicles__card-div">
+        <p class="vehicles__card-div-precio">${{ vehicle.price }}</p>
+      </div>
     </div>
-    <div class="vehicles__card-div">
-      <p class="vehicles__card-div-p">{{ vehicle.year }} |</p>
-      <p class="vehicles__card-div-p">{{ vehicle.kilometres }} km</p>
+  </ng-container>
+
+  <ng-template #skeletonCards>
+    <!-- Esqueleto de tarjeta de vehículo -->
+    <div class="skeleton-vehicle-card" *ngFor="let placeholder of [1, 2, 3, 4]">
+      <!-- Estructura básica del esqueleto -->
+      <div class="skeleton-vehicle-card-img"></div>
+      <div class="skeleton-vehicle-card-text">
+        <div class="skeleton-vehicle-card-line"></div>
+        <div class="skeleton-vehicle-card-line"></div>
+        <div class="skeleton-vehicle-card-line"></div>
+        <div class="skeleton-vehicle-card-line"></div>
+      </div>
     </div>
-    <div class="vehicles__card-div">
-      <p class="vehicles__card-div-p">{{ vehicle.city }} |</p>
-      <p class="vehicles__card-div-p">{{ vehicle.state }}</p>w
-    </div>
-    <div class="vehicles__card-div">
-      <p class="vehicles__card-div-precio">${{ vehicle.price }}</p>
-    </div>
-  </div>
+  </ng-template>
 </div>
