@@ -34,8 +34,8 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
     this.vehiclesService.getVehicles().subscribe(
       res => {
-        this.originalVehicles = res.slice(); // Guardar una copia de los vehículos originales
-        this.applyFilter(this.originalVehicles); // Aplicar filtros al recibir los vehículos
+        this.originalVehicles = res.slice();
+        this.applyFilter(this.originalVehicles);
         this.loading = false;
       },
       error => {
@@ -47,7 +47,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
   
   private subscribeToFilteredVehicles() {
     this.vehicleSharedService.filteredVehicles$.subscribe((filteredVehicles) => {
-      // Aplicar filtros cada vez que haya cambios en los filtros
+      
       this.applyFilter(filteredVehicles);
     });
   }
@@ -60,6 +60,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
   goDetail(id: any) {
     this.router.navigate(['/vehicles/', id]);
+    window.scroll(0,0)
   }
 
   ngOnDestroy() {
