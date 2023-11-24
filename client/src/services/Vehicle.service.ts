@@ -21,7 +21,7 @@ import { environment } from '../../environment';
     
 
     getVehicleDetail(id:any): Observable<Vehicles[]> {
-      return this.http.get<Vehicles[]>(this.linkUrl + id).pipe(
+      return this.http.get<Vehicles[]>(this.linkUrl + "/" + id).pipe(
         catchError(() => of([]))
       );
     }

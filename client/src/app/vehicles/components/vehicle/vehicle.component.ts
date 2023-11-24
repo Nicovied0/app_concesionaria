@@ -13,13 +13,13 @@ import { Subject } from 'rxjs';
 export class VehicleComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
   filteredVehicles: Vehicles[] = [];
-  originalVehicles: Vehicles[] = []; 
+  originalVehicles: Vehicles[] = [];
 
   constructor(
     private vehiclesService: VehiclesService,
     private router: Router,
     private vehicleSharedService: VehicleSharedService
-  ) {}
+  ) { }
 
   vehicles: Vehicles[] = [];
   loading = false;
@@ -28,7 +28,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
     this.getVehicles();
     this.subscribeToFilteredVehicles();
   }
-  
+
   private getVehicles() {
     this.loading = true;
 
@@ -44,10 +44,10 @@ export class VehicleComponent implements OnInit, OnDestroy {
       }
     );
   }
-  
+
   private subscribeToFilteredVehicles() {
     this.vehicleSharedService.filteredVehicles$.subscribe((filteredVehicles) => {
-      
+
       this.applyFilter(filteredVehicles);
     });
   }
@@ -60,7 +60,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
   goDetail(id: any) {
     this.router.navigate(['/vehicles/', id]);
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
   ngOnDestroy() {
