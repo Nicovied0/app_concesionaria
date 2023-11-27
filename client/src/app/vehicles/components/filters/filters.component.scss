@@ -1,40 +1,73 @@
+.windowFilter{
+  display: none;
+}
 .filter-container {
-    display: flex;
-flex-direction: column;
-    justify-content: space-between;
-    margin: 20px;
-    border-right: 2px solid #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 20px;
+  border-right: 2px solid #ccc;
+}
+
+.sort-section,
+.filter-section {
+  flex: 0 0 48%;
+}
+
+.filter-section {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.sort-section {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.typeShort {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.p {
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+
+.responsive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.select {
+  margin: 5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.filters{
+  display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+@media screen and (min-width: 760px) {
+
+  .responsive {
+    display: none;
   }
-  
-  .sort-section,
-  .filter-section {
-    flex: 0 0 48%;
+}
+@media screen and (max-width: 760px) {
+
+  .windowFilter {
+    display: none;
   }
-  
-  .sort-section h2,
-  .filter-section h2 {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  .sort-section p {
-    cursor: pointer;
-    margin-bottom: 5px;
-  }
-  
-  .filter-options div {
-    margin-bottom: 15px;
-  }
-  
-  .filter-options h3 {
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  
-  .filter-options p {
-    cursor: pointer;
-    margin-bottom: 5px;
-  }
-  
+}

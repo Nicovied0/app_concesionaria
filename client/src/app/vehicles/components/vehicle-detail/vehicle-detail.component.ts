@@ -20,6 +20,7 @@ export class VehicleDetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = params['id']; // 'id' es el nombre del parámetro en la ruta
       this.getVehicle(id);
+      
     });
   }
 

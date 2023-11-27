@@ -1,0 +1,27 @@
+<div>
+  <h2>Selecciona una provincia</h2>
+  <select (change)="cargarMunicipios($event)">
+    <option value="">Elige una provincia</option>
+    <option *ngFor="let provincia of provincias" [value]="provincia.nombre">
+      {{ provincia.nombre }}
+    </option>
+  </select>
+</div>
+<div *ngIf="selectedProvincia">
+  <h2>Provincia Seleccionada: {{ selectedProvincia }}</h2>
+</div>
+
+<div *ngIf="municipios.length > 0">
+  <h2>Selecciona un municipio</h2>
+  <select (change)="cargarLocalidades($event)">
+    <option value="">Elige un municipio</option>
+    <option *ngFor="let municipio of municipios" [value]="municipio.nombre">
+      {{ municipio.nombre }}
+    </option>
+  </select>
+</div>
+
+
+<div *ngIf="selectedMunicipio">
+  <h2>Municipio Seleccionado: {{ selectedMunicipio }}</h2>
+</div>

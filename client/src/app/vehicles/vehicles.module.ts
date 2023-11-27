@@ -12,6 +12,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadersComponent } from './components/loaders/loaders.component';
+import { FiltesbyubicationComponent } from './components/filtesbyubication/filtesbyubication.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { LoadersComponent } from './components/loaders/loaders.component';
     DetailviewComponent,
     FiltersComponent,
     LoadersComponent,
+    FiltesbyubicationComponent,
     
   ],
   imports: [
