@@ -37,4 +37,25 @@ router.get("/", async (req, res) => {
   }
 });
 
+
+
+// Ruta para buscar por modelo o marca
+router.get('/byname', async (req, res) => {
+  const { consulta } = req.query;
+  try {
+    if (!consulta) {
+      return res.status(400).json({ message: 'Proporcione una consulta' });
+    }
+
+    const regexConsulta = new RegExp(consulta, 'i');
+    const resultados = await Car.find({
+      $or: [{ model: regexConsulta }, { brand: regexConsulta }],
+    });
+
+    res.json(resultados);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;
