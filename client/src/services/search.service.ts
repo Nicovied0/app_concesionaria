@@ -10,16 +10,18 @@ import { environment } from '../../environment';
 export class SearchService {
 
     constructor(private http: HttpClient) { }
-    private linkUrl =   environment.backUrl +"/search";
+    private linkUrl = environment.backUrl + "/search/byname";
 
     search(consulta: any) {
+        console.log('consulta:', consulta);
+
         const searchbyname = `${this.linkUrl}?consulta=${consulta}`;
         return this.http.get<Vehicles[]>(searchbyname).pipe(
             catchError(() => of([]))
-          );
+        );
     }
 
-    
+
 }
 
 
@@ -34,16 +36,16 @@ export interface Vehicles {
     year: number;
     color: string;
     price: number;
-    dealershipName:string,
-    country:string,
-    state:string,
-    city:string,
-    kilometres:number,
-    _id:String,
-    images:String,
-    condition:String
-    counterVisits:any
-  }
+    dealershipName: string,
+    country: string,
+    state: string,
+    city: string,
+    kilometres: number,
+    _id: String,
+    images: String,
+    condition: String
+    counterVisits: any
+}
 
 
 

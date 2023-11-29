@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { VehiclesService, Vehicles } from './../../../../services/Vehicle.service';
 import { VehicleSharedService } from 'src/services/VehicleSharedService';
-import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({

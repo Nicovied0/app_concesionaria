@@ -1,7 +1,7 @@
-import { LoaderComponent } from './../shared/loader/loader.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { VehiclesRoutingModule } from './vehicles-routing.module';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
@@ -13,6 +13,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { LoadersComponent } from './components/loaders/loaders.component';
 import { FiltesbyubicationComponent } from './components/filtesbyubication/filtesbyubication.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
 
 
 @NgModule({
@@ -24,12 +25,14 @@ import { FiltesbyubicationComponent } from './components/filtesbyubication/filte
     FiltersComponent,
     LoadersComponent,
     FiltesbyubicationComponent,
+    SearchbarComponent,
     
   ],
   imports: [
     CommonModule,
     VehiclesRoutingModule,
     HttpClientModule,
+    FormsModule ,
     TranslateModule.forChild(),
   ]
 })
