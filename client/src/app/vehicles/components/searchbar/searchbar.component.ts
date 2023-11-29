@@ -1,37 +1,33 @@
 import { Vehicles } from 'src/services/Vehicle.service';
 import { SearchService } from './../../../../services/search.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-searchbar',
   templateUrl: './searchbar.component.html',
   styleUrls: ['./searchbar.component.scss']
 })
-export class SearchbarComponent implements OnInit {
+export class SearchbarComponent {
 
   constructor(private searchService: SearchService) { }
 
   vehicles: Vehicles[] = [];
-  searchQuery: string = ''; // Initialize searchQuery
-
-  ngOnInit() {
-    // this.getVehicleBySearch(); // You might not want to fetch vehicles immediately on component initialization
-  }
+  searchQuery: string = '';
 
   onSearch() {
     if (this.searchQuery && this.searchQuery.trim() !== '') {
       this.getVehicleBySearch(this.searchQuery);
     } else {
-      // Handle empty search query if needed
-      this.vehicles = []; // Clear vehicles array or show a default list
+      this.vehicles = [];
     }
   }
 
   getVehicleBySearch(query: string) {
     this.searchService.search(query).subscribe(
       res => {
-        console.log('query:', query);
-        this.vehicles = res;
+        console.log('Query:', query);
+        console.log('Search Result:',  this.vehicles);
+        this.vehicles = res; // Update vehicles based on the search result
       },
       error => {
         console.error('Error fetching vehicles:', error);
