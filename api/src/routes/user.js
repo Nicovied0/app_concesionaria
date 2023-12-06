@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const userId = req.params.id; // Obtiene el ID desde el parámetro de la URL
-    const user = await Users.findById(userId); // Busca el usuario por su ID
+    const userId = req.params.id; 
+    const user = await Users.findById(userId); 
     console.log("Se llamó a la ruta /USERS/" + userId);
 
     if (!user) {
@@ -33,10 +33,8 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const userId = req.params.id; // Obtiene el ID desde el parámetro de la URL
-    const updatedUserData = req.body; // Obtiene los datos actualizados del usuario desde el cuerpo de la solicitud
-
-    // Aquí podrías validar los datos actualizados si es necesario
+    const userId = req.params.id;
+    const updatedUserData = req.body; 
 
     const updatedUser = await User.findByIdAndUpdate(userId, updatedUserData, {
       new: true,
@@ -68,7 +66,6 @@ router.post("/", async (req, res) => {
   } = req.body;
 
   try {
-    // Verificar si ya existe un usuario con el mismo email
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
