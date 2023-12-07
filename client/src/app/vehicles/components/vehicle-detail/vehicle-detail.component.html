@@ -1,8 +1,7 @@
 <div class="vehicleDetail">
   <div class="vehicleDetail__divImagen">
-    <img src="{{ vehicle?.images[0] }}" class="vehicleDetail__divImagen-img"/>
+    <img src="{{ vehicle?.images[0] }}" class="vehicleDetail__divImagen-img" />
     <div class="vehicleDetail__divImagen-buttons">
-
       <button class="vehicleDetail__divImagen-button">Previous</button>
       <button class="vehicleDetail__divImagen-button">Next</button>
     </div>
@@ -10,18 +9,18 @@
   <div class="vehicleDetail__details">
     <div class="vehicleDetail__details-div">
       <h2 class="vehicleDetail__details-text text1">{{ vehicle?.brand }}</h2>
-      <h2 class="vehicleDetail__details-text text1">{{ vehicle?.model }}</h2> 
-      
+      <h2 class="vehicleDetail__details-text text1">{{ vehicle?.model }}</h2>
     </div>
-    
-    <div class="vehicleDetail__details-div">
-      <h2 class="vehicleDetail__details-text text2">{{ vehicle?.year }} </h2>
-      <h2 class="vehicleDetail__details-text text2">- {{ vehicle?.kilometres }} Km</h2>
-      <h2 class="vehicleDetail__details-text text2">- {{ vehicle?.color }}</h2>
 
+    <div class="vehicleDetail__details-div">
+      <h2 class="vehicleDetail__details-text text2">{{ vehicle?.year }}</h2>
+      <h2 class="vehicleDetail__details-text text2">
+        - {{ vehicle?.kilometres }} Km
+      </h2>
+      <h2 class="vehicleDetail__details-text text2">- {{ vehicle?.color }}</h2>
     </div>
     <h2 class="vehicleDetail__details-text">{{ vehicle?.dealershipName }}</h2>
-    <h2>${{ vehicle?.price }}</h2>
+    <h2 class="vehicleDetail__details-text price">${{ vehicle?.price }}</h2>
     
     <div class="vehicleDetail__details-location">
       <img
@@ -32,7 +31,6 @@
       />
       <p>{{ vehicle?.state }}, {{ vehicle?.city }}</p>
     </div>
-    <div>
-    </div>
+    <div></div>
   </div>
 </div>

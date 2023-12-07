@@ -6,12 +6,13 @@
 .home__contenedor {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 1rem 2rem;
   min-height: 80vh;
   background: #282828;
   background: linear-gradient(180deg, #282828, #ffffff);
+  
 }
 .home__principal-title{
   font-weight: 700;
@@ -84,7 +85,7 @@
   .home__contenedor {
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
   }
   .home__principal,
   .home__principal2 {
