@@ -1,0 +1,17 @@
+[
+  {
+    "id":1,
+    "imageUrl": "https://imagenes.compragamer.com/marcas/imagen_marca_308_9_866.jpg",
+    "brandName": "ford"
+  },
+  {
+    "id":2,
+    "imageUrl": "https://imagenes.compragamer.com/marcas/imagen_marca_308_9_866.jpg",
+    "brandName": "as"
+  },
+  {
+    "id":3,
+    "imageUrl": "https://imagenes.compragamer.com/marcas/imagen_marca_308_9_866.jpg",
+    "brandName": "de"
+  }
+]

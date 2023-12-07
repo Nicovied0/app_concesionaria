@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PromotionsComponent } from './components/promotions/promotions.component';
 import { DealershipsComponent } from './components/dealerships/dealerships.component';
 import { AdddealershipsComponent } from './components/adddealerships/adddealerships.component';
+import { BrandsComponent } from './components/brands/brands.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AdddealershipsComponent } from './components/adddealerships/adddealersh
     PromotionsComponent,
     DealershipsComponent,
     AdddealershipsComponent,
+    BrandsComponent,
   ],
   imports: [
     CommonModule,
