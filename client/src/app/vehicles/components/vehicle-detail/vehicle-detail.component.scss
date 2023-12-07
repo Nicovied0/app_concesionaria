@@ -1,0 +1,40 @@
+.vehicleDetail {
+  display: flex;
+
+  &__divImagen {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch;
+
+    &-buttons {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 1rem;
+    }
+
+    &-img {
+      display: block;
+      max-width: 100%;
+      width: 100%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      filter: brightness(0.9) contrast(1.1);
+    }
+  }
+  &__details{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 2rem;
+    flex-wrap: wrap;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+    .vehicleDetail {
+        display: flex;
+        flex-direction: column;
+    }
+  }
