@@ -22,18 +22,25 @@
       filter: brightness(0.9) contrast(1.1);
     }
   }
+  
   &__details {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     padding: 2rem;
     flex-wrap: wrap;
+
     &-text {
       padding: 10px 5px 10px 0;
     }
 
     &-div {
       display: flex;
+    }
+
+    &-location {
+      display: flex;
+      align-items: flex-end;
     }
   }
 }
