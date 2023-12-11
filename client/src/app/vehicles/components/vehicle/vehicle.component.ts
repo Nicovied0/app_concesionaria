@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router } from '@angular/router';
 import { VehiclesService, Vehicles } from './../../../../services/Vehicle.service';
 import { VehicleSharedService } from 'src/services/VehicleSharedService';
 import { Subject } from 'rxjs';
@@ -52,13 +52,11 @@ export class VehicleComponent implements OnInit, OnDestroy {
   }
 
   private applyFilter(filteredVehicles: Vehicles[]) {
-    // Si no hay filtros aplicados, mostrar todos los vehículos originales
     this.filteredVehicles = filteredVehicles.length ? filteredVehicles : this.originalVehicles;
-    console.log('Vehículos filtrados actualizados en el componente hermano:', this.filteredVehicles);
   }
 
   goDetail(id: any) {
-    this.router.navigate(['/vehicles/', id]);
+    this.router.navigate(['/vehicles/detail/', id]);
     window.scroll(0, 0)
   }
 

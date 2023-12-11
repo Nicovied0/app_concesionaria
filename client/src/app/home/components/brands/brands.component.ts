@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { BrandService } from './../../../../services/Brand.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class BrandsComponent implements OnInit {
   images: any[] = [];
 
-  constructor(private brandService: BrandService) { }
+  constructor(private brandService: BrandService,private router : Router) { }
 
   ngOnInit() {
     this.getBrandImages();
@@ -25,6 +26,11 @@ export class BrandsComponent implements OnInit {
         console.error('Error al obtener las imágenes:', error);
       }
     );
+  }
+
+  goBrand(name:any){
+    console.log(name)
+    this.router.navigate([`/vehicles/${name}`])
   }
 
 }

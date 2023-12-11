@@ -1,3 +1,6 @@
 <div *ngFor="let brand of images">
-    <img src={{brand?.imageUrl}}>
+    <div (click)="goBrand(brand?.brandName)">
+
+        <img src={{brand?.imageUrl}}>
+    </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { VehiclesService, Vehicles } from '../../../../services/Vehicle.service';
 import { VehicleSharedService } from 'src/services/VehicleSharedService';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-filters',
@@ -14,19 +15,22 @@ export class FiltersComponent {
   selectedMunicipio: string = '';
   constructor(
     private vehiclesService: VehiclesService,
-    private vehicleSharedService: VehicleSharedService
+    private vehicleSharedService: VehicleSharedService,
+    private router: Router,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
     this.getVehicles();
     this.subscribeToVehicleUpdates();
+    this.applyFilterFromRoute();
+    this.delayedFunction()
   }
 
   private getVehicles() {
     this.vehiclesService.getVehicles().subscribe(
       (vehicles) => {
         this.updateVehicles(vehicles);
-        console.log('Vehículos obtenidos:', vehicles);
       },
       (error) => {
         console.error('Error al obtener vehículos:', error);
@@ -37,7 +41,6 @@ export class FiltersComponent {
   private subscribeToVehicleUpdates() {
     this.vehicleSharedService.vehicles$.subscribe((vehicles) => {
       this.updateVehicles(vehicles);
-      console.log('Vehículos actualizados en FiltersComponent:', vehicles);
     });
   }
 
@@ -46,48 +49,58 @@ export class FiltersComponent {
     this.filteredVehicles = vehicles;
   }
 
+  private applyFilterFromRoute() {
+    this.route.url.subscribe(segments => {
+      const lastSegment = segments[segments.length - 1];
+      const brandValue = lastSegment.path;
+
+      if (brandValue) {
+        const formattedBrand = brandValue.charAt(0).toUpperCase() + brandValue.slice(1).toLowerCase();
+        this.applyFilterByBrand(formattedBrand);
+      }
+    });
+  }
+
+
+
+
   orderAsc() {
     this.filteredVehicles.sort((a, b) => a.price - b.price);
-    console.log('Vehículos ordenados por precio ascendente:', this.filteredVehicles);
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles)
   }
 
+
   orderDesc() {
     this.filteredVehicles.sort((a, b) => b.price - a.price);
-    console.log('Vehículos ordenados por precio descendente:', this.filteredVehicles);
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles)
   }
 
   orderVisits() {
     this.filteredVehicles.sort((a, b) => b.counterVisits - a.counterVisits);
-    console.log('Vehículos ordenados por visitas:', this.filteredVehicles);
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles)
   }
 
   applyFilterByCondition(condition: string) {
     this.filteredVehicles = this.originalVehicles.filter(vehicle => vehicle.condition === condition);
-    console.log('Vehículos filtrados por condición:', this.filteredVehicles);
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
   }
-  
-  applyFilterByBrand(brand: string) {
-    this.filteredVehicles = this.originalVehicles.filter(vehicle => vehicle.brand === brand);
-    console.log('Vehículos filtrados por marca:', this.filteredVehicles);
+
+  async applyFilterByBrand(brand: string) {
+    this.filteredVehicles = await this.originalVehicles.filter(vehicle => vehicle.brand === brand);
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
   }
-  
+
   resetFilters() {
-    this.filteredVehicles = [...this.originalVehicles]; // Restablecer los filtros a la lista original
-    console.log('Filtros restablecidos a su estado original:', this.filteredVehicles);
+    this.filteredVehicles = [...this.originalVehicles];
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
   }
-  
+
   onSortOptionChange(event: Event) {
     const target = event.target as HTMLSelectElement | null;
-  
+
     if (target instanceof HTMLSelectElement) {
-      const option = target.value; // Accediendo al valor del select
-  
+      const option = target.value;
+
       if (option === 'asc') {
         this.orderAsc();
       } else if (option === 'desc') {
@@ -100,16 +113,16 @@ export class FiltersComponent {
 
   onConditionFilterChange(event: Event) {
     const target = event.target as HTMLSelectElement;
-  
+
     if (target && target.value) {
       const condition = target.value;
       this.applyFilterByCondition(condition);
     }
   }
-  
+
   onBrandFilterChange(event: Event) {
     const target = event.target as HTMLSelectElement;
-  
+
     if (target && target.value) {
       const brand = target.value;
       this.applyFilterByBrand(brand);
@@ -121,23 +134,35 @@ export class FiltersComponent {
       this.filteredVehicles = this.originalVehicles.filter(vehicle =>
         vehicle.state === this.selectedProvincia && vehicle.city === this.selectedMunicipio
       );
-      console.log('Vehículos filtrados por ubicación:', this.filteredVehicles);
       this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
     } else {
-      // Si alguno de los filtros no está seleccionado, mostrar todos los vehículos
       this.filteredVehicles = [...this.originalVehicles];
-      console.log('Filtros de ubicación no seleccionados, mostrando todos los vehículos:', this.filteredVehicles);
       this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
     }
   }
-  
+
   onProvinciaSeleccionada(provincia: string) {
     this.selectedProvincia = provincia;
-    // Realizar acciones adicionales si es necesario al seleccionar una provincia
   }
-  
+
   onMunicipioSeleccionado(municipio: string) {
     this.selectedMunicipio = municipio;
-    // Realizar acciones adicionales si es necesario al seleccionar un municipio
   }
+
+  capitalizeFirstLetter(str: string) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  delayedFunction() {
+    setTimeout(() => {
+      this.route.paramMap.subscribe(params => {
+        const currentBrand = params.get('brand');
+        if (currentBrand) {
+          const formattedBrand = this.capitalizeFirstLetter(currentBrand);
+          this.applyFilterByBrand(formattedBrand);
+        }
+      });
+    }, 1000);
+  }
+
 }
