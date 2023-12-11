@@ -2,18 +2,22 @@ import { Component } from '@angular/core';
 import { VehiclesService, Vehicles } from '../../../../services/Vehicle.service';
 import { VehicleSharedService } from 'src/services/VehicleSharedService';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BrandService } from './../../../../services/Brand.service';
 
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
   styleUrls: ['./filters.component.scss']
 })
+
 export class FiltersComponent {
   originalVehicles: Vehicles[] = [];
   filteredVehicles: Vehicles[] = [];
   selectedProvincia: string = '';
   selectedMunicipio: string = '';
-  constructor(
+  brands: any[] = [];
+
+  constructor(private brandService: BrandService,
     private vehiclesService: VehiclesService,
     private vehicleSharedService: VehicleSharedService,
     private router: Router,
@@ -23,8 +27,8 @@ export class FiltersComponent {
   ngOnInit() {
     this.getVehicles();
     this.subscribeToVehicleUpdates();
-    this.applyFilterFromRoute();
     this.delayedFunction()
+    this.getBrandImages();
   }
 
   private getVehicles() {
@@ -47,18 +51,6 @@ export class FiltersComponent {
   private updateVehicles(vehicles: Vehicles[]) {
     this.originalVehicles = vehicles;
     this.filteredVehicles = vehicles;
-  }
-
-  private applyFilterFromRoute() {
-    this.route.url.subscribe(segments => {
-      const lastSegment = segments[segments.length - 1];
-      const brandValue = lastSegment.path;
-
-      if (brandValue) {
-        const formattedBrand = brandValue.charAt(0).toUpperCase() + brandValue.slice(1).toLowerCase();
-        this.applyFilterByBrand(formattedBrand);
-      }
-    });
   }
 
 
@@ -93,6 +85,8 @@ export class FiltersComponent {
   resetFilters() {
     this.filteredVehicles = [...this.originalVehicles];
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
+    this.router.navigate(['vehicles'])
+    window.scroll(0,0)
   }
 
   onSortOptionChange(event: Event) {
@@ -149,20 +143,27 @@ export class FiltersComponent {
     this.selectedMunicipio = municipio;
   }
 
-  capitalizeFirstLetter(str: string) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  }
-
+  
   delayedFunction() {
     setTimeout(() => {
       this.route.paramMap.subscribe(params => {
         const currentBrand = params.get('brand');
         if (currentBrand) {
-          const formattedBrand = this.capitalizeFirstLetter(currentBrand);
-          this.applyFilterByBrand(formattedBrand);
+          this.applyFilterByBrand(currentBrand);
         }
       });
     }, 1000);
   }
 
+  getBrandImages() {
+    this.brandService.getImages().subscribe(
+      (data: any[]) => {
+        this.brands = data;
+        console.log(this.brands);
+      },
+      (error) => {
+        console.error('Error al obtener las imágenes:', error);
+      }
+    );
+  }
 }

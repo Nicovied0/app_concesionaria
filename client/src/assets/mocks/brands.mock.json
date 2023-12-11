@@ -2,77 +2,77 @@
   {
     "id": 1,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/audi/small.png",
-    "brandName": "audi"
+    "brandName": "Audi"
   },
 
   {
     "id": 2,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/bmw/small.png",
-    "brandName": "bmw"
+    "brandName": "Bmw"
   },
   {
     "id": 3,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/chevrolet/small.png",
-    "brandName": "chevrolet"
+    "brandName": "Chevrolet"
   },
   {
     "id": 4,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/citroen/small.png",
-    "brandName": "citroen"
+    "brandName": "Citroen"
   },
   {
     "id": 5,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/fiat/small.png",
-    "brandName": "fiat"
+    "brandName": "Fiat"
   },
   {
     "id": 6,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/ford/small.png",
-    "brandName": "ford"
+    "brandName": "Ford"
   },
   {
     "id": 7,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/honda/small.png",
-    "brandName": "honda"
+    "brandName": "Honda"
   },
   {
     "id": 8,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/jeep/small.png",
-    "brandName": "jeep"
+    "brandName": "Jeep"
   },
   {
     "id": 9,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/mercedes/small.png",
-    "brandName": "mercedes"
+    "brandName": "Mercedes"
   },
   {
     "id": 10,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/nissan/small.png",
-    "brandName": "nissan"
+    "brandName": "Nissan"
   },
   {
     "id": 11,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/peugeot/small.png",
-    "brandName": "peugeot"
+    "brandName": "Peugeot"
   },
   {
     "id": 12,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/ram/small.png",
-    "brandName": "ram"
+    "brandName": "Ram"
   },
   {
     "id": 13,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/renault/small.png",
-    "brandName": "renault"
+    "brandName": "Renault"
   },
   {
     "id": 14,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/suzuki/small.png",
-    "brandName": "suzuki"
+    "brandName": "Suzuki"
   },
   {
     "id": 15,
     "imageUrl": "https://acroadtrip.blob.core.windows.net/marcas-img/toyota/small.png",
-    "brandName": "toyota"
+    "brandName": "Toyota"
   }
 ]

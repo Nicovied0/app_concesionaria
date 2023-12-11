@@ -13,12 +13,11 @@
         <p (click)="applyFilterByCondition('new')" class="p">Nuevos</p>
         <p (click)="applyFilterByCondition('used')" class="p">Usados</p>
       </div>
-      <div>
+      <div >
         <h3 class="filter-section">Marcas</h3>
-        <p (click)="applyFilterByBrand('Chevrolet')" class="p">Chevrolet</p>
-        <p (click)="applyFilterByBrand('Fiat')" class="p">Fiat</p>
-        <p (click)="applyFilterByBrand('Ford')" class="p">Ford</p>
-        <p (click)="applyFilterByBrand('Toyota')" class="p">Toyota</p>
+        <div *ngFor="let brand of brands">
+          <p (click)="applyFilterByBrand(brand.brandName)" class="p">{{brand?.brandName}}</p>
+        </div>
       </div>
     </div>
   </div>
