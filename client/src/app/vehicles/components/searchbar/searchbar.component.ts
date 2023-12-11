@@ -1,6 +1,7 @@
 import { Vehicles } from 'src/services/Vehicle.service';
 import { SearchService } from './../../../../services/search.service';
 import { Component } from '@angular/core';
+import {Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchbar',
@@ -9,7 +10,7 @@ import { Component } from '@angular/core';
 })
 export class SearchbarComponent {
 
-  constructor(private searchService: SearchService) { }
+  constructor(private searchService: SearchService   , private router: Router) { }
 
   vehicles: Vehicles[] = [];
   searchQuery: string = '';
@@ -26,12 +27,20 @@ export class SearchbarComponent {
     this.searchService.search(query).subscribe(
       res => {
         console.log('Query:', query);
-        console.log('Search Result:',  this.vehicles);
-        this.vehicles = res; // Update vehicles based on the search result
+        console.log('Search Result:', res);
+
+        this.vehicles = res.slice(0, 4);
       },
       error => {
         console.error('Error fetching vehicles:', error);
       }
     );
   }
+
+  goDetail(id: any) {
+    this.router.navigate(['/vehicles/detail/', id]);
+    window.scroll(0, 0)
+  }
+
+  
 }

@@ -86,7 +86,7 @@ export class FiltersComponent {
     this.filteredVehicles = [...this.originalVehicles];
     this.vehicleSharedService.updateFilteredVehicles(this.filteredVehicles);
     this.router.navigate(['vehicles'])
-    window.scroll(0,0)
+    window.scroll(0, 0)
   }
 
   onSortOptionChange(event: Event) {
@@ -143,7 +143,7 @@ export class FiltersComponent {
     this.selectedMunicipio = municipio;
   }
 
-  
+
   delayedFunction() {
     setTimeout(() => {
       this.route.paramMap.subscribe(params => {
@@ -159,7 +159,6 @@ export class FiltersComponent {
     this.brandService.getImages().subscribe(
       (data: any[]) => {
         this.brands = data;
-        console.log(this.brands);
       },
       (error) => {
         console.error('Error al obtener las imágenes:', error);
