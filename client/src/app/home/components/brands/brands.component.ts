@@ -29,8 +29,8 @@ export class BrandsComponent implements OnInit {
   }
 
   goBrand(name:any){
-    console.log(name)
     this.router.navigate([`/vehicles/${name}`])
+    window.scroll(0,0)
   }
 
 }
