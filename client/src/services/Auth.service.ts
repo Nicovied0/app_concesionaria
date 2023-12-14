@@ -8,8 +8,8 @@ import { environment } from '../../environment';
 })
 
 export class AuthService {
-  private linkUrl = environment.backUrl + "/login";
-  private registerUrl = environment.backUrl + "/register/newUser";
+  private linkUrl = environment.backUrl + "/auth/login";
+  private registerUrl = environment.backUrl + "/auth/register";
 
   constructor(private http: HttpClient) { }
 

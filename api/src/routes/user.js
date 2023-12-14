@@ -16,8 +16,8 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const userId = req.params.id; 
-    const user = await Users.findById(userId); 
+    const userId = req.params.id;
+    const user = await Users.findById(userId);
     console.log("Se llamó a la ruta /USERS/" + userId);
 
     if (!user) {
@@ -34,7 +34,7 @@ router.get("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const userId = req.params.id;
-    const updatedUserData = req.body; 
+    const updatedUserData = req.body;
 
     const updatedUser = await User.findByIdAndUpdate(userId, updatedUserData, {
       new: true,
