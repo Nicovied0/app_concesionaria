@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../services/Auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,15 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./form-auth.component.scss']
 })
 export class FormAuthComponent {
+
+  constructor(private authService: AuthService) { }
+
   showLogin: boolean = true;
+
   loginData = {
     email: '',
     password: ''
   };
+
   registerData = {
     username: '',
     password: '',
-    email:''
+    email: ''
   };
 
   toggleForm(isLogin: boolean) {
@@ -22,11 +28,23 @@ export class FormAuthComponent {
   }
 
   login() {
-    console.log('Datos de inicio de sesión:', this.loginData);
+    const { email, password } = this.loginData;
+    this.authService.login(email, password)
+      .subscribe(response => {
+        console.log('Usuario registrado:', response);
+      }, error => {
+        console.error('Error al registrar usuario:', error);
+      });
+
   }
 
   registerUser() {
-    console.log('Datos de registro:', this.registerData);
-    // Aquí iría la lógica para registrar al usuario
+    const { username, email, password } = this.registerData;
+    this.authService.register(email, password, username)
+      .subscribe(response => {
+        console.log('Usuario registrado:', response);
+      }, error => {
+        console.error('Error al registrar usuario:', error);
+      });
   }
 }

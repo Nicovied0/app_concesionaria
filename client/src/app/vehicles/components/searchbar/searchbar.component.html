@@ -4,12 +4,17 @@
 </div>
 
 <div >
+    <div *ngIf="vehicles.length === 0 && searchQuery != '' "  class="vehicle">
+        <p class="notFound">No se encontraron vehiculos</p>
+    </div>
 
     <div *ngFor="let vehicle of vehicles" class="vehicle"> 
         <div class="vehicles" (click)="goDetail(vehicle?._id)">
 
             <img src="{{ vehicle.images[0] }}" class="vehicles_img">
             <h2 class="vehicle-text">{{vehicle?.brand}}  {{vehicle?.model}}   </h2>
+          
         </div>
+       
     </div>
 </div>
