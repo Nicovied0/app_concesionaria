@@ -1,5 +1,6 @@
 import { AuthService } from './../../../../services/Auth.service';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-auth',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class FormAuthComponent {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   showLogin: boolean = true;
 
@@ -32,6 +33,7 @@ export class FormAuthComponent {
     this.authService.login(email, password)
       .subscribe(response => {
         console.log('Usuario registrado:', response);
+        this.router.navigate(['/dashboard/'])
       }, error => {
         console.error('Error al registrar usuario:', error);
       });

@@ -1,3 +1,4 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
@@ -13,7 +14,7 @@ export class AuthService {
   private registerUrl = environment.backUrl + "/auth/register";
   private verifyTokenUrl = environment.backUrl + "/auth/profile";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,) { }
 
   login(email: string, password: string): Observable<any> {
     const credentials = { email, password };
@@ -25,9 +26,10 @@ export class AuthService {
       switchMap((response: any) => {
         if (response && response.token) {
           this.storeToken(response.token);
-          // Llamar a getUserData después de guardar el token
           return this.getUserData();
         }
+        console.log('llegue aca')
+    
         return of(response);
       })
     );
@@ -45,20 +47,19 @@ export class AuthService {
   getUserData(): Observable<any | null> {
     return this.getToken().pipe(
       switchMap((authToken) => {
-        console.log(authToken); // Verifica el valor del token aquí
-  
+        console.log(authToken);
+
         if (!authToken) {
           return throwError('No authentication token found');
         }
-  
+
         const headers = new HttpHeaders({
-          'token': authToken // Usar 'token' en lugar de 'Authorization'
+          'token': authToken
         });
-  
+
         return this.http.get(this.verifyTokenUrl, { headers }).pipe(
           catchError((error) => {
             console.error('Error fetching user data:', error);
-            // Si hay un error, intenta obtener los datos del usuario del localStorage
             const userData = this.getUserDataFromLocalStorage();
             return userData ? of(userData) : throwError(error);
           }),
@@ -72,16 +73,16 @@ export class AuthService {
       })
     );
   }
-  
+
   private getUserDataFromLocalStorage(): any | null {
     const userData = localStorage.getItem('userData');
     return userData ? JSON.parse(userData) : null;
   }
-  
+
   private storeUserData(profileData: any): void {
     localStorage.setItem('userData', JSON.stringify(profileData));
   }
-  
+
 
 
 
