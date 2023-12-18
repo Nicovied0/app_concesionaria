@@ -9,7 +9,7 @@ const routes: Routes = [
     component: HomeviewComponent
   },
   {
-    path: ":brand", // Ruta con parámetro variable, por ejemplo, /vehicles/fiat
+    path: ":brand",
     component: HomeviewComponent
   },
   {
