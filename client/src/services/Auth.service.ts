@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, throwError, of } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { environment } from '../../environment';
 
 @Injectable({
@@ -10,12 +11,96 @@ import { environment } from '../../environment';
 export class AuthService {
   private linkUrl = environment.backUrl + "/auth/login";
   private registerUrl = environment.backUrl + "/auth/register";
+  private verifyTokenUrl = environment.backUrl + "/auth/profile";
 
   constructor(private http: HttpClient) { }
 
   login(email: string, password: string): Observable<any> {
     const credentials = { email, password };
-    return this.http.post(this.linkUrl, credentials);
+    return this.http.post(this.linkUrl, credentials).pipe(
+      catchError((error) => {
+        console.error('Error during login:', error);
+        return throwError(error);
+      }),
+      switchMap((response: any) => {
+        if (response && response.token) {
+          this.storeToken(response.token);
+          // Llamar a getUserData después de guardar el token
+          return this.getUserData();
+        }
+        return of(response);
+      })
+    );
+  }
+  private storeToken(token: string): void {
+    localStorage.setItem('authToken', token);
+  }
+
+
+
+
+
+
+
+  getUserData(): Observable<any | null> {
+    return this.getToken().pipe(
+      switchMap((authToken) => {
+        console.log(authToken); // Verifica el valor del token aquí
+  
+        if (!authToken) {
+          return throwError('No authentication token found');
+        }
+  
+        const headers = new HttpHeaders({
+          'token': authToken // Usar 'token' en lugar de 'Authorization'
+        });
+  
+        return this.http.get(this.verifyTokenUrl, { headers }).pipe(
+          catchError((error) => {
+            console.error('Error fetching user data:', error);
+            // Si hay un error, intenta obtener los datos del usuario del localStorage
+            const userData = this.getUserDataFromLocalStorage();
+            return userData ? of(userData) : throwError(error);
+          }),
+          switchMap((response: any) => {
+            if (response && response.profile) {
+              this.storeUserData(response.profile);
+            }
+            return of(response);
+          })
+        );
+      })
+    );
+  }
+  
+  private getUserDataFromLocalStorage(): any | null {
+    const userData = localStorage.getItem('userData');
+    return userData ? JSON.parse(userData) : null;
+  }
+  
+  private storeUserData(profileData: any): void {
+    localStorage.setItem('userData', JSON.stringify(profileData));
+  }
+  
+
+
+
+
+  getToken(): Observable<string | null> {
+    return new Observable((observer) => {
+      const token = localStorage.getItem('authToken');
+      observer.next(token);
+      observer.complete();
+    });
+  }
+
+
+
+
+
+  isLoged(): boolean {
+    const authToken = this.getToken();
+    return authToken !== null;
   }
 
   register(email: string, password: string, name: string): Observable<any> {
@@ -26,28 +111,8 @@ export class AuthService {
   }
 
 
-  storeUserData(token: string, userData: any) {
-    localStorage.setItem('authToken', token);
-    localStorage.setItem('userData', JSON.stringify(userData));
-  }
-
-  getToken(): string | null {
-    return localStorage.getItem('authToken');
-  }
-
-  getUserData(): any | null {
-    const userData = localStorage.getItem('userData');
-    return userData ? JSON.parse(userData) : null;
-  }
-
   logout() {
     localStorage.removeItem('authToken');
     localStorage.removeItem('userData');
   }
-
-  isLoged(): boolean {
-    const authToken = this.getToken();
-    return authToken !== null;
-  }
-
 }
