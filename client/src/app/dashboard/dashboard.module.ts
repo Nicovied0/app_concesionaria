@@ -11,6 +11,7 @@ import { AuthviewComponent } from './view/authview/authview.component';
 import { HomeviewComponent } from './view/homeview/homeview.component';
 import { ProfileviewComponent } from './view/profileview/profileview.component';
 import { FormAuthComponent } from './components/form-auth/form-auth.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormAuthComponent } from './components/form-auth/form-auth.component';
     AuthviewComponent,
     HomeviewComponent,
     ProfileviewComponent,
-    FormAuthComponent
+    FormAuthComponent,
+    NavComponent
   ],
   imports: [
     CommonModule,
