@@ -1,8 +1,32 @@
 <div>
+  <app-nav />
+  <div>
+    <div class="container mt-4">
+      <h1>Bienvenido {{ profile.name }}</h1>
+      <div>
+        <img
+          src="{{ profile?.imagen }}"
+          alt="Foto de perfil"
+          class="img-fluid rounded-circle mt-3"
+          style="max-width: 200px"
+        />
 
-    <app-nav />
-      <!-- Contenido del dashboard -->
-      <div class="container mt-4">
-        <h1>Bienvenido {{profile.name}}</h1>
+        <p>Correo electrónico: {{ profile.email }}</p>
+        <a href="#" class="btn btn-primary">Editar perfil</a>
       </div>
     </div>
+    <div>
+      <div class="col-md-6">
+        <h2>Actividades recientes</h2>
+        <ul class="list-group">
+          <li class="list-group-item">Actividad 1</li>
+          <li class="list-group-item">Actividad 2</li>
+          <li class="list-group-item">Actividad 3</li>
+        </ul>
+        <h2>Estadísticas</h2>
+        <p>Estadística 1: {{ profile.stat1 }}</p>
+        <p>Estadística 2: {{ profile.stat2 }}</p>
+      </div>
+    </div>
+  </div>
+</div>
