@@ -21,10 +21,10 @@
           <a class="nav-link cursor" (click)="goDashboard()">Inicio</a>
         </li>
         <li class="nav-item cursor">
-          <a class="nav-link cursor" href="#">Usuarios</a>
+          <a class="nav-link cursor" (click)="goDashboard()">Usuarios</a>
         </li>
         <li class="nav-item cursor">
-          <a class="nav-link cursor" href="#">Configuración</a>
+          <a class="nav-link cursor" (click)="goDashboard()">Configuración</a>
         </li>
       </ul>
       <ul class="navbar-nav">
@@ -48,7 +48,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item cursor"  (click)="goProfile()">Perfil</a></li>
             <li><a class="dropdown-item cursor" (click)="goProfileEdit()">Editar Perfil</a></li>
-            <li><a class="dropdown-item cursor"  href="#">Logout</a></li>
+            <li><a class="dropdown-item cursor"  (click)="logout()">Logout</a></li>
           </ul>
         </li>
       </ul>

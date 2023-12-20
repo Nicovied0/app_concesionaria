@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../services/Auth.service';
 import { ProfileService } from 'src/services/Profile.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
 
-  constructor(private profileService : ProfileService,private router :Router){}
+  constructor(private profileService : ProfileService,private router :Router,private authService :AuthService ){}
   data : any
 
   ngOnInit(){
@@ -36,4 +37,8 @@ export class NavComponent {
     this.router.navigate(['/dashboard/editProfile'])
   }
 
+  logout(){
+    this.authService.logout()
+    this.router.navigate(['/'])
+  }
 }
