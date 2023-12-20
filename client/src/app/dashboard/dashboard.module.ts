@@ -12,6 +12,7 @@ import { HomeviewComponent } from './view/homeview/homeview.component';
 import { ProfileviewComponent } from './view/profileview/profileview.component';
 import { FormAuthComponent } from './components/form-auth/form-auth.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NavComponent } from './components/nav/nav.component';
     HomeviewComponent,
     ProfileviewComponent,
     FormAuthComponent,
-    NavComponent
+    NavComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

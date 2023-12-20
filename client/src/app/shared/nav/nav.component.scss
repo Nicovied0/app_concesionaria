@@ -26,6 +26,7 @@
 .nav__icon {
   margin: 0.5rem;
   cursor: pointer;
+  font-size: larger;
 }
 
 .nav__links-comunidad:hover,
@@ -38,7 +39,7 @@
   transform: scale(1.1);
   transition: 0.5s ease-in-out 0.5s;
 }
-.nav__icon{
+.nav__icon {
   color: var(--shark-50);
   font-size: 2rem;
 }
