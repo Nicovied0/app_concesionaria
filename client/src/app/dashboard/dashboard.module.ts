@@ -13,6 +13,7 @@ import { ProfileviewComponent } from './view/profileview/profileview.component';
 import { FormAuthComponent } from './components/form-auth/form-auth.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EditProfileviewComponent } from './view/edit-profileview/edit-profileview.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProfileviewComponent,
     FormAuthComponent,
     NavComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditProfileviewComponent
   ],
   imports: [
     CommonModule,

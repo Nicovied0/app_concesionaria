@@ -24,9 +24,16 @@ export class NavComponent {
   goHome(){
     this.router.navigate(['/'])
   }
+  goDashboard(){
+    this.router.navigate(['/dashboard'])
+  }
 
   goProfile(){
     this.router.navigate(['/dashboard/profile'])
+  }
+
+  goProfileEdit(){
+    this.router.navigate(['/dashboard/editProfile'])
   }
 
 }
