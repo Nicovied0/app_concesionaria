@@ -39,11 +39,6 @@ export class AuthService {
   }
 
 
-
-
-
-
-
   getUserData(): Observable<any | null> {
     return this.getToken().pipe(
       switchMap((authToken) => {
@@ -84,9 +79,6 @@ export class AuthService {
   }
 
 
-
-
-
   getToken(): Observable<string | null> {
     return new Observable((observer) => {
       const token = localStorage.getItem('authToken');
@@ -105,9 +97,7 @@ export class AuthService {
   }
 
   register(email: string, password: string, name: string): Observable<any> {
-    const credentials = { email, password, name };
-    console.log(credentials, "credenciales")
-    console.log(this.registerUrl, "this.registerUrl")
+    const credentials = { email, password, name }
     return this.http.post(this.registerUrl, credentials);
   }
 
