@@ -7,16 +7,23 @@
   gap: 20px;
   margin: 50px 20px;
 }
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-wrap: nowrap;
+  color: var(--primary-color);
+}
 
 .cards {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  max-width: 90%;
 }
-.img{
-    padding: 2rem;
-    max-width: 100%;
+.img {
+  padding: 2rem;
+  max-width: 24rem;
 }
 .body {
   display: flex;
