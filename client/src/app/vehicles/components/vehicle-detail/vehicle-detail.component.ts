@@ -44,7 +44,7 @@ export class VehicleDetailComponent implements OnInit {
     if (this.vehicle && this.vehicle.images && this.vehicle.images.length > 0) {
       return this.vehicle.images[this.currentImageIndex];
     }
-    return ''; // Devuelve una cadena vacía si no hay imágenes
+    return ''; 
   }
 
   showPreviousImage(): void {

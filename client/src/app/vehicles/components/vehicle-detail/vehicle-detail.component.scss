@@ -46,7 +46,7 @@
       display: flex;
       align-items: flex-end;
     }
-    &-location-parrap{
+    &-location-parrap {
       margin: 0;
     }
   }
@@ -70,6 +70,20 @@
   line-height: 1em;
   color: #596ffb;
   margin: 20px 0;
+}
+.divLoading {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: white;
+  color: #000;
+  z-index: 2000;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 800px) {

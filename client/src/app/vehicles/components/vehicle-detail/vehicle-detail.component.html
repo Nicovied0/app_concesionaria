@@ -1,9 +1,21 @@
-<div class="vehicleDetail">
+<div class="vehicleDetail" *ngIf="vehicle">
   <div class="vehicleDetail__divImagen">
     <img [src]="currentImage" class="vehicleDetail__divImagen-img" />
     <div class="vehicleDetail__divImagen-buttons">
-      <button class="btn btn-primary vehicleDetail__divImagen-button" (click)="showPreviousImage()" [disabled]="currentImageIndex === 0">Previous</button>
-      <button class="btn btn-primary vehicleDetail__divImagen-button" (click)="showNextImage()"  [disabled]="currentImageIndex === vehicle.images.length - 1">Next</button>
+      <button
+        class="btn btn-primary vehicleDetail__divImagen-button"
+        (click)="showPreviousImage()"
+        [disabled]="currentImageIndex === 0"
+      >
+        Previous
+      </button>
+      <button
+        class="btn btn-primary vehicleDetail__divImagen-button"
+        (click)="showNextImage()"
+        [disabled]="currentImageIndex === vehicle.images.length - 1"
+      >
+        Next
+      </button>
     </div>
   </div>
   <div class="vehicleDetail__details">
@@ -29,8 +41,12 @@
         src="https://img.icons8.com/material-outlined/24/marker.png"
         alt="marker"
       />
-      <p class="vehicleDetail__details-location-parrap">{{ vehicle?.state }}, {{ vehicle?.city }}</p>
+      <p class="vehicleDetail__details-location-parrap">
+        {{ vehicle?.state }}, {{ vehicle?.city }}
+      </p>
     </div>
-    <div></div>
   </div>
+</div>
+<div class="divLoading" *ngIf="!vehicle.images || vehicle.images.length === 0">
+  <h2 c>Cargando</h2>
 </div>
