@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { LanguageService } from '../../../services/language.service';
 
 @Component({
@@ -7,14 +7,29 @@ import { LanguageService } from '../../../services/language.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent {
+export class NavComponent implements OnInit{
 
-  constructor(private router: Router, private languageService: LanguageService) { }
+  constructor(private router: Router, private languageService: LanguageService) {
+  }
+
+  incluyeVehicleDetail: boolean  = false
 
   active = false;
   enOn = false;
   esOn = true;
 
+  ngOnInit() {
+    this.getRoute()
+    console.log('ngOnInit called')
+  }
+
+  getRoute() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.incluyeVehicleDetail = this.router.url.includes('vehicles/detail');
+      }
+    });
+  }
 
   goHome() {
     this.router.navigate([''])
@@ -25,7 +40,7 @@ export class NavComponent {
     this.router.navigate(['/vehicles'])
     this.noShowBurger()
   }
-  
+
   goContact() {
     this.router.navigate(['/contact'])
     this.noShowBurger()

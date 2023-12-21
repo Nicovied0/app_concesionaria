@@ -10,34 +10,34 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
 
-  constructor(private profileService : ProfileService,private router :Router,private authService :AuthService ){}
-  data : any
+  constructor(private profileService: ProfileService, private router: Router, private authService: AuthService) { }
+  data: any
 
-  ngOnInit(){
+  ngOnInit() {
     this.getProfile()
   }
 
-  getProfile(){
-   this.data =  this.profileService.getUserDataFromLocalStorage()
-   console.log(this.data)
+  getProfile() {
+    this.data = this.profileService.getUserDataFromLocalStorage()
+    console.log(this.data)
   }
 
-  goHome(){
+  goHome() {
     this.router.navigate(['/'])
   }
-  goDashboard(){
+  goDashboard() {
     this.router.navigate(['/dashboard'])
   }
 
-  goProfile(){
+  goProfile() {
     this.router.navigate(['/dashboard/profile'])
   }
 
-  goProfileEdit(){
+  goProfileEdit() {
     this.router.navigate(['/dashboard/editProfile'])
   }
 
-  logout(){
+  logout() {
     this.authService.logout()
     this.router.navigate(['/'])
   }
