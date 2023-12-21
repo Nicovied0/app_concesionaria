@@ -6,7 +6,10 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: stretch;
-
+    &-button {
+      background-color: var(--secondary);
+      border: none;
+    }
     &-buttons {
       display: flex;
       justify-content: space-evenly;
@@ -43,7 +46,6 @@
       align-items: flex-end;
     }
   }
-
 }
 
 .text1 {
@@ -66,7 +68,7 @@
   margin: 20px 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   .vehicleDetail {
     display: flex;
     flex-direction: column;

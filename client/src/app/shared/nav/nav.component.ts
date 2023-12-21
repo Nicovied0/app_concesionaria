@@ -7,12 +7,12 @@ import { LanguageService } from '../../../services/language.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit{
+export class NavComponent implements OnInit {
 
   constructor(private router: Router, private languageService: LanguageService) {
   }
 
-  incluyeVehicleDetail: boolean  = false
+  incluyeVehicleDetail: boolean = false
 
   active = false;
   enOn = false;
@@ -20,7 +20,6 @@ export class NavComponent implements OnInit{
 
   ngOnInit() {
     this.getRoute()
-    console.log('ngOnInit called')
   }
 
   getRoute() {

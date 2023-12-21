@@ -2,8 +2,8 @@
   <div class="vehicleDetail__divImagen">
     <img src="{{ vehicle?.images[0] }}" class="vehicleDetail__divImagen-img" />
     <div class="vehicleDetail__divImagen-buttons">
-      <button class="vehicleDetail__divImagen-button">Previous</button>
-      <button class="vehicleDetail__divImagen-button">Next</button>
+      <button class="btn btn-primary vehicleDetail__divImagen-button">Previous</button>
+      <button class="btn btn-primary vehicleDetail__divImagen-button">Next</button>
     </div>
   </div>
   <div class="vehicleDetail__details">
@@ -21,7 +21,7 @@
     </div>
     <h2 class="vehicleDetail__details-text">{{ vehicle?.dealershipName }}</h2>
     <h2 class="vehicleDetail__details-text price">${{ vehicle?.price }}</h2>
-    
+
     <div class="vehicleDetail__details-location">
       <img
         width="24"
