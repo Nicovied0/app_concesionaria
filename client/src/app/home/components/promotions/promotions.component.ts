@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class PromotionsComponent {
 
+  constructor(private router:Router){}
+
+  goVehicle(){
+    this.router.navigate(['/vehicles'])
+    window.scroll(0,0)
+  }
 }
