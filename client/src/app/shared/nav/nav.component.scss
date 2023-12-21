@@ -3,7 +3,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: var(--shark-950);
+  // background-color: var(--shark-950);
+  position: absolute;
+  width: 100%;
+  z-index: 200;
 }
 
 .nav__links {
