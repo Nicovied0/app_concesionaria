@@ -8,7 +8,6 @@ import { HomeviewComponent } from './view/homeview/homeview.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PromotionsComponent } from './components/promotions/promotions.component';
 import { DealershipsComponent } from './components/dealerships/dealerships.component';
-import { AdddealershipsComponent } from './components/adddealerships/adddealerships.component';
 import { BrandsComponent } from './components/brands/brands.component';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { BrandsComponent } from './components/brands/brands.component';
     HomeviewComponent,
     PromotionsComponent,
     DealershipsComponent,
-    AdddealershipsComponent,
     BrandsComponent,
   ],
   imports: [
