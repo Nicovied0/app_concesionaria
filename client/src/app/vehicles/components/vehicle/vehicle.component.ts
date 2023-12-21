@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VehiclesService, Vehicles } from './../../../../services/Vehicle.service';
 import { VehicleSharedService } from 'src/services/VehicleSharedService';
 import { Subject } from 'rxjs';
@@ -36,6 +36,7 @@ export class VehicleComponent implements OnInit, OnDestroy {
         this.originalVehicles = res.slice();
         this.applyFilter(this.originalVehicles);
         this.loading = false;
+        console.log(this.originalVehicles)
       },
       error => {
         console.error('Error fetching vehicles:', error);
@@ -46,7 +47,6 @@ export class VehicleComponent implements OnInit, OnDestroy {
 
   private subscribeToFilteredVehicles() {
     this.vehicleSharedService.filteredVehicles$.subscribe((filteredVehicles) => {
-
       this.applyFilter(filteredVehicles);
     });
   }

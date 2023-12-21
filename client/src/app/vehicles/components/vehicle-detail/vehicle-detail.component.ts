@@ -9,7 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VehicleDetailComponent implements OnInit {
   vehicle: any;
-
+  currentImageIndex: number = 0;
+  
   constructor(
     private vehiclesService: VehiclesService,
     private route: ActivatedRoute
@@ -34,5 +35,31 @@ export class VehicleDetailComponent implements OnInit {
         console.error('Error fetching vehicle:', error);
       }
     );
+  }
+
+
+
+
+  get currentImage(): string {
+    if (this.vehicle && this.vehicle.images && this.vehicle.images.length > 0) {
+      return this.vehicle.images[this.currentImageIndex];
+    }
+    return ''; // Devuelve una cadena vacía si no hay imágenes
+  }
+
+  showPreviousImage(): void {
+    if (this.currentImageIndex > 0) {
+      this.currentImageIndex--;
+    } else {
+      this.currentImageIndex = this.vehicle.images.length - 1;
+    }
+  }
+
+  showNextImage(): void {
+    if (this.currentImageIndex < this.vehicle.images.length - 1) {
+      this.currentImageIndex++;
+    } else {
+      this.currentImageIndex = 0;
+    }
   }
 }

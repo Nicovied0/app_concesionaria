@@ -1,9 +1,9 @@
 <div class="vehicleDetail">
   <div class="vehicleDetail__divImagen">
-    <img src="{{ vehicle?.images[0] }}" class="vehicleDetail__divImagen-img" />
+    <img [src]="currentImage" class="vehicleDetail__divImagen-img" />
     <div class="vehicleDetail__divImagen-buttons">
-      <button class="btn btn-primary vehicleDetail__divImagen-button">Previous</button>
-      <button class="btn btn-primary vehicleDetail__divImagen-button">Next</button>
+      <button class="btn btn-primary vehicleDetail__divImagen-button" (click)="showPreviousImage()" [disabled]="currentImageIndex === 0">Previous</button>
+      <button class="btn btn-primary vehicleDetail__divImagen-button" (click)="showNextImage()"  [disabled]="currentImageIndex === vehicle.images.length - 1">Next</button>
     </div>
   </div>
   <div class="vehicleDetail__details">

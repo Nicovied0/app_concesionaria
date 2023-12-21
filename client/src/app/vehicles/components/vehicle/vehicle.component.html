@@ -3,7 +3,7 @@
 </div>
 
 <div class="vehicles">
-  <ng-container *ngIf="filteredVehicles.length > 0; else skeletonCards">
+  <ng-container>
     <div
       *ngFor="let vehicle of filteredVehicles"
       class="vehicles__card"
@@ -27,18 +27,4 @@
       </div>
     </div>
   </ng-container>
-
-  <ng-template #skeletonCards>
-    <!-- Esqueleto de tarjeta de vehículo -->
-    <div class="skeleton-vehicle-card" *ngFor="let placeholder of [1, 2, 3, 4]">
-      <!-- Estructura básica del esqueleto -->
-      <div class="skeleton-vehicle-card-img"></div>
-      <div class="skeleton-vehicle-card-text">
-        <div class="skeleton-vehicle-card-line"></div>
-        <div class="skeleton-vehicle-card-line"></div>
-        <div class="skeleton-vehicle-card-line"></div>
-        <div class="skeleton-vehicle-card-line"></div>
-      </div>
-    </div>
-  </ng-template>
 </div>
