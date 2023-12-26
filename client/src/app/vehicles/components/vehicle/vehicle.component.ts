@@ -36,7 +36,6 @@ export class VehicleComponent implements OnInit, OnDestroy {
         this.originalVehicles = res.slice();
         this.applyFilter(this.originalVehicles);
         this.loading = false;
-        console.log(this.originalVehicles)
       },
       error => {
         console.error('Error fetching vehicles:', error);

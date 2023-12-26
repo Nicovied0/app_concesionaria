@@ -17,9 +17,8 @@ export class VehicleDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Obtiene el parámetro de la ruta actual llamado 'id'
     this.route.params.subscribe(params => {
-      const id = params['id']; // 'id' es el nombre del parámetro en la ruta
+      const id = params['id']; 
       this.getVehicle(id);
       
     });

@@ -13,8 +13,6 @@ export class SearchService {
     private linkUrl = environment.backUrl + "/search/byname";
 
     search(consulta: any) {
-        console.log('consulta:', consulta);
-
         const searchbyname = `${this.linkUrl}?consulta=${consulta}`;
         return this.http.get<Vehicles[]>(searchbyname).pipe(
             catchError(() => of([]))

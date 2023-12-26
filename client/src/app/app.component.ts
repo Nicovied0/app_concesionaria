@@ -24,9 +24,7 @@ export class AppComponent {
 
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.ruta = this.router.url;
-        console.log(this.ruta);
-
+        this.ruta = this.router.url
 
         if (this.ruta.includes('/dashboard')) {
           this.showLoader = false;

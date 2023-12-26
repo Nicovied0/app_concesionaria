@@ -18,7 +18,7 @@ export class FiltesbyubicationComponent implements OnInit {
   selectedMunicipio: string = '';
 
   @Output() provinciaSeleccionada: EventEmitter<string> = new EventEmitter<string>();
-@Output() municipioSeleccionado: EventEmitter<string> = new EventEmitter<string>()
+  @Output() municipioSeleccionado: EventEmitter<string> = new EventEmitter<string>()
 
   ngOnInit() {
     this.cargarProvincias();
@@ -51,9 +51,8 @@ export class FiltesbyubicationComponent implements OnInit {
 
   cargarLocalidades(event: Event) {
     const municipio = (event.target as HTMLSelectElement)?.value;
-    console.log(municipio)
     if (municipio) {
-      this.selectedMunicipio = municipio; 
+      this.selectedMunicipio = municipio;
       this.ubicationsService.getLocalidades(municipio).subscribe((data: any) => {
         if (data && data.localidades) {
           this.localidades = data.localidades;

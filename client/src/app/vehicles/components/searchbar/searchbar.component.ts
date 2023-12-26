@@ -1,7 +1,7 @@
 import { Vehicles } from 'src/services/Vehicle.service';
 import { SearchService } from './../../../../services/search.service';
 import { Component } from '@angular/core';
-import {Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-searchbar',
@@ -10,7 +10,7 @@ import {Router } from '@angular/router';
 })
 export class SearchbarComponent {
 
-  constructor(private searchService: SearchService   , private router: Router) { }
+  constructor(private searchService: SearchService, private router: Router) { }
 
   vehicles: Vehicles[] = [];
   searchQuery: string = '';
@@ -26,9 +26,6 @@ export class SearchbarComponent {
   getVehicleBySearch(query: string) {
     this.searchService.search(query).subscribe(
       res => {
-        console.log('Query:', query);
-        console.log('Search Result:', res);
-
         this.vehicles = res.slice(0, 4);
       },
       error => {
@@ -42,5 +39,5 @@ export class SearchbarComponent {
     window.scroll(0, 0)
   }
 
-  
+
 }

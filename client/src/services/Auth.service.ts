@@ -18,6 +18,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const credentials = { email, password };
+
     return this.http.post(this.linkUrl, credentials).pipe(
       catchError((error) => {
         console.error('Error during login:', error);
@@ -28,8 +29,6 @@ export class AuthService {
           this.storeToken(response.token);
           return this.getUserData();
         }
-        console.log('llegue aca')
-    
         return of(response);
       })
     );
@@ -42,8 +41,6 @@ export class AuthService {
   getUserData(): Observable<any | null> {
     return this.getToken().pipe(
       switchMap((authToken) => {
-        console.log(authToken);
-
         if (!authToken) {
           return throwError('No authentication token found');
         }

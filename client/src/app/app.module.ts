@@ -26,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavComponent,
     FooterComponent,
     LoaderComponent
-      ],
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
