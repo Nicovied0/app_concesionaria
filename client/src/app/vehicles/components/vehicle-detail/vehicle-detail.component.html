@@ -1,4 +1,4 @@
-<div class="vehicleDetail" *ngIf="vehicle">
+<div class="vehicleDetail fade-in" *ngIf="vehicle">
   <div class="vehicleDetail__divImagen">
     <img [src]="currentImage" class="vehicleDetail__divImagen-img" />
     <div class="vehicleDetail__divImagen-buttons">
@@ -45,6 +45,11 @@
         {{ vehicle?.state }}, {{ vehicle?.city }}
       </p>
     </div>
+    <button
+      class="btn btn-primary button"
+    >
+      Contactar
+    </button>
   </div>
 </div>
 <div class="divLoading" *ngIf="!vehicle.images || vehicle.images.length === 0">
