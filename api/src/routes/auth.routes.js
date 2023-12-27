@@ -43,7 +43,7 @@ router.post("/register", (req, res) => {
 // Ruta para el inicio de sesión
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
-console.log(email,password)
+  console.log(email, password);
   User.findOne({ email: email })
     .then((user) => {
       if (!user) {
@@ -59,7 +59,6 @@ console.log(email,password)
           .json({ message: "Email o contraseña incorrectos" });
       }
 
-      // Generar el token de acceso JWT sin fecha de expiración
       const token = jwt.sign({ userId: user._id }, "secreto");
 
       res.status(200).json({ token: token });
@@ -70,28 +69,22 @@ console.log(email,password)
 });
 
 router.get("/profile", (req, res) => {
-  // Verificar el token de acceso
   const token = req.headers.token;
   if (!token) {
     return res.status(401).json({ message: "Token no proporcionado" });
   }
 
-  // Verificar y decodificar el token
   jwt.verify(token, "secreto", (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Token inválido" });
     }
-
-    // Obtener el ID del usuario del token decodificado
     const userId = decoded.userId;
-
-    // Buscar el usuario por su ID en la base de datos
     User.findById(userId)
       .then((user) => {
         if (!user) {
           return res.status(404).json({ message: "Usuario no encontrado" });
         }
-
+     
         const userProfile = {
           name: user.name,
           email: user.email,
@@ -99,36 +92,30 @@ router.get("/profile", (req, res) => {
           phone: user.phone,
           description: user.description,
           role: user.role,
-        
+          id: userId,
         };
-
-        // Guardar los datos del perfil en el localStorage
+        console.log(userId);
         res.status(200).json({ profile: userProfile });
       })
       .catch((error) => {
         res.status(500).json({ message: "Error en el servidor" });
       });
-  });
+
+    });
 });
 
-// Ruta para editar la cuenta del usuario
 router.put("/profile/edit", (req, res) => {
-  // Verificar el token de acceso
   const token = req.headers.token;
   if (!token) {
     return res.status(401).json({ message: "Token no proporcionado" });
   }
-
-  // Verificar y decodificar el token
   jwt.verify(token, "secreto", (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: "Token inválido" });
     }
 
-    // Obtener el ID del usuario del token decodificado
     const userId = decoded.userId;
 
-    // Crear un objeto con los campos a actualizar
     const updateFields = {};
     if (req.body.name) {
       updateFields.name = req.body.name;
