@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const userRoute = require("./user");
-const carRoute = require("./car");
-const dealershipRoute = require("./dealership");
-const searchRoute = require("./search");
-const filterRoute = require('./filters')
-const authRoute = require('./auth')
+const userRoute = require("./user.routes");
+const carRoute = require("./car.routes");
+const dealershipRoute = require("./dealership.routes");
+const searchRoute = require("./search.routes");
+const filterRoute = require("./filters.routes");
+const authRoute = require("./auth.routes");
 
 router.use("/user", userRoute);
 router.use("/cars", carRoute);

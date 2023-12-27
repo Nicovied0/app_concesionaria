@@ -32,7 +32,6 @@ router.post("/", async (req, res) => {
   const { name, phone, location, state, city, country } = req.body;
 
   try {
-    // Verificar si ya existe una concesionaria con el mismo nombre
     const existingDealership = await Dealership.findOne({ name });
 
     if (existingDealership) {
