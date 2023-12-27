@@ -1,9 +1,11 @@
 <div>
-
-<app-nav />
-  <!-- Contenido del dashboard -->
+  <app-nav />
   <div class="container mt-4">
-    <h1>Bienvenido al Dashboard</h1>
-    <!-- Aquí puedes agregar los elementos del dashboard, como gráficos, tablas, etc. -->
+    <div>
+      <h2 *ngIf="role === 'admin'">
+        Bienvenido al Dashboard, eres {{ role }}.
+      </h2>
+      <h2 *ngIf="role === 'public'">Bienvenido al Dashboard</h2>
+    </div>
   </div>
 </div>
