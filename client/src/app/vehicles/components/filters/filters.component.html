@@ -13,10 +13,12 @@
         <p (click)="applyFilterByCondition('new')" class="p">Nuevos</p>
         <p (click)="applyFilterByCondition('used')" class="p">Usados</p>
       </div>
-      <div >
+      <div>
         <h3 class="filter-section">Marcas</h3>
         <div *ngFor="let brand of brands">
-          <p (click)="applyFilterByBrand(brand.brandName)" class="p">{{brand?.brandName}}</p>
+          <p (click)="applyFilterByBrand(brand.brandName)" class="p">
+            {{ brand?.brandName }}
+          </p>
         </div>
       </div>
     </div>
@@ -29,40 +31,51 @@
 </div>
 
 <div class="responsive">
-  <div >
-    <div >
+  <div>
+    <div>
       <div class="filters">
-        <select  class="filter-select select"  (change)="onSortOptionChange($event)">
-          <option >Ordenar por</option>
+        <select
+          class="filter-select select"
+          (change)="onSortOptionChange($event)"
+        >
+          <option>Ordenar por</option>
           <option value="asc">De menor a mayor precio</option>
           <option value="desc">De mayor a menor precio</option>
           <option value="visits">De más vistos</option>
         </select>
-        <select  class="filter-select select" (change)="onConditionFilterChange($event)">
-          <option >Condicion</option>
+        <select
+          class="filter-select select"
+          (change)="onConditionFilterChange($event)"
+        >
+          <option>Condicion</option>
           <option value="new">Nuevos</option>
           <option value="used">Usados</option>
         </select>
 
-        <select  class="filter-select select" (change)="onBrandFilterChange($event)">
-          <option >Marcas</option>
+        <select
+          class="filter-select select"
+          (change)="onBrandFilterChange($event)"
+        >
+          <option>Marcas</option>
           <option value="Chevrolet">Chevrolet</option>
           <option value="Fiat">Fiat</option>
           <option value="Ford">Ford</option>
           <option value="Toyota">Toyota</option>
         </select>
-
       </div>
-      <div style="display: none;">
-        <app-filtesbyubication  (provinciaSeleccionada)="onProvinciaSeleccionada($event)" 
-        (municipioSeleccionado)="onMunicipioSeleccionado($event)"></app-filtesbyubication>
-        <button (click)="applyFilterByLocation()">Aplicar Filtro de Ubicación</button>
+      <div style="display: none">
+        <app-filtesbyubication
+          (provinciaSeleccionada)="onProvinciaSeleccionada($event)"
+          (municipioSeleccionado)="onMunicipioSeleccionado($event)"
+        ></app-filtesbyubication>
+        <button (click)="applyFilterByLocation()">
+          Aplicar Filtro de Ubicación
+        </button>
       </div>
       <div>
         <h2 (click)="resetFilters()" class="typeShort">Limpiar filtros</h2>
       </div>
     </div>
-    <div >
-    </div>
+    <div></div>
   </div>
 </div>

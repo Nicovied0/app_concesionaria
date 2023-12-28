@@ -1,6 +1,7 @@
-.windowFilter{
+.windowFilter {
   display: none;
 }
+
 .filter-container {
   display: flex;
   flex-direction: column;
@@ -24,6 +25,7 @@
   cursor: pointer;
   margin-bottom: 5px;
 }
+
 .typeShort {
   color: var(--primary-color);
   cursor: pointer;
@@ -35,11 +37,11 @@
   cursor: pointer;
   margin-bottom: 5px;
 }
-.p:hover{
+
+.p:hover {
   transform: scale(1.01);
   font-weight: 600;
 }
-
 
 .responsive {
   display: flex;
@@ -56,21 +58,18 @@
   border: 1px solid #ccc;
 }
 
-.filters{
+.filters {
   display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-
 @media screen and (min-width: 760px) {
-
   .responsive {
     display: none;
   }
 }
 @media screen and (max-width: 760px) {
-
   .windowFilter {
     display: none;
   }

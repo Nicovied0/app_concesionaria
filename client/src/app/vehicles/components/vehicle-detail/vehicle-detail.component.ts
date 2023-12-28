@@ -28,7 +28,6 @@ export class VehicleDetailComponent implements OnInit {
     this.vehiclesService.getVehicleDetail(id).subscribe(
       res => {
         this.vehicle = res;
-         console.log(this.vehicle)
       },
       error => {
         console.error('Error fetching vehicle:', error);

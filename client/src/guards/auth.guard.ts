@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
     const userData = localStorage.getItem('userData');
 
     if (authToken && userData) {
-   
       return true;
     } else {
       this.router.navigate(['/dashboard/auth']);
