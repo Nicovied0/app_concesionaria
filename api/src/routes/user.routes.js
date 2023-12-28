@@ -101,14 +101,12 @@ router.get('/:userId/dealership', async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    // Busca las concesionarias donde el ID del usuario está en el arreglo admins
     const dealerships = await Dealership.find({ admins: userId });
 
     if (!dealerships || dealerships.length === 0) {
       return res.status(404).json({ error: 'Concesionarias no encontradas para este usuario' });
     }
 
-    // Retorna la información de las concesionarias donde el usuario es administrador
     res.json(dealerships);
   } catch (error) {
     console.error('Error al obtener las concesionarias del usuario:', error);

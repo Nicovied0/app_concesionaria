@@ -33,6 +33,7 @@ export class AuthService {
       })
     );
   }
+  
   private storeToken(token: string): void {
     localStorage.setItem('authToken', token);
   }
