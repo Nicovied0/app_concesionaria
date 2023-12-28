@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Car = require("../models/Car");
 const Dealership = require("../models/Dealership");
 
 router.get("/", async (req, res) => {

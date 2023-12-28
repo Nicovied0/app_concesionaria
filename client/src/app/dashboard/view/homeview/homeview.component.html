@@ -6,6 +6,11 @@
         Bienvenido al Dashboard, eres {{ role }}.
       </h2>
       <h2 *ngIf="role === 'public'">Bienvenido al Dashboard</h2>
+
+    </div>
+
+    <div *ngIf="role === 'admin'">
+      <h2>Tu conecionaria es </h2>
     </div>
   </div>
 </div>

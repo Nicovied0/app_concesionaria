@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Dealership = require("../models/Dealership")
 
 // Obtener todos los USUARIOS
 router.get("/", async (req, res) => {
@@ -17,7 +18,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const userId = req.params.id;
-    const user = await Users.findById(userId);
+    const user = await User.findById(userId);
     console.log("Se llamó a la ruta /USERS/" + userId);
 
     if (!user) {
@@ -94,5 +95,26 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
+
+
+router.get('/:userId/dealership', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    // Busca las concesionarias donde el ID del usuario está en el arreglo admins
+    const dealerships = await Dealership.find({ admins: userId });
+
+    if (!dealerships || dealerships.length === 0) {
+      return res.status(404).json({ error: 'Concesionarias no encontradas para este usuario' });
+    }
+
+    // Retorna la información de las concesionarias donde el usuario es administrador
+    res.json(dealerships);
+  } catch (error) {
+    console.error('Error al obtener las concesionarias del usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
 
 module.exports = router;
