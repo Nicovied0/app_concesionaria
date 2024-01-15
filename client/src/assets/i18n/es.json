@@ -39,20 +39,19 @@
     "CONTACT": {
       "TITLE": "Contacta con el equipo",
       "DESCRIPTION": "¡Nos encanta estar en contacto contigo!"
+  
     },
     "CONTACT_FORM": {
-      "TITLE": "¿Tienes preguntas o quieres ser parte del equipo?",
-      "DESCRIPTION": "Completa el formulario y nos vamos a poner en contacto lo antes posible",
-      "BUTTON": "Enviar",
-      "SELECT":"Seleccionar",
-      "PRO":"Contratar Alarm Geo Fire Premium",
-      "WORK_WITH_US":"Sumate al equipo",
-      "TESTIMONIALS":"Testimonio",
-      "OTHER":"Otro",
-      "PUNCTUATION":"Puntuación",
+      "NAME":"Nombre",
+      "NAME_PLACEHOLDER":"Ingresa tu nombre",
       "EMAIL":"Email",
-      "NAME":"Nombre y apellido",
-      "CONSULTATION":"Consulta"
+      "EMAIL_PLACEHOLDER":"Ingresa tu email",
+      "AFFAIR":"Asunto",
+      "AFFAIR_PLACEHOLDER":"Ingresa un asunto",
+      "MESSAGE":"Mensaje",
+      "MESSAGE_PLACEHOLDER":"Deja tu comentario",
+      "REQUIERED":"Los campos son obligatorios.",
+      "BUTTON":"Enviar"
     },
     "DETAILS": {
       "TITLE": "Cómo funciona?",

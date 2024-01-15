@@ -68,3 +68,9 @@
 .contact-form__required {
   color: #ab4493;
 }
+
+@media screen and (max-width: 550px) {
+  .contact-form {
+    width: 100%;
+  }
+}

@@ -1,59 +1,68 @@
 <div class="contenedor">
-    <div class="contact-form">
-      <form [formGroup]="contactForm" class="contact-form__container" (ngSubmit)="onSubmit()">
-        <div class="contact-form__group">
-          <div class="contact-form__label contact-form__label--name">
-            Nombre<span class="contact-form__required">*</span>
-          </div>
-          <input
-            type="text"
-            formControlName="name"
-            class="contact-form__input contact-form__input--name"
-            placeholder="Escribe tu nombre"
-          />
+  <div class="contact-form">
+    <form
+      [formGroup]="contactForm"
+      class="contact-form__container"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--name">
+          {{ "CONTACT_FORM.NAME" | translate
+          }}<span class="contact-form__required">*</span>
         </div>
-        <div class="contact-form__group">
-          <div class="contact-form__label contact-form__label--email">
-            Email<span class="contact-form__required">*</span>
-          </div>
-          <input
-            type="email"
-            formControlName="email"
-            class="contact-form__input contact-form__input--email"
-            placeholder="Escribe tu Email"
-          />
+        <input
+          type="text"
+          formControlName="name"
+          class="contact-form__input contact-form__input--name"
+          [placeholder]="'CONTACT_FORM.NAME_PLACEHOLDER' | translate"        />
+        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--email">
+          {{ "CONTACT_FORM.EMAIL" | translate
+          }}<span class="contact-form__required">*</span>
         </div>
-        <div class="contact-form__group">
-          <div class="contact-form__label contact-form__label--asunto">
-            Asunto<span class="contact-form__required">*</span>
-          </div>
-          <input
-            type="text"
-            formControlName="subject"
-            class="contact-form__input contact-form__input--asunto"
-            placeholder="Escribe un asunto"
-          />
+        <input
+          type="email"
+          formControlName="email"
+          class="contact-form__input contact-form__input--email"
+          [placeholder]="'CONTACT_FORM.EMAIL_PLACEHOLDER' | translate"        />
+        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--asunto">
+          {{ "CONTACT_FORM.AFFAIR" | translate
+          }}<span class="contact-form__required">*</span>
         </div>
-        <div class="contact-form__group">
-          <div class="contact-form__label contact-form__label--mensaje">
-            Mensaje<span class="contact-form__required">*</span>
-          </div>
-          <textarea
-            formControlName="message"
-            class="contact-form__input contact-form__input--mensaje"
-            placeholder="Deja aquí tu comentario..."
-          ></textarea>
+        <input
+          type="text"
+          formControlName="subject"
+          class="contact-form__input contact-form__input--asunto"
+          [placeholder]="'CONTACT_FORM.AFFAIR_PLACEHOLDER' | translate"        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--mensaje">
+          {{ "CONTACT_FORM.MESSAGE" | translate
+          }}<span class="contact-form__required">*</span>
         </div>
-        <div class="contact-form__group">
-          <button type="submit" class="contact-form__btn contact-form__btn--submit">
-            Enviar
-          </button>
-          <div class="contact-form__aviso">
-            <span class="contact-form__required">*</span>Los campos son
-            obligatorios.
-          </div>
+        <textarea
+          formControlName="message"
+          class="contact-form__input contact-form__input--mensaje"
+          [placeholder]="'CONTACT_FORM.MESSAGE_PLACEHOLDER' | translate"
+        ></textarea>
+      </div>
+      <div class="contact-form__group">
+        <button
+          type="submit"
+          class="contact-form__btn contact-form__btn--submit"
+        >
+          {{ "CONTACT_FORM.BUTTON" | translate }}
+        </button>
+        <div class="contact-form__aviso">
+          <span class="contact-form__required">*</span
+          >{{ "CONTACT_FORM.REQUIERED" | translate }}
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-  
+</div>
