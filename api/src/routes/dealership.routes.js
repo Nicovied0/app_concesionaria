@@ -56,4 +56,22 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get('/:userId/dealership', async (req, res) => {
+  try {
+    const userId = req.params.userId;
+
+    const dealerships = await Dealership.find({ admins: userId });
+
+    if (!dealerships || dealerships.length === 0) {
+      return res.status(404).json({ error: 'Concesionarias no encontradas para este usuario' });
+    }
+
+    res.json(dealerships);
+  } catch (error) {
+    console.error('Error al obtener las concesionarias del usuario:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+
+
 module.exports = router;

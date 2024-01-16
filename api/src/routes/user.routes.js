@@ -3,7 +3,6 @@ const router = express.Router();
 const User = require("../models/User");
 const Dealership = require("../models/Dealership")
 
-// Obtener todos los USUARIOS
 router.get("/", async (req, res) => {
   try {
     const todos = await User.find();
