@@ -12,6 +12,8 @@ export class NavComponent {
 
   constructor(private profileService: ProfileService, private router: Router, private authService: AuthService) { }
   data: any
+  role:any
+
 
   ngOnInit() {
     this.getProfile()
@@ -20,6 +22,7 @@ export class NavComponent {
   getProfile() {
     this.data = this.profileService.getUserDataFromLocalStorage()
     console.log(this.data)
+    this.role = this.data.role
   }
 
   goHome() {
@@ -31,6 +34,9 @@ export class NavComponent {
 
   goProfile() {
     this.router.navigate(['/dashboard/profile'])
+  }
+  goUsers(){
+    this.router.navigate(['/dashboard/users'])
   }
 
   goProfileEdit() {

@@ -18,4 +18,8 @@ export class ProfileviewComponent {
    this.profile =  this.profileService.getUserDataFromLocalStorage()
    console.log(this.profile)
   }
+
+  goProfileEdit() {
+    this.router.navigate(['/dashboard/editProfile'])
+  }
 }

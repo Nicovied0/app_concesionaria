@@ -21,7 +21,7 @@
           <a class="nav-link cursor" (click)="goDashboard()">Inicio</a>
         </li>
         <li class="nav-item cursor">
-          <a class="nav-link cursor" (click)="goDashboard()">Usuarios</a>
+          <a class="nav-link cursor" (click)="goUsers()" *ngIf="role === 'admin' || role === 'superAdmin'">Usuarios</a>
         </li>
         <li class="nav-item cursor">
           <a class="nav-link cursor" (click)="goDashboard()">Configuración</a>

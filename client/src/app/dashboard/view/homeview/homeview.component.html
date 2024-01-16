@@ -2,11 +2,11 @@
   <app-nav />
   <div class="container mt-4">
     <div>
-      <h2 *ngIf="role === 'admin'">
-        Bienvenido al Dashboard, eres {{ role }}.
+      <h2 *ngIf="role === 'admin' || role === 'superAdmin'"  >
+        Bienvenido {{profile.name}}, eres {{ role }}.
       </h2>
       <h2 *ngIf="role === 'public'">Bienvenido al Dashboard</h2>
-
+      <h2></h2>
     </div>
 
     <div *ngIf="role === 'admin'">

@@ -14,6 +14,7 @@ import { FormAuthComponent } from './components/form-auth/form-auth.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileviewComponent } from './view/edit-profileview/edit-profileview.component';
+import { UsersviewComponent } from './view/usersview/usersview.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { EditProfileviewComponent } from './view/edit-profileview/edit-profilevi
     FormAuthComponent,
     NavComponent,
     ProfileComponent,
-    EditProfileviewComponent
+    EditProfileviewComponent,
+    UsersviewComponent
   ],
   imports: [
     CommonModule,
