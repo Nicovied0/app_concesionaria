@@ -4,7 +4,6 @@ const router = express.Router();
 const Car = require("../models/Car");
 const Dealership = require("../models/Dealership");
 
-// Obtener todos los autos
 router.get("/", async (req, res) => {
   try {
     const cars = await Car.find();
@@ -15,10 +14,8 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Crear un nuevo auto
 router.post("/", async (req, res) => {
   try {
-    // Obtener los datos del cuerpo de la solicitud (req.body)
     const {
       brand,
       model,
@@ -32,17 +29,15 @@ router.post("/", async (req, res) => {
       city,
       country,
       condition,
-      counterVisits
+      counterVisits,
     } = req.body;
 
-    // Encontrar la concesionaria por su nombre
     const dealership = await Dealership.findOne({ name: dealershipName });
 
     if (!dealership) {
       return res.status(404).json({ error: "Concesionaria no encontrada" });
     }
 
-    // Crear un nuevo auto
     const newCar = new Car({
       brand,
       model,
@@ -56,18 +51,17 @@ router.post("/", async (req, res) => {
       city,
       country,
       condition,
-      counterVisits
+      counterVisits,
     });
 
-    // Guardar el auto en la base de datos
     const savedCar = await newCar.save();
 
-    // Actualizar la lista de autos de la concesionaria
     dealership.cars.push(savedCar._id);
     await dealership.save();
 
-    // Actualizar la concesionaria con la lista actualizada de autos
-    const updatedDealership = await Dealership.findById(dealership._id).populate("cars");
+    const updatedDealership = await Dealership.findById(
+      dealership._id
+    ).populate("cars");
 
     res.status(201).json({ car: savedCar, dealership: updatedDealership });
   } catch (error) {
@@ -76,7 +70,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Obtener un auto por su ID
 router.get("/:id", async (req, res) => {
   const carId = req.params.id;
 
@@ -94,13 +87,11 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Actualizar un auto por su ID
 router.put("/:id", async (req, res) => {
   const carId = req.params.id;
-  const updateData = req.body; 
+  const updateData = req.body;
 
   try {
-
     const updatedCar = await Car.findByIdAndUpdate(carId, updateData, {
       new: true,
     });
@@ -115,7 +106,5 @@ router.put("/:id", async (req, res) => {
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
-
-
 
 module.exports = router;

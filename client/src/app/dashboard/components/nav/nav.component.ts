@@ -42,6 +42,9 @@ export class NavComponent {
   goProfileEdit() {
     this.router.navigate(['/dashboard/editProfile'])
   }
+  goVehicles(){
+    this.router.navigate(['/dashboard/vehicles'])
+  }
 
   logout() {
     this.authService.logout()

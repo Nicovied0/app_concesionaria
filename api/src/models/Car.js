@@ -11,7 +11,7 @@ const carSchema = new mongoose.Schema({
   },
   images: {
     type: [String],
-    default: ["https://cdn-icons-png.flaticon.com/512/4635/4635904.png"], // Valor por defecto, en este caso, un arreglo con una URL de imagen
+    default: ["https://cdn-icons-png.flaticon.com/512/4635/4635904.png"],
   },
   year: {
     type: Number,

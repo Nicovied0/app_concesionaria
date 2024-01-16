@@ -19,7 +19,6 @@ export class UserService {
           catchError(() => of([]))
         );
       }
-    
 }
 
 export interface User {
