@@ -16,18 +16,15 @@ export class VehicleComponent {
   }
 
   saveEditing(vehicle: any) {
-    // Save changes and update the server or local storage
     console.log('Updated Values:', vehicle);
     vehicle.isEditing = false;
   }
 
   cancelEditing(vehicle: any) {
-    // Reset changes or revert to the original state
     vehicle.isEditing = false;
   }
 
   deleteVehicle(index: number) {
-    // Implement delete logic and update the server or local storage
     this.vehicles.splice(index, 1);
   }
 }

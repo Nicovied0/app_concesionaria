@@ -17,6 +17,7 @@ import { UsersviewComponent } from './view/usersview/usersview.component';
 import { VehiclesViewComponent } from './view/vehicles-view/vehicles-view.component';
 import { ListVehiclesComponent } from './components/list-vehicles/list-vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
+import { LoadersComponent } from './components/loaders/loaders.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { VehicleComponent } from './components/vehicle/vehicle.component';
     UsersviewComponent,
     VehiclesViewComponent,
     ListVehiclesComponent,
-    VehicleComponent
+    VehicleComponent,
+    LoadersComponent
   ],
   imports: [
     CommonModule,

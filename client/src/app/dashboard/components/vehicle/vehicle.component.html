@@ -1,5 +1,5 @@
 <div *ngIf="vehicles && vehicles.length > 0">
-  <h2>Vehicles en consesionaria "{{dealershipName}}"</h2>
+  <h2>Vehicles en consesionaria "{{ dealershipName }}"</h2>
   <div *ngFor="let vehicle of vehicles; let i = index">
     <table class="vehicles-table">
       <tr>
@@ -8,19 +8,25 @@
         </td>
         <td>
           <div class="vehicles__card-div">
-            <p class="vehicles__card-div-p">{{ vehicle.brand }} {{ vehicle.model }}</p>
+            <p class="vehicles__card-div-p">
+              {{ vehicle.brand }} {{ vehicle.model }}
+            </p>
           </div>
           <div class="vehicles__card-div">
-            <p class="vehicles__card-div-p">{{ vehicle.year }} | {{ vehicle.kilometres }} km</p>
+            <p class="vehicles__card-div-p">
+              {{ vehicle.year }} | {{ vehicle.kilometres }} km
+            </p>
           </div>
           <div class="vehicles__card-div">
-            <p class="vehicles__card-div-p">{{ vehicle.city }} | {{ vehicle.state }}</p>
+            <p class="vehicles__card-div-p">
+              {{ vehicle.city }} | {{ vehicle.state }}
+            </p>
           </div>
           <div class="vehicles__card-div">
             <p class="vehicles__card-div-precio">${{ vehicle.price }}</p>
           </div>
         </td>
-        <td *ngIf="!vehicle.isEditing;">
+        <td *ngIf="!vehicle.isEditing">
           <div>
             <button (click)="startEditing(vehicle)">Edit</button>
             <button (click)="deleteVehicle(i)">Delete</button>
@@ -29,44 +35,67 @@
       </tr>
     </table>
     <div *ngIf="vehicle.isEditing">
-      <div>
-        <label for="brand">Brand:</label>
-        <input type="text" name="brand" [(ngModel)]="vehicle.brand" />
-        
-        <label for="model">Model:</label>
-        <input type="text" name="model" [(ngModel)]="vehicle.model" />
-        
-        <label for="year">Year:</label>
-        <input type="number" name="year" [(ngModel)]="vehicle.year">
-        
-        <label for="kilometres">Kilometres:</label>
-        <input type="number" name="kilometres" [(ngModel)]="vehicle.kilometres">
-        
-        <label for="price">Price:</label>
-        <input type="number" name="price" [(ngModel)]="vehicle.price">
+      <div class="vehicles__inputs">
+        <div >
+          <label for="brand">Brand:</label>
+          <input type="text" name="brand" [(ngModel)]="vehicle.brand"  class="vehicles__inputs-input"/>
+        </div>
+        <div>
+          <label for="model">Model:</label>
+          <input type="text" name="model" [(ngModel)]="vehicle.model"  class="vehicles__inputs-input"/>
+        </div>
+        <div>
+          <label for="year">Year:</label>
+          <input type="number" name="year" [(ngModel)]="vehicle.year"  class="vehicles__inputs-input"/>
+        </div>
+        <div>
+          <label for="kilometres">Kilometres:</label>
+          <input
+            type="number"
+            name="kilometres"
+            [(ngModel)]="vehicle.kilometres"
+            class="vehicles__inputs-input"
+          />
+        </div>
+        <div>
+          <label for="price">Price:</label>
+          <input type="number" name="price" [(ngModel)]="vehicle.price"  class="vehicles__inputs-input"/>
+        </div>
 
-        <label for="country">Country:</label>
-        <input type="text" name="country" [(ngModel)]="vehicle.country">
+        <div>
+          <label for="country">Country:</label>
+          <input type="text" name="country" [(ngModel)]="vehicle.country"  class="vehicles__inputs-input"/>
+        </div>
+        <div>
+          <label for="state">State:</label>
+          <input type="text" name="state" [(ngModel)]="vehicle.state"  class="vehicles__inputs-input"/>
+        </div>
 
-        <label for="state">State:</label>
-        <input type="text" name="state" [(ngModel)]="vehicle.state">
-
-        <label for="city">City:</label>
-        <input type="text" name="city" [(ngModel)]="vehicle.city">
-
-        <label for="sell">Sell:</label>
-        <select  name="sell"[(ngModel)]="vehicle.sell">
-          <option>true</option>
-          <option>false</option>
-        </select>
-        
-        <button (click)="saveEditing(vehicle)">Save</button>
-        <button (click)="cancelEditing(vehicle)">Cancel</button>
+        <div>
+          <label for="city">City:</label>
+          <input type="text" name="city" [(ngModel)]="vehicle.city"  class="vehicles__inputs-input"/>
+        </div>
+        <div>
+          <label for="sell">Sell:</label>
+          <select name="sell" [(ngModel)]="vehicle.sell" class="vehicles__inputs-input">
+            <option>true</option>
+            <option>false</option>
+          </select>
+        </div>
+        <div>
+          <button (click)="saveEditing(vehicle)">Save</button>
+          <button (click)="cancelEditing(vehicle)">Cancel</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<!-- 
+<div *ngIf="vehicles.length === 0 || !vehicles[0].price ">
+<app-loaders></app-loaders>
+</div> -->
+
 
 <div *ngIf="!vehicles || vehicles.length === 0">
   <p>No vehicles found in the child component.</p>
-</div>
+</div> 

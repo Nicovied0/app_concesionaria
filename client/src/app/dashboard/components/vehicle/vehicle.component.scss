@@ -1,33 +1,70 @@
 /* styles.scss or your component-specific styles file */
 
 .vehicles-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  
-  .vehicles-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .vehicles__card-img {
-    object-fit: cover;
-    height: 10rem;
-    width: 300px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
 
+.vehicles-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
 
+.vehicles__card-img {
+  object-fit: cover;
+  height: 10rem;
+  width: 300px;
+}
+
+.vehicles__card-div {
+  margin-bottom: 10px;
+}
+
+.vehicles__card-div-p {
+  margin: 0;
+}
+
+.vehicles__card-div-precio {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.vehicles {
+  &__inputs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px 25px;
+    padding: 20px 10px;
+    justify-content: space-between;
+    background-color: rgba(248, 249, 250);
+    border-radius: 0 0 15px 15px;
+    &-input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
   }
-  
-  .vehicles__card-div {
-    margin-bottom: 10px;
-  }
-  
-  .vehicles__card-div-p {
-    margin: 0;
-  }
-  
-  .vehicles__card-div-precio {
-    font-weight: bold;
-  }
-  
+}
