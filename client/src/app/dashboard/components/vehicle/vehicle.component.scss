@@ -35,7 +35,7 @@ label {
   font-weight: bold;
 }
 
-button {
+.buton,.butonCancel {
   background-color: #4caf50;
   color: white;
   padding: 8px 16px;
@@ -44,9 +44,15 @@ button {
   cursor: pointer;
   margin-right: 5px;
 }
+.butonCancel{
+  background-color: #f10606;
+}
 
-button:hover {
+.buton:hover {
   background-color: #45a049;
+}
+.butonCancel:hover{
+  background-color: #af4c4c;
 }
 
 .vehicles {

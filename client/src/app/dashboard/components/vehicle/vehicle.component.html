@@ -1,4 +1,4 @@
-<div *ngIf="vehicles && vehicles.length > 0">
+<div *ngIf="vehicles && vehicles.length > 0 && vehicles[0].price">
   <h2>Vehicles en consesionaria "{{ dealershipName }}"</h2>
   <div *ngFor="let vehicle of vehicles; let i = index">
     <table class="vehicles-table">
@@ -83,17 +83,17 @@
           </select>
         </div>
         <div>
-          <button (click)="saveEditing(vehicle)">Save</button>
-          <button (click)="cancelEditing(vehicle)">Cancel</button>
+          <button (click)="saveEditing(vehicle)" class="buton">Save</button>
+          <button (click)="cancelEditing(vehicle)" class="butonCancel">Cancel</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- 
+
 <div *ngIf="vehicles.length === 0 || !vehicles[0].price ">
 <app-loaders></app-loaders>
-</div> -->
+</div>
 
 
 <div *ngIf="!vehicles || vehicles.length === 0">
