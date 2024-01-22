@@ -13,12 +13,11 @@ export class DealershipService {
   private apiUrl = environment.backUrl + '/dealership';
   private apiUrl2 = environment.backUrl;
 
-
   constructor(private http: HttpClient) {}
 
   getDealershipByUserId(id: any): Observable<Dealership[]> {
     return this.http
-      .get<Dealership[]>(this.apiUrl + '/' + id + "/dealership")
+      .get<Dealership[]>(this.apiUrl + '/' + id + '/dealership')
       .pipe(catchError(() => of([])));
   }
 
@@ -26,22 +25,21 @@ export class DealershipService {
     return this.getDealershipByUserId(id).pipe(
       switchMap((dealership: Dealership[]) => {
         const carIds = dealership[0].cars;
-  
+
         const vehicleRequests = carIds.map((carId: any) =>
           this.getVehicleDetail(carId)
         );
-  
+
         return forkJoin(vehicleRequests) as Observable<any[]>;
       }),
       catchError(() => of([]))
     );
   }
-  
 
   getVehicleDetail(id: any): Observable<any> {
-    return this.http.get<any>(this.apiUrl2 + '/cars/' + id).pipe(
-      catchError(() => of(null))
-    );
+    return this.http
+      .get<any>(this.apiUrl2 + '/cars/' + id)
+      .pipe(catchError(() => of(null)));
   }
 }
 
