@@ -25,7 +25,7 @@ export class FiltesbyubicationComponent implements OnInit {
   }
 
   cargarProvincias() {
-    this.ubicationsService.getProvincias().subscribe((data: any) => {
+    this.ubicationsService.getStates().subscribe((data: any) => {
       if (data && data.provincias) {
         this.provincias = data.provincias;
       }
@@ -38,7 +38,7 @@ export class FiltesbyubicationComponent implements OnInit {
     const provincia = (event.target as HTMLSelectElement)?.value;
     if (provincia) {
       this.selectedProvincia = provincia;
-      this.ubicationsService.getMunicipios(provincia).subscribe((data: any) => {
+      this.ubicationsService.getMunicipalities(provincia).subscribe((data: any) => {
         if (data && data.municipios) {
           this.municipios = data.municipios;
           this.provinciaSeleccionada.emit(this.selectedProvincia);

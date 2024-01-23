@@ -8,11 +8,11 @@ export class UbicationsService {
 
     constructor(private http: HttpClient) { }
 
-    getProvincias() {
+    getStates() {
         return this.http.get('https://apis.datos.gob.ar/georef/api/provincias');
     }
 
-    getMunicipios(provincia: string) {
+    getMunicipalities(provincia: string) {
         return this.http.get(`https://apis.datos.gob.ar/georef/api/municipios?provincia=${provincia}&max=400`);
     }
 

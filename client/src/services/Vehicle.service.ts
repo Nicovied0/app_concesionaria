@@ -46,6 +46,12 @@ export class VehiclesService {
     );
   }
 
+  updateVehicle(id: string, updatedData: any): Observable<Vehicles | null> {
+    const updateUrl = `${this.linkUrl}/${id}`;
+    return this.http.put<Vehicles>(updateUrl, updatedData).pipe(
+      catchError(() => of(null))
+    );
+  }
 }
 
 

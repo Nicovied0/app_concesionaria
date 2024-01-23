@@ -7,8 +7,10 @@
 }
 
 .vehicles-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
+  background-color: rgba(248, 249, 250);
+  padding: 15px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(39, 39, 39, 0.274);
 }
 
 .vehicles__card-img {
@@ -34,11 +36,12 @@ label {
   margin-bottom: 5px;
   font-weight: bold;
 }
-.buttons{
+.buttons {
   align-items: center;
 }
 
-.buton,.butonCancel {
+.buton,
+.butonCancel {
   background-color: #4caf50;
   color: white;
   padding: 8px 16px;
@@ -46,34 +49,49 @@ label {
   border-radius: 4px;
   cursor: pointer;
   margin-right: 5px;
+  margin-bottom: 10px;
 }
-.butonCancel{
+.butonCancel {
   background-color: #f10606;
 }
 
 .buton:hover {
   background-color: #45a049;
 }
-.butonCancel:hover{
+.butonCancel:hover {
   background-color: #af4c4c;
 }
-
+.vehicle {
+  transition: all 0.5s ease-in;
+}
 .vehicles {
   &__inputs {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
     gap: 5px 25px;
     padding: 20px 10px;
-    justify-content: space-between;
+    justify-content: start;
     background-color: rgba(248, 249, 250);
     border-radius: 0 0 15px 15px;
+
     &-input {
       width: 100%;
       padding: 8px;
       margin-bottom: 10px;
       box-sizing: border-box;
     }
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }

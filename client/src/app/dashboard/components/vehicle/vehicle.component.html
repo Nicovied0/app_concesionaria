@@ -1,4 +1,4 @@
-<div *ngIf="vehicles && vehicles.length > 0 && vehicles[0].price">
+<div *ngIf="vehicles && vehicles.length > 0 && vehicles[0]?.price">
   <h2>Vehicles en consesionaria "{{ dealershipName }}"</h2>
   <div *ngFor="let vehicle of vehicles; let i = index">
     <table class="vehicles-table">
@@ -29,12 +29,14 @@
         <td *ngIf="!vehicle.isEditing">
           <div class="buttons">
             <button (click)="startEditing(vehicle)" class="buton">Edit</button>
-            <button (click)="deleteVehicle(i)" class="butonCancel">Delete</button>
+            <button (click)="deleteVehicle(i)" class="butonCancel">
+              Delete
+            </button>
           </div>
         </td>
       </tr>
     </table>
-    <div *ngIf="vehicle.isEditing">
+    <div *ngIf="vehicle.isEditing" class="fade-in">
       <div class="vehicles__inputs">
         <div>
           <label for="brand" class="vehicles__inputs-label">Brand:</label>
@@ -64,7 +66,9 @@
           />
         </div>
         <div>
-          <label for="kilometres" class="vehicles__inputs-label">Kilometres:</label>
+          <label for="kilometres" class="vehicles__inputs-label"
+            >Kilometres:</label
+          >
           <input
             type="number"
             name="kilometres"
@@ -87,30 +91,39 @@
           <input
             type="text"
             name="country"
+            disabled
             [(ngModel)]="vehicle.country"
             class="vehicles__inputs-input"
           />
-        </div>
-        <div>
-          <label for="state" class="vehicles__inputs-label">State:</label>
-          <input
-            type="text"
+        </div><div>
+          <label for="state" class="vehicles__inputs-label">Provincia:</label>
+          <select
             name="state"
-            [(ngModel)]="vehicle.state"
+            [(ngModel)]="selectedStates ? selectedStates : vehicle.state"
             class="vehicles__inputs-input"
-          />
+            (change)="onStateChange()"
+          >
+            <option [value]="vehicle.state" *ngIf="vehicle.state" selected>{{ vehicle.state }}</option>
+            <option *ngFor="let state of states" [value]="state.nombre">
+              {{ state.nombre }}
+            </option>
+          </select>
         </div>
-
+        
         <div>
           <label for="city" class="vehicles__inputs-label">City:</label>
-          <input
-            type="text"
+          <select
             name="city"
             [(ngModel)]="vehicle.city"
             class="vehicles__inputs-input"
-          />
+          >
+            <option [value]="vehicle.city" *ngIf="vehicle.city && !selectedStates" selected>{{ vehicle.city }}</option>
+            <option *ngFor="let city of citys" [value]="city.nombre">
+              {{ city.nombre }}
+            </option>
+          </select>
         </div>
-        <div>
+         <div>
           <label for="sell" class="vehicles__inputs-label">Sell:</label>
           <select
             name="sell"
@@ -132,10 +145,10 @@
   </div>
 </div>
 
-<div *ngIf="vehicles.length === 0 || !vehicles[0].price">
+<div *ngIf="vehicles?.length === 0 || !vehicles[0]?.price">
   <app-loaders></app-loaders>
 </div>
 
-<div *ngIf="!vehicles || vehicles.length === 0">
+<div *ngIf="!vehicles || vehicles?.length === 0">
   <p>No vehicles found in the child component.</p>
 </div>

@@ -19,7 +19,6 @@ import { ListVehiclesComponent } from './components/list-vehicles/list-vehicles.
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { LoadersComponent } from './components/loaders/loaders.component';
 
-
 @NgModule({
   declarations: [
     AuthviewComponent,
@@ -33,14 +32,14 @@ import { LoadersComponent } from './components/loaders/loaders.component';
     VehiclesViewComponent,
     ListVehiclesComponent,
     VehicleComponent,
-    LoadersComponent
+    LoadersComponent,
   ],
   imports: [
     CommonModule,
-    FormsModule, 
+    FormsModule,
     HttpClientModule,
     DashboardRoutingModule,
     TranslateModule.forChild(),
-  ]
+  ],
 })
-export class DashboardModule { }
+export class DashboardModule {}
