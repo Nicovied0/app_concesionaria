@@ -9,11 +9,8 @@ import { AppComponent } from './app.component';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 
-
-import { NavComponent } from './shared/nav/nav.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { LoaderComponent } from './shared/loader/loader.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -22,10 +19,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavComponent,
-    FooterComponent,
-    LoaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    SharedModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
