@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { UbicationsService } from 'src/services/Ubications.service';
+import { UbicationsService } from '../../../../services/Ubications.service';
 
 @Component({
   selector: 'app-filtesbyubication',

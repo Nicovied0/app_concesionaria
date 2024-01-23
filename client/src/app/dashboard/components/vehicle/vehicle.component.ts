@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { UbicationsService } from 'src/services/Ubications.service';
-import { VehiclesService } from 'src/services/Vehicle.service';
+import { UbicationsService } from '../../../../services/Ubications.service';
+import { VehiclesService } from '../../../../services/Vehicle.service';
 
 @Component({
   selector: 'app-vehicle',

@@ -5,7 +5,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 import { TranslateModule } from '@ngx-translate/core';
-import { LanguageService } from 'src/services/Language.service';
+import { LanguageService } from '../../services/Language.service';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { VehiclesService, Vehicles } from '../../../../services/Vehicle.service';
-import { VehicleSharedService } from 'src/services/VehicleSharedService';
+import { VehicleSharedService } from '../../../../services/VehicleSharedService';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrandService } from './../../../../services/Brand.service';
 
