@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { BrandService } from './../../../../services/Brand.service';
+import { BrandService } from '../../../services/Brand.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

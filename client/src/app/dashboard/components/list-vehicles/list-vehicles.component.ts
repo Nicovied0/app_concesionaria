@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProfileService } from '../../../../services/Profile.service';
-import { DealershipService } from '../../../../services/Dealership.service';
-import { VehiclesService } from '../../../../services/Vehicle.service';
+import { ProfileService } from '../../../services/Profile.service';
+import { DealershipService } from '../../../services/Dealership.service';
+import { VehiclesService } from '../../../services/Vehicle.service';
 
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ProfileService } from '../../../../services/Profile.service';
+import { ProfileService } from '../../../services/Profile.service';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-homeview',
