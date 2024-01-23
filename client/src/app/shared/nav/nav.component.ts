@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { LanguageService } from '../../services/Language.service';
+import { LanguageService } from '../../core/services/Language.service';
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private languageService: LanguageService
+  ) {}
 
-  constructor(private router: Router, private languageService: LanguageService) {
-  }
-
-  incluyeVehicleDetail: boolean = false
+  incluyeVehicleDetail: boolean = false;
 
   active = false;
   enOn = false;
   esOn = true;
 
   ngOnInit() {
-    this.getRoute()
+    this.getRoute();
   }
 
   getRoute() {
@@ -31,28 +32,28 @@ export class NavComponent implements OnInit {
   }
 
   goHome() {
-    this.router.navigate([''])
-    this.noShowBurger()
+    this.router.navigate(['']);
+    this.noShowBurger();
   }
 
   goVehicles() {
-    this.router.navigate(['/vehicles'])
-    this.noShowBurger()
+    this.router.navigate(['/vehicles']);
+    this.noShowBurger();
   }
 
   goContact() {
-    this.router.navigate(['/contact'])
-    this.noShowBurger()
+    this.router.navigate(['/contact']);
+    this.noShowBurger();
   }
 
   goDashboard() {
-    this.router.navigate(['/dashboard'])
-    this.noShowBurger()
+    this.router.navigate(['/dashboard']);
+    this.noShowBurger();
   }
-
 
   showBurger() {
     this.active = !this.active;
+    console.log(this.active)
   }
 
   noShowBurger() {
@@ -61,7 +62,7 @@ export class NavComponent implements OnInit {
 
   changeLanguage(lang: string) {
     this.languageService.setLanguage(lang);
-    if (lang === "es") {
+    if (lang === 'es') {
       this.esOn = true;
       this.enOn = false;
     } else {
@@ -69,5 +70,4 @@ export class NavComponent implements OnInit {
       this.enOn = true;
     }
   }
-
 }

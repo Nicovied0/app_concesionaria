@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { VehiclesService, Vehicles } from '../../../services/Vehicle.service';
-import { VehicleSharedService } from '../../../services/VehicleSharedService';
+import { VehiclesService, Vehicles } from '../../../core/services/Vehicle.service';
+import { VehicleSharedService } from '../../../core/services/VehicleSharedService';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BrandService } from '../../../services/Brand.service';
+import { BrandService } from '../../../core/services/Brand.service';
 
 @Component({
   selector: 'app-filters',

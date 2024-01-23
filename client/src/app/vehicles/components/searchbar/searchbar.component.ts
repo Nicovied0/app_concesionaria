@@ -1,5 +1,5 @@
-import { Vehicles } from '../../../services/Vehicle.service';
-import { SearchService } from '../../../services/Search.service';
+import { Vehicles } from '../../../core/services/Vehicle.service';
+import { SearchService } from '../../../core/services/Search.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
