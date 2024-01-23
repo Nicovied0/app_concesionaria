@@ -15,7 +15,6 @@ import { LoadersComponent } from './components/loaders/loaders.component';
 import { FiltesbyubicationComponent } from './components/filtesbyubication/filtesbyubication.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 
-
 @NgModule({
   declarations: [
     VehicleComponent,
@@ -26,14 +25,13 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     LoadersComponent,
     FiltesbyubicationComponent,
     SearchbarComponent,
-    
   ],
   imports: [
     CommonModule,
     VehiclesRoutingModule,
     HttpClientModule,
-    FormsModule ,
+    FormsModule,
     TranslateModule.forChild(),
-  ]
+  ],
 })
-export class VehiclesModule { }
+export class VehiclesModule {}

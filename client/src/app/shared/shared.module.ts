@@ -5,6 +5,7 @@ import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from 'src/services/Language.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { TranslateModule } from '@ngx-translate/core';
 
   ],
   providers: [
-    
+    LanguageService
   ]
 })
 export class SharedModule { }
