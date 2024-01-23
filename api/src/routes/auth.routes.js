@@ -40,7 +40,6 @@ router.post("/register", (req, res) => {
     });
 });
 
-// Ruta para el inicio de sesión
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
   console.log(email, password);
@@ -84,7 +83,7 @@ router.get("/profile", (req, res) => {
         if (!user) {
           return res.status(404).json({ message: "Usuario no encontrado" });
         }
-     
+
         const userProfile = {
           name: user.name,
           email: user.email,
@@ -100,8 +99,7 @@ router.get("/profile", (req, res) => {
       .catch((error) => {
         res.status(500).json({ message: "Error en el servidor" });
       });
-
-    });
+  });
 });
 
 router.put("/profile/edit", (req, res) => {

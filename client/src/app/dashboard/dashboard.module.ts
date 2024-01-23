@@ -39,6 +39,7 @@ import { LoadersComponent } from './components/loaders/loaders.component';
     FormsModule,
     HttpClientModule,
     DashboardRoutingModule,
+    FormsModule,
     TranslateModule.forChild(),
   ],
 })

@@ -9,7 +9,6 @@ const filterRoute = require("./filters.routes");
 const authRoute = require("./auth.routes");
 const adminsRoute = require("./admins.routes");
 
-
 router.use("/user", userRoute);
 router.use("/cars", carRoute);
 router.use("/dealership", dealershipRoute);

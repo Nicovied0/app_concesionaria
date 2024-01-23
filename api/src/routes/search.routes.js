@@ -32,27 +32,24 @@ router.get("/", async (req, res) => {
 
     res.json(cars);
   } catch (error) {
-    console.error("Error al buscar autos:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error searching for cars:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
-
-
-// Ruta para buscar por modelo o marca
 router.get('/byname', async (req, res) => {
-  const { consulta } = req.query;
+  const { query } = req.query;
   try {
-    if (!consulta) {
-      return res.status(400).json({ message: 'Proporcione una consulta' });
+    if (!query) {
+      return res.status(400).json({ message: 'Provide a query' });
     }
 
-    const regexConsulta = new RegExp(consulta, 'i');
-    const resultados = await Car.find({
-      $or: [{ model: regexConsulta }, { brand: regexConsulta }],
+    const regexQuery = new RegExp(query, 'i');
+    const results = await Car.find({
+      $or: [{ model: regexQuery }, { brand: regexQuery }],
     });
 
-    res.json(resultados);
+    res.json(results);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

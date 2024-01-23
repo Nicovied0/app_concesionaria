@@ -7,8 +7,8 @@ router.get("/", async (req, res) => {
     const dealerships = await Dealership.find();
     res.json(dealerships);
   } catch (error) {
-    console.error("Error al obtener concesionarias:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error fetching dealerships:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -17,13 +17,13 @@ router.get("/:id", async (req, res) => {
     const dealership = await Dealership.findById(req.params.id);
 
     if (!dealership) {
-      return res.status(404).json({ error: "Concesionaria no encontrada" });
+      return res.status(404).json({ error: "Dealership not found" });
     }
 
     res.json(dealership);
   } catch (error) {
-    console.error("Error al obtener una concesionaria por ID:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error fetching a dealership by ID:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -36,7 +36,7 @@ router.post("/", async (req, res) => {
     if (existingDealership) {
       return res
         .status(400)
-        .json({ error: "Ya existe una concesionaria con ese nombre" });
+        .json({ error: "A dealership with that name already exists" });
     }
 
     const newDealership = new Dealership({
@@ -51,8 +51,8 @@ router.post("/", async (req, res) => {
 
     res.status(201).json(savedDealership);
   } catch (error) {
-    console.error("Error al agregar una concesionaria:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error adding a dealership:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -63,15 +63,14 @@ router.get('/:userId/dealership', async (req, res) => {
     const dealerships = await Dealership.find({ admins: userId });
 
     if (!dealerships || dealerships.length === 0) {
-      return res.status(404).json({ error: 'Concesionarias no encontradas para este usuario' });
+      return res.status(404).json({ error: 'Dealerships not found for this user' });
     }
 
     res.json(dealerships);
   } catch (error) {
-    console.error('Error al obtener las concesionarias del usuario:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+    console.error('Error fetching user\'s dealerships:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 
 module.exports = router;

@@ -98,16 +98,17 @@
         </div><div>
           <label for="state" class="vehicles__inputs-label">Provincia:</label>
           <select
-            name="state"
-            [(ngModel)]="selectedStates ? selectedStates : vehicle.state"
-            class="vehicles__inputs-input"
-            (change)="onStateChange()"
-          >
-            <option [value]="vehicle.state" *ngIf="vehicle.state" selected>{{ vehicle.state }}</option>
-            <option *ngFor="let state of states" [value]="state.nombre">
-              {{ state.nombre }}
-            </option>
-          </select>
+          name="state"
+          [(ngModel)]="selectedStates"
+          class="vehicles__inputs-input"
+          (change)="onStateChange()"
+        >
+          <option [value]="selectedStates" selected>{{ vehicle.state }}</option>
+          <option *ngFor="let state of states" [value]="state.nombre">
+            {{ state.nombre }}
+          </option>
+        </select>
+        
         </div>
         
         <div>

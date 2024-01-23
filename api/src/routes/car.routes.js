@@ -8,8 +8,8 @@ router.get("/", async (req, res) => {
     const cars = await Car.find();
     res.json(cars);
   } catch (error) {
-    console.error("Error al obtener automóviles:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error fetching cars:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -34,7 +34,7 @@ router.post("/", async (req, res) => {
     const dealership = await Dealership.findOne({ name: dealershipName });
 
     if (!dealership) {
-      return res.status(404).json({ error: "Concesionaria no encontrada" });
+      return res.status(404).json({ error: "Dealership not found" });
     }
 
     const newCar = new Car({
@@ -64,8 +64,8 @@ router.post("/", async (req, res) => {
 
     res.status(201).json({ car: savedCar, dealership: updatedDealership });
   } catch (error) {
-    console.error("Error al crear un nuevo auto:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error creating a new car:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -76,13 +76,13 @@ router.get("/:id", async (req, res) => {
     const car = await Car.findById(carId);
 
     if (!car) {
-      return res.status(404).json({ error: "Automóvil no encontrado" });
+      return res.status(404).json({ error: "Car not found" });
     }
 
     res.json(car);
   } catch (error) {
-    console.error("Error al obtener un auto por ID:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error fetching a car by ID:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -96,13 +96,28 @@ router.put("/:id", async (req, res) => {
     });
 
     if (!updatedCar) {
-      return res.status(404).json({ error: "Automóvil no encontrado" });
+      return res.status(404).json({ error: "Car not found" });
     }
 
     res.json(updatedCar);
   } catch (error) {
-    console.error("Error al actualizar un auto:", error);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error("Error updating a car:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  const carId = req.params.id;
+
+  try {
+    const deleteCar = await Car.findByIdAndDelete(carId);
+    if (!deleteCar) {
+      return res.status(404).json({ error: "Car not found" });
+    }
+    res.json({ message: "Car deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting a car", error);
+    res.status(500).json({ error: "Error deleting car on the server" });
   }
 });
 

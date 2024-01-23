@@ -10,7 +10,7 @@ import { VehiclesService } from '../../../core/services/Vehicle.service';
 export class VehicleComponent {
   @Input() vehicles: any[] = [];
   @Input() dealershipName: any;
-  vehicle:any
+  vehicle: any;
   states: any;
   citys: any;
   selectedStates: any;
@@ -19,26 +19,20 @@ export class VehicleComponent {
   constructor(
     private vehiclesService: VehiclesService,
     private ubicationsService: UbicationsService
-  ) {
-    
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getStates();
-   
-    console.log(this.selectedStates);
-
   }
 
   startEditing(vehicle: any) {
     vehicle.isEditing = true;
   }
+
   onStateChange() {
-    
     if (this.selectedStates) {
       this.getMunicipalities(this.selectedStates);
     }
-    console.log('State seleccionado:', this.selectedStates);
   }
 
   saveEditing(vehicle: any) {
@@ -65,11 +59,8 @@ export class VehicleComponent {
     this.ubicationsService.getStates().subscribe(
       (data: any) => {
         this.states = data.provincias;
-        // Inicializa selectedStates con el valor de vehicle.state
-        this.selectedStates = this.vehicle.state;
-        // Llama a onStateChange para actualizar la lista de municipios si vehicle.state ya tiene un valor
+        this.selectedStates = this.vehicle?.state;
         this.onStateChange();
-        console.log(this.states);
       },
       (error) => {
         console.error('Error obteniendo estados:', error);
@@ -79,8 +70,7 @@ export class VehicleComponent {
   getMunicipalities(selectedStates: any) {
     this.ubicationsService.getMunicipalities(selectedStates).subscribe(
       (data: any) => {
-        this.citys = data.municipios; // Ajusta según la estructura real de tu respuesta
-        console.log(this.citys);
+        this.citys = data.municipios;
       },
       (error) => {
         console.error('Error obteniendo municipios:', error);
