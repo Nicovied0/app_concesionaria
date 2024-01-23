@@ -1,5 +1,5 @@
 import { Vehicles } from 'src/services/Vehicle.service';
-import { SearchService } from '../../../../services/Search.service';
+import { SearchService } from 'src/services/Search.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -25,14 +25,15 @@ export class SearchbarComponent {
 
   getVehicleBySearch(query: string) {
     this.searchService.search(query).subscribe(
-      res => {
+      (res: any) => {
         this.vehicles = res.slice(0, 4);
       },
-      error => {
+      (error:any) => {
         console.error('Error fetching vehicles:', error);
       }
     );
   }
+  
 
   goDetail(id: any) {
     this.router.navigate(['/vehicles/detail/', id]);
