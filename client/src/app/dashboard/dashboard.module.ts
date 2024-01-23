@@ -18,6 +18,7 @@ import { VehiclesViewComponent } from './view/vehicles-view/vehicles-view.compon
 import { ListVehiclesComponent } from './components/list-vehicles/list-vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { LoadersComponent } from './components/loaders/loaders.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LoadersComponent } from './components/loaders/loaders.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
+    SharedModule,
     DashboardRoutingModule,
     TranslateModule.forChild(),
   ],

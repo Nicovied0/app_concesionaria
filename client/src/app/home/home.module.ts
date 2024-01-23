@@ -9,6 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PromotionsComponent } from './components/promotions/promotions.component';
 import { DealershipsComponent } from './components/dealerships/dealerships.component';
 import { BrandsComponent } from './components/brands/brands.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrandsComponent } from './components/brands/brands.component';
     CommonModule,
     HomeRoutingModule,
     HttpClientModule,
+    SharedModule,
     TranslateModule.forChild(),
   ]
 })

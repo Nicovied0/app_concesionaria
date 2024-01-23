@@ -14,6 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoadersComponent } from './components/loaders/loaders.component';
 import { FiltesbyubicationComponent } from './components/filtesbyubication/filtesbyubication.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
     VehiclesRoutingModule,
     HttpClientModule,
     FormsModule,
+    SharedModule,
     TranslateModule.forChild(),
   ],
 })

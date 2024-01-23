@@ -8,6 +8,7 @@ import { HomeviewComponent } from './view/homeview/homeview.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContactRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    SharedModule,
     TranslateModule.forChild(),
   ]
 })
