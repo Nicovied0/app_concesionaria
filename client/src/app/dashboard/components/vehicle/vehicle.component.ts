@@ -51,8 +51,19 @@ export class VehicleComponent {
     vehicle.isEditing = false;
   }
 
-  deleteVehicle(index: number) {
-    this.vehicles.splice(index, 1);
+  deleteVehicle(id: any) {
+    this.vehiclesService.deleteVehicle(id).subscribe(
+      () => {
+        console.log('deleted vehicle id:' + id);
+      },
+      (error) => {
+        console.error('Error obteniendo estados:', error);
+      }
+    );
+  }
+  deleteArray(id:any){
+    this.vehicles.splice(id, 1);
+
   }
 
   getStates() {

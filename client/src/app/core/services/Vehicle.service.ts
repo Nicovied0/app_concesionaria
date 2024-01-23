@@ -52,6 +52,12 @@ export class VehiclesService {
       catchError(() => of(null))
     );
   }
+  deleteVehicle(id: string): Observable<Vehicles | null> {
+    const deleteUrl = `${this.linkUrl}/${id}`;
+    return this.http.delete<Vehicles>(deleteUrl).pipe(
+      catchError(() => of(null))
+    );
+  }
 }
 
 

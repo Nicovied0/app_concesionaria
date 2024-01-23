@@ -29,7 +29,10 @@
         <td *ngIf="!vehicle.isEditing">
           <div class="buttons">
             <button (click)="startEditing(vehicle)" class="buton">Edit</button>
-            <button (click)="deleteVehicle(i)" class="butonCancel">
+            <button
+              (click)="deleteVehicle(vehicle._id); deleteArray(i)"
+              class="butonCancel"
+            >
               Delete
             </button>
           </div>
@@ -95,22 +98,24 @@
             [(ngModel)]="vehicle.country"
             class="vehicles__inputs-input"
           />
-        </div><div>
+        </div>
+        <div>
           <label for="state" class="vehicles__inputs-label">Provincia:</label>
           <select
-          name="state"
-          [(ngModel)]="selectedStates"
-          class="vehicles__inputs-input"
-          (change)="onStateChange()"
-        >
-          <option [value]="selectedStates" selected>{{ vehicle.state }}</option>
-          <option *ngFor="let state of states" [value]="state.nombre">
-            {{ state.nombre }}
-          </option>
-        </select>
-        
+            name="state"
+            [(ngModel)]="selectedStates"
+            class="vehicles__inputs-input"
+            (change)="onStateChange()"
+          >
+            <option [value]="selectedStates" selected>
+              {{ vehicle.state }}
+            </option>
+            <option *ngFor="let state of states" [value]="state.nombre">
+              {{ state.nombre }}
+            </option>
+          </select>
         </div>
-        
+
         <div>
           <label for="city" class="vehicles__inputs-label">City:</label>
           <select
@@ -118,13 +123,19 @@
             [(ngModel)]="vehicle.city"
             class="vehicles__inputs-input"
           >
-            <option [value]="vehicle.city" *ngIf="vehicle.city && !selectedStates" selected>{{ vehicle.city }}</option>
+            <option
+              [value]="vehicle.city"
+              *ngIf="vehicle.city && !selectedStates"
+              selected
+            >
+              {{ vehicle.city }}
+            </option>
             <option *ngFor="let city of citys" [value]="city.nombre">
               {{ city.nombre }}
             </option>
           </select>
         </div>
-         <div>
+        <div>
           <label for="sell" class="vehicles__inputs-label">Sell:</label>
           <select
             name="sell"
