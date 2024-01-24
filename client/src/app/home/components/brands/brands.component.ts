@@ -20,7 +20,6 @@ export class BrandsComponent implements OnInit {
     this.brandService.getDataBrands().subscribe(
       (data: any[]) => {
         this.images = data;
-        console.log(this.images);
       },
       (error) => {
         console.error('Error al obtener las imágenes:', error);

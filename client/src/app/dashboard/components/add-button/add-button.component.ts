@@ -1,11 +1,10 @@
-import { Component, OnInit,Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AddNewvehicleService } from 'src/app/core/services/AddNewVehicle.service';
 import { BrandService } from 'src/app/core/services/Brand.service';
 import { DealershipService } from 'src/app/core/services/Dealership.service';
 import { ProfileService } from 'src/app/core/services/Profile.service';
 import { UbicationsService } from 'src/app/core/services/Ubications.service';
 import Swal from 'sweetalert2';
-
 
 @Component({
   selector: 'app-add-button',
@@ -20,7 +19,7 @@ export class AddButtonComponent implements OnInit {
     private profileService: ProfileService,
     private dealershipService: DealershipService
   ) {}
- 
+
   @Output() newCarEvent = new EventEmitter<string>();
 
   showAddCarForm = false;
@@ -45,20 +44,17 @@ export class AddButtonComponent implements OnInit {
   }
 
   addCar() {
-    console.log('Adding car:', this.newCar);
-    
     this.addNewvehicleService.addCar(this.newCar).subscribe(
       (response) => {
         console.log('vehiculo creado', response);
         this.showAddCarForm = false;
-        this.sendNewCar()
+        this.sendNewCar();
 
         Swal.fire({
           icon: 'success',
           title: 'Success!',
           text: 'Vehicle created successfully.',
         });
-  
       },
       (error) => {
         console.error('Error crear vehiculo:', error);
@@ -78,7 +74,6 @@ export class AddButtonComponent implements OnInit {
     this.brandService.getDataBrands().subscribe(
       (data: any[]) => {
         this.brandNames = data.map((item) => item.brandName);
-        console.log(this.brandNames);
       },
       (error) => {
         console.error('Error al obtener las imágenes:', error);
@@ -109,7 +104,6 @@ export class AddButtonComponent implements OnInit {
     this.ubicationsService.getMunicipalities(selectedStates).subscribe(
       (data: any) => {
         this.citys = data.municipios;
-        console.log(this.citys);
       },
       (error) => {
         console.error('Error obteniendo municipios:', error);
@@ -119,7 +113,6 @@ export class AddButtonComponent implements OnInit {
 
   getProfile() {
     this.profile = this.profileService.getUserDataFromLocalStorage();
-
     this.getVehicleById(this.profile.id);
   }
 

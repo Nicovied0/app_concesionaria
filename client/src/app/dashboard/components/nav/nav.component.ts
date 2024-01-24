@@ -21,7 +21,6 @@ export class NavComponent {
 
   getProfile() {
     this.data = this.profileService.getUserDataFromLocalStorage()
-    console.log(this.data)
     this.role = this.data.role
   }
 

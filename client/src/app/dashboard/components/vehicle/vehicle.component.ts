@@ -69,9 +69,8 @@ export class VehicleComponent {
       }
     );
   }
-  deleteArray(id:any){
+  deleteArray(id: any) {
     this.vehicles.splice(id, 1);
-
   }
 
   getStates() {
@@ -96,6 +95,4 @@ export class VehicleComponent {
       }
     );
   }
-
-
 }

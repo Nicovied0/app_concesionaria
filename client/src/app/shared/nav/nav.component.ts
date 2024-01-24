@@ -53,7 +53,6 @@ export class NavComponent implements OnInit {
 
   showBurger() {
     this.active = !this.active;
-    console.log(this.active)
   }
 
   noShowBurger() {
