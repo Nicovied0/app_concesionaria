@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { UbicationsService } from '../../../core/services/Ubications.service';
 import { VehiclesService } from '../../../core/services/Vehicle.service';
-
+import Swal
+ from 'sweetalert2';
 @Component({
   selector: 'app-vehicle',
   templateUrl: './vehicle.component.html',
@@ -60,9 +61,25 @@ export class VehicleComponent {
   }
 
   deleteVehicle(id: any) {
+   
     this.vehiclesService.deleteVehicle(id).subscribe(
       () => {
         console.log('deleted vehicle id:' + id);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "success",
+          title: "Vehicle deleted!"
+        });
       },
       (error) => {
         console.error('Error obteniendo estados:', error);
