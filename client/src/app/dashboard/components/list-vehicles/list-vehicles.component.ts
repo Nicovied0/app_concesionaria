@@ -40,7 +40,7 @@ export class ListVehiclesComponent implements OnInit {
         this.dealershipName = this.vehicles[0].name
       },
       (error) => {
-        // console.error('Error fetching vehicle:', error);
+        console.error('Error fetching vehicle:', error);
       }
     );
   }
@@ -51,7 +51,7 @@ export class ListVehiclesComponent implements OnInit {
         this.vehicle = res;
       },
       error => {
-        // console.error('Error fetching vehicle:', error);
+        console.error('Error fetching vehicle:', error);
       }
     );
 
@@ -64,7 +64,7 @@ getVehiclesInDealership(profileId: any) {
       this.vehicles = res.filter(vehicle => !!vehicle);
     },
     (error) => {
-      // console.error('Error fetching vehicles in dealership:', error);
+      console.error('Error fetching vehicles in dealership:', error);
     }
   );
 }
