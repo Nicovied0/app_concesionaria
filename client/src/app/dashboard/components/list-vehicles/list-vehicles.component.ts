@@ -15,6 +15,7 @@ export class ListVehiclesComponent implements OnInit {
   profileId: any;
   vehicle: any
   dealershipName: any
+  mensajeRecibido : any
 
   constructor(
     private dealershipService: DealershipService,
@@ -69,6 +70,8 @@ getVehiclesInDealership(profileId: any) {
   );
 }
 
-
+  addVehicle(vehicle:any){
+    this.mensajeRecibido = vehicle;
+  }
 
 }

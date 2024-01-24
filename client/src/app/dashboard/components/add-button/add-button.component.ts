@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter } from '@angular/core';
 import { AddNewvehicleService } from 'src/app/core/services/AddNewVehicle.service';
 import { BrandService } from 'src/app/core/services/Brand.service';
 import { DealershipService } from 'src/app/core/services/Dealership.service';
 import { ProfileService } from 'src/app/core/services/Profile.service';
 import { UbicationsService } from 'src/app/core/services/Ubications.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-add-button',
@@ -18,6 +20,8 @@ export class AddButtonComponent implements OnInit {
     private profileService: ProfileService,
     private dealershipService: DealershipService
   ) {}
+ 
+  @Output() newCarEvent = new EventEmitter<string>();
 
   showAddCarForm = false;
   brandNames: any[] = [];
@@ -35,14 +39,26 @@ export class AddButtonComponent implements OnInit {
     this.getStates();
     this.getProfile();
   }
+  sendNewCar() {
+    const newCar = this.newCar;
+    this.newCarEvent.emit(newCar);
+  }
 
   addCar() {
     console.log('Adding car:', this.newCar);
-
+    
     this.addNewvehicleService.addCar(this.newCar).subscribe(
       (response) => {
         console.log('vehiculo creado', response);
         this.showAddCarForm = false;
+        this.sendNewCar()
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Vehicle created successfully.',
+        });
+  
       },
       (error) => {
         console.error('Error crear vehiculo:', error);

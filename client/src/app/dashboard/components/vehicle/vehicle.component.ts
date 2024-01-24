@@ -15,6 +15,7 @@ export class VehicleComponent {
   citys: any;
   selectedStates: any;
   selectedMunicipalities: any;
+  newCarData: any;
 
   constructor(
     private vehiclesService: VehiclesService,
@@ -23,6 +24,13 @@ export class VehicleComponent {
 
   ngOnInit(): void {
     this.getStates();
+  }
+
+  newCar(newCar: any) {
+    this.newCarData = { ...newCar };
+    this.vehicles.push(this.newCarData);
+    console.log('New Vehicle Data:', this.newCarData);
+    console.log('Updated Vehicles List:', this.vehicles);
   }
 
   startEditing(vehicle: any) {
@@ -88,4 +96,6 @@ export class VehicleComponent {
       }
     );
   }
+
+
 }

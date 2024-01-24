@@ -164,3 +164,5 @@
 <div *ngIf="!vehicles || vehicles?.length === 0">
   <p>No vehicles found in the child component.</p>
 </div>
+
+<app-add-button (newCarEvent)="newCar($event)"></app-add-button>
