@@ -18,6 +18,7 @@ import { VehiclesViewComponent } from './view/vehicles-view/vehicles-view.compon
 import { ListVehiclesComponent } from './components/list-vehicles/list-vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
 import { LoadersComponent } from './components/loaders/loaders.component';
+import { AddButtonComponent } from './components/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LoadersComponent } from './components/loaders/loaders.component';
     ListVehiclesComponent,
     VehicleComponent,
     LoadersComponent,
+    AddButtonComponent,
   ],
   imports: [
     CommonModule,

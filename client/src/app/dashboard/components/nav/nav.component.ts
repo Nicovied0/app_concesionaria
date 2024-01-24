@@ -45,6 +45,10 @@ export class NavComponent {
   goVehicles(){
     this.router.navigate(['/dashboard/vehicles'])
   }
+  goAddVehicles(){
+    this.router.navigate(['/dashboard/addNew'])
+  }
+
 
   logout() {
     this.authService.logout()

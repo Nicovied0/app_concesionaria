@@ -28,7 +28,6 @@ router.post("/", async (req, res) => {
       city,
       country,
       condition,
-      counterVisits,
     } = req.body;
 
     const dealership = await Dealership.findOne({ name: dealershipName });
@@ -50,7 +49,6 @@ router.post("/", async (req, res) => {
       city,
       country,
       condition,
-      counterVisits,
     });
 
     const savedCar = await newCar.save();

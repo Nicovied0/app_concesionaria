@@ -156,7 +156,7 @@ export class FiltersComponent {
   }
 
   getBrandImages() {
-    this.brandService.getImages().subscribe(
+    this.brandService.getDataBrands().subscribe(
       (data: any[]) => {
         this.brands = data;
       },

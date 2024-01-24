@@ -27,6 +27,9 @@
           <a class="nav-link cursor" (click)="goVehicles()" *ngIf="role === 'admin' || role === 'superAdmin'">vehiculos</a>
         </li>
         <li class="nav-item cursor">
+          <a class="nav-link cursor" (click)="goAddVehicles()" *ngIf="role === 'admin' || role === 'superAdmin'">Nuevo vehiculo</a>
+        </li>
+        <li class="nav-item cursor">
           <a class="nav-link cursor" (click)="goDashboard()">Configuración</a>
         </li>
       </ul>

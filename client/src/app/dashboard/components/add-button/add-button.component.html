@@ -1,0 +1,178 @@
+<div class="add-car-section" (click)="toggleAddCar()" *ngIf="!showAddCarForm">
+  <p>+</p>
+</div>
+
+<div *ngIf="showAddCarForm" class="add-car-form">
+  <form (submit)="addCar()" class="form">
+    <div class="form-group">
+      <label for="carBrand">Brand</label>
+      <select
+        id="carBrand"
+        name="brand"
+        [(ngModel)]="newCar.brand"
+        class="form-control"
+        required
+      >
+        <option value="" disabled selected>Select car brand</option>
+        <option *ngFor="let brand of brandNames">
+          {{ brand }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="carModel">Model</label>
+      <input
+        type="text"
+        id="carModel"
+        name="model"
+        [(ngModel)]="newCar.model"
+        class="form-control"
+        placeholder="Enter car model"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="carImages">Images</label>
+      <input
+        type="text"
+        id="carImages"
+        name="images"
+        [(ngModel)]="newCar.images"
+        class="form-control"
+        placeholder="Enter car image URL"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="carYear">Year</label>
+      <input
+        type="number"
+        id="carYear"
+        name="year"
+        [(ngModel)]="newCar.year"
+        class="form-control"
+        placeholder="Enter car year"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="carColor">Color</label>
+      <input
+        type="text"
+        id="carColor"
+        name="color"
+        [(ngModel)]="newCar.color"
+        class="form-control"
+        placeholder="Enter car color"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="carPrice">Price</label>
+      <input
+        type="number"
+        id="carPrice"
+        name="price"
+        [(ngModel)]="newCar.price"
+        class="form-control"
+        placeholder="Enter car price"
+      />
+    </div>
+    <div class="form-group">
+      <label for="carKilomeres">Kilomeres</label>
+      <input
+        type="number"
+        id="carKilometres"
+        name="kilometres"
+        [(ngModel)]="newCar.kilometres"
+        class="form-control"
+        placeholder="Enter car kilometres"
+      />
+    </div>
+    <div class="form-group">
+      <label for="carCealershipName">dealershipName</label>
+      <input
+        type="text"
+        id="cardealershipName"
+        name="dealershipName"
+        [(ngModel)]="newCar.dealershipName"
+        class="form-control"
+        placeholder="Enter car dealershipName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="carCountry">country</label>
+      <input
+        type="text"
+        id="carcountry"
+        name="country"
+        value="Argentina"
+        [(ngModel)]="newCar.country"
+        class="form-control"
+        placeholder="Enter car country"
+        disabled
+      />
+    </div>
+    <div class="form-group">
+      <label for="carState">State</label>
+      <select
+        id="carState"
+        name="state"
+        [(ngModel)]="selectedStates"
+        class="form-control"
+        (change)="onStateChange()"
+        required
+      >
+        <option value="" disabled selected>Select state</option>
+        <option *ngFor="let state of states" [ngValue]="state.nombre">
+          {{ state.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="carCity">City</label>
+      <select
+        id="carCity"
+        name="city"
+        [(ngModel)]="newCar.city"
+        class="form-control"
+        required
+      >
+        <option value="" disabled selected>Select city</option>
+        <option *ngFor="let city of citys" [ngValue]="city.nombre">
+          {{ city.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="carCondition">Condition</label>
+      <select
+        id="carCondition"
+        name="condition"
+        [(ngModel)]="newCar.condition"
+        class="form-control"
+        required
+      >
+        <option value="" disabled selected>Select car condition</option>
+        <option value="New">New</option>
+        <option value="Used">Used</option>
+      </select>
+    </div>
+
+    <div class="button_container">
+      <button
+        type="submit"
+        class="button"
+        [disabled]="!isFormValid()"
+        [ngClass]="{ active: isFormValid(), '': !isFormValid() }"
+      >
+        Add Car
+      </button>
+      <button class="button2" (click)="toggleAddCar()">Cancel</button>
+    </div>
+  </form>
+</div>

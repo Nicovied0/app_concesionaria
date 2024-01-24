@@ -56,7 +56,6 @@ const carSchema = new mongoose.Schema({
   },
   counterVisits: {
     type: Number,
-    required: true,
     default: 0,
   },
   condition: {

@@ -15,7 +15,8 @@ export class BrandService {
 
   constructor(private http: HttpClient) { }
 
-  getImages(): Observable<BrandImage[]> {
+  getDataBrands(): Observable<BrandImage[]> {
     return this.http.get<BrandImage[]>(this.imagesUrl);
   }
+
 }

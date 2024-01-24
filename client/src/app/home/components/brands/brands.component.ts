@@ -17,7 +17,7 @@ export class BrandsComponent implements OnInit {
   }
 
   getBrandImages() {
-    this.brandService.getImages().subscribe(
+    this.brandService.getDataBrands().subscribe(
       (data: any[]) => {
         this.images = data;
         console.log(this.images);
