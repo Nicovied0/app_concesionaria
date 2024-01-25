@@ -13,7 +13,6 @@ import { FormAuthComponent } from './components/form-auth/form-auth.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditProfileviewComponent } from './view/edit-profileview/edit-profileview.component';
-import { UsersviewComponent } from './view/usersview/usersview.component';
 import { VehiclesViewComponent } from './view/vehicles-view/vehicles-view.component';
 import { ListVehiclesComponent } from './components/list-vehicles/list-vehicles.component';
 import { VehicleComponent } from './components/vehicle/vehicle.component';
@@ -29,7 +28,6 @@ import { AddButtonComponent } from './components/add-button/add-button.component
     NavComponent,
     ProfileComponent,
     EditProfileviewComponent,
-    UsersviewComponent,
     VehiclesViewComponent,
     ListVehiclesComponent,
     VehicleComponent,

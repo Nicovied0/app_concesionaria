@@ -34,10 +34,6 @@ export class NavComponent {
   goProfile() {
     this.router.navigate(['/dashboard/profile'])
   }
-  goUsers(){
-    this.router.navigate(['/dashboard/users'])
-  }
-
   goProfileEdit() {
     this.router.navigate(['/dashboard/editProfile'])
   }

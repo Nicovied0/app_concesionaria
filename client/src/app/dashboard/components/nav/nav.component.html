@@ -21,13 +21,10 @@
           <a class="nav-link cursor" (click)="goDashboard()">Inicio</a>
         </li>
         <li class="nav-item cursor">
-          <a class="nav-link cursor" (click)="goUsers()" *ngIf="role === 'admin' || role === 'superAdmin'">Usuarios</a>
-        </li>
-        <li class="nav-item cursor">
           <a class="nav-link cursor" (click)="goVehicles()" *ngIf="role === 'admin' || role === 'superAdmin'">vehiculos</a>
         </li>
         <li class="nav-item cursor">
-          <a class="nav-link cursor" (click)="goDashboard()">Configuración</a>
+          <a class="nav-link cursor" (click)="goProfileEdit()">Configuración</a>
         </li>
       </ul>
       <ul class="navbar-nav">
