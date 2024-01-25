@@ -1,9 +1,11 @@
-/* styles.scss or your component-specific styles file */
 
 .vehicles-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+}
+.title{
+  text-align: center;
 }
 
 .vehicles-table td {
@@ -94,4 +96,21 @@ label {
   to {
     opacity: 1;
   }
+}
+
+
+@media screen and (max-width: 770px) {
+  .vehicles-table td{
+    text-align: center;
+  }
+  .tdDetails{
+    display: none;
+  }
+  .title{
+    font-size: larger;
+  }
+ .vehicles__card-img{
+  height: 7rem;
+  width: 200px;
+ }
 }

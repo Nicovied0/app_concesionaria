@@ -1,8 +1,8 @@
 <div>
   <app-nav />
-  <div class="container mt-4">
+  <div [ngClass]="{'container': isLargeScreen}" class="mt-4 div">
     <div>
-      <h2 *ngIf="role === 'admin' || role === 'superAdmin'"  >
+      <h2 *ngIf="role === 'admin' || role === 'superAdmin'">
         Bienvenido {{profile.name}}, eres {{ role }}.
       </h2>
       <h2 *ngIf="role === 'public'">Bienvenido al Dashboard</h2>
@@ -10,8 +10,8 @@
     </div>
 
     <div *ngIf="role === 'admin'">
-      <h2>Tu conecionaria es </h2>
-       <button class="btn btn-primary">Click me</button>
+      <h2>Tu concesionaria es </h2>
+      <button class="btn btn-primary">Click me</button>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ProfileService } from '../../../core/services/Profile.service';
 import { Router } from '@angular/router';
 
@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 export class ProfileviewComponent {
   constructor(private profileService: ProfileService, private router: Router) {}
   profile: any;
+  isLargeScreen: boolean = true;
 
   ngOnInit() {
     this.getProfile();
+    this.isLargeScreen = this.checkScreenSize();
   }
 
   getProfile() {
@@ -22,5 +24,14 @@ export class ProfileviewComponent {
 
   goProfileEdit() {
     this.router.navigate(['/dashboard/editProfile']);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isLargeScreen = this.checkScreenSize();
+  }
+
+  checkScreenSize(): boolean {
+    return window.innerWidth >= 750;
   }
 }

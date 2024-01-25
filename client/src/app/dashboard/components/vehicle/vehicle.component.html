@@ -1,12 +1,12 @@
 <div *ngIf="vehicles && vehicles.length > 0 && vehicles[0]?.price">
-  <h2>Vehicles en consesionaria "{{ dealershipName }}"</h2>
+  <h2 class="title">Vehicles en consesionaria "{{ dealershipName }}"</h2>
   <div *ngFor="let vehicle of vehicles; let i = index">
     <table class="vehicles-table">
       <tr>
         <td>
           <img src="{{ vehicle?.images[0] }}" class="vehicles__card-img" />
         </td>
-        <td>
+        <td class="tdDetails">
           <div class="vehicles__card-div">
             <p class="vehicles__card-div-p">
               {{ vehicle.brand }} {{ vehicle.model }}
