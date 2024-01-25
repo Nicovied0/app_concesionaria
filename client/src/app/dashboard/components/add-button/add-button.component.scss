@@ -1,95 +1,135 @@
 .add-car-form {
-    display: flex;
-    position: fixed;
-    z-index: 200000;
-    background: #282828fa;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-  }
-  
-  .form {
-    min-width: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding: 3rem;
-    justify-content: flex-start;
-    gap: 20px;
-  }
-  .add-car-form .form-group {
-    margin-bottom: 20px;
-  }
-  
-  .add-car-form .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .add-car-form .form-group input,
-  .add-car-form .form-group select {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-  .button_container {
-    text-align: center;
-  }
-  .button,
-  .button2 {
-    background-color: #007bff85;
-    color: #fff;
-    margin: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: not-allowed;
-    font-size: 16px;
-  }
-  .button2 {
-    cursor: pointer;
-    background-color: #dc3545;
-  }
-  
-  .button.active {
-    background-color: #007bff;
-    cursor: pointer;
-  }
-  
-  .add-car-form_visible {
-    display: block;
-  }
-  
-  .add-car-section {
-    height: 30px;
-    width: 30px;
-    border-radius: 100%;
-    background-color: #007bff;
-    color: #fff;
-    display: flex;
-    cursor: pointer;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.3s ease;
-  }
-  p{
-    margin-bottom: 0;
+  display: flex;
+  position: fixed;
+  z-index: 200000;
+  background: #282828fa;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
 
-  }
-  
-  .add-car-section:hover {
-    background-color: #0056b3;
-    transform: scale(1.2);
-  }
+.form {
+  min-width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 3rem;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.add-car-form .form-group {
+  margin-bottom: 20px;
+  min-width: 200px;
+}
+
+.add-car-form .form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.add-car-form .form-group input,
+.add-car-form .form-group select {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.button_container {
+  text-align: center;
+}
+.button,
+.button2 {
+  background-color: #007bff85;
+  color: #fff;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: not-allowed;
+  font-size: 16px;
+  height: 46px;
+}
+.button2 {
+  cursor: pointer;
+  background-color: #dc3545;
+}
+
+.button.active {
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.add-car-form_visible {
+  display: block;
+}
+
+.add-car-section {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background-color: #007bff;
+  color: #fff;
+  display: flex;
+  cursor: pointer;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+p {
+  margin-bottom: 0;
+}
+
+.add-car-section:hover {
+  background-color: #0056b3;
+  transform: scale(1.2);
+}
+
+.images-container {
+  margin-bottom: 20px;
+}
+
+.images-heading {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.image-wrappers{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper {
+  margin-bottom: 10px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 20px;
+  border-radius: 10px;
+}
+
+.image {
+  height: 100px;
+  border-radius: 30%;
+  margin: 20px;;
+}

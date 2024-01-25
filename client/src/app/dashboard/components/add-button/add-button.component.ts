@@ -168,4 +168,7 @@ export class AddButtonComponent implements OnInit {
       }
     );
   }
+  deleteImage(index: number) {
+    this.newCar.images.splice(index, 1);
+  }
 }
