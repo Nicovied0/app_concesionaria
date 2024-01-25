@@ -2,6 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CloudinaryService } from 'src/app/core/services/Cloudinary.service';
 import { ProfileService } from 'src/app/core/services/Profile.service';
+import { UserService } from 'src/app/core/services/User.service';
 
 @Component({
   selector: 'app-edit-profileview',
@@ -12,16 +13,19 @@ export class EditProfileviewComponent {
   constructor(
     private profileService: ProfileService,
     private router: Router,
-    private cloudinaryService: CloudinaryService
+    private cloudinaryService: CloudinaryService,
+    private userService: UserService
   ) {}
 
   isLargeScreen: boolean = true;
   user: any;
   role: any;
+  idUser: any;
   editedUser: any = {
     name: '',
     role: '',
     email: '',
+    image: '',
   };
   showEdit: boolean = false;
 
@@ -40,14 +44,32 @@ export class EditProfileviewComponent {
   }
 
   getProfile() {
-    this.user = this.profileService.getUserDataFromLocalStorage();
-    this.role = this.user.role;
-    this.editedUser.role = this.role;
-    this.editedUser.name = this.user.name;
-    this.editedUser.email = this.user.email;
+    this.idUser = this.profileService.getUserDataFromLocalStorage();
+    this.getProfileByBd();
+  }
+
+  getProfileByBd() {
+    this.userService.getUserById(this.idUser.id).subscribe(
+      (data: any) => {
+        this.user = data;
+        console.log(this.user);
+        this.editedUser.role = this.user.role;
+        this.editedUser.name = this.user.name;
+        this.editedUser.email = this.user.email;
+        this.editedUser.description = this.user.description;
+        this.editedUser.phone = this.user.phone;
+      },
+      (error) => {
+        console.error('Error obteniendo estados:', error);
+      }
+    );
   }
 
   saveChanges() {
+    if (this.editedUser.image === '') {
+      this.editedUser.image = this.user.imagen;
+    }
+    this.showEdit = false;
     console.log(this.editedUser, 'edited');
   }
   showEditForm() {
