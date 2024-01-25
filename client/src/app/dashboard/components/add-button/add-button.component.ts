@@ -1,9 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AddNewvehicleService } from 'src/app/core/services/AddNewVehicle.service';
 import { BrandService } from 'src/app/core/services/Brand.service';
+import { CloudinaryService } from 'src/app/core/services/Cloudinary.service';
 import { DealershipService } from 'src/app/core/services/Dealership.service';
 import { ProfileService } from 'src/app/core/services/Profile.service';
 import { UbicationsService } from 'src/app/core/services/Ubications.service';
+import { forkJoin } from 'rxjs';
+
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +20,8 @@ export class AddButtonComponent implements OnInit {
     private addNewvehicleService: AddNewvehicleService,
     private ubicationsService: UbicationsService,
     private profileService: ProfileService,
-    private dealershipService: DealershipService
+    private dealershipService: DealershipService,
+    private cloudinaryService:CloudinaryService
   ) {}
 
   @Output() newCarEvent = new EventEmitter<string>();
@@ -30,8 +34,11 @@ export class AddButtonComponent implements OnInit {
   selectedMunicipalities: any;
   dealership: any;
   profile: any;
+  selectedImages: File[] = [];
+  selectedImagesUrls: string[] = [];
 
-  newCar: any = { brand: '' };
+
+  newCar: any = { brand: '',images: [] };
 
   ngOnInit() {
     this.getBrands();
@@ -60,6 +67,7 @@ export class AddButtonComponent implements OnInit {
         console.error('Error crear vehiculo:', error);
       }
     );
+    console.log(this.newCar);
   }
 
   toggleAddCar() {
@@ -125,6 +133,38 @@ export class AddButtonComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching vehicle:', error);
+      }
+    );
+  }
+
+  onFileChange(event: any) {
+    const files: FileList = event.target.files;
+    if (files.length > 0) {
+      this.selectedImages = Array.from(files);
+      this.selectedImagesUrls = this.selectedImages.map((image) => URL.createObjectURL(image));
+    }
+  }
+
+
+  uploadImages() {
+    if (this.selectedImages.length === 0) {
+      console.log(this.selectedImagesUrls)
+      return;
+    }
+
+    const uploadObservables = this.selectedImages.map((image) =>
+      this.cloudinaryService.uploadImage(image)
+    );
+
+    forkJoin(uploadObservables).subscribe(
+      (responses: any[]) => {
+        const uploadedUrls = responses.map((response) => response.url);
+        this.newCar.images = [...this.newCar.images, ...uploadedUrls];
+      
+      },
+      (error) => {
+        console.error('Error uploading images:', error);
+       
       }
     );
   }

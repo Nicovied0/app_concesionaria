@@ -33,18 +33,10 @@
       />
     </div>
 
-    <div class="form-group">
-      <label for="carImages">Images</label>
-      <input
-        type="text"
-        id="carImages"
-        name="images"
-        [(ngModel)]="newCar.images"
-        class="form-control"
-        placeholder="Enter car image URL"
-        required
-      />
-    </div>
+    
+    
+    
+    
 
     <div class="form-group">
       <label for="carYear">Year</label>
@@ -93,31 +85,7 @@
         placeholder="Enter car kilometres"
       />
     </div>
-    <!-- <div class="form-group">
-      <label for="carCealershipName">dealershipName</label>
-      <input
-        type="text"
-        id="cardealershipName"
-        name="dealershipName"
-        [(ngModel)]="newCar.dealershipName"
-        class="form-control"
-        placeholder="Enter car dealershipName"
-        [value]="dealership.name"
-      />
-    </div>
-    <div class="form-group">
-      <label for="carCountry">country</label>
-      <input
-        type="text"
-        id="carcountry"
-        name="country"
-        value="Argentina"
-        [(ngModel)]="newCar.country"
-        class="form-control"
-        placeholder="Enter car country"
-        disabled
-      />
-    </div> -->
+   
     <div class="form-group">
       <label for="carState">State</label>
       <select
@@ -164,6 +132,19 @@
       </select>
     </div>
 
+    <div class="form-group">
+      <label for="carImages">Images</label>
+      <input
+        type="file"
+        id="carImages"
+        name="images"
+        class="form-control"
+        multiple
+        accept="image/*"
+        (change)="onFileChange($event); uploadImages()"
+        required
+      />
+    </div>
     <div class="button_container">
       <button
         type="submit"
@@ -176,4 +157,11 @@
       <button class="button2" (click)="toggleAddCar()">Cancel</button>
     </div>
   </form>
+  
+ <div>
+  <h2>Images</h2>
+  <div *ngFor="let imageUrl of newCar.images">
+    <img [src]="imageUrl" alt="Uploaded Image" style="height: 30px;" />
+  </div>
+</div>
 </div>

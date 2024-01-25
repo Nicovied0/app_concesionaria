@@ -38,6 +38,7 @@ export class ListVehiclesComponent implements OnInit {
       (res) => {
         this.vehicles = res;
         this.dealershipName = this.vehicles[0].name;
+        console.log(this.vehicles)
       },
       (error) => {
         console.error('Error fetching vehicle:', error);
@@ -49,6 +50,7 @@ export class ListVehiclesComponent implements OnInit {
     this.vehiclesService.getVehicleDetail(id).subscribe(
       (res) => {
         this.vehicle = res;
+        console.log(this.vehicle)
       },
       (error) => {
         console.error('Error fetching vehicle:', error);
