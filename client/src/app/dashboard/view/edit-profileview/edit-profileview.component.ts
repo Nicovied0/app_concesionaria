@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { CloudinaryService } from 'src/app/core/services/Cloudinary.service';
+import { EditProfileService } from 'src/app/core/services/EditProfile.service';
 import { ProfileService } from 'src/app/core/services/Profile.service';
 import { UserService } from 'src/app/core/services/User.service';
 
@@ -14,7 +15,8 @@ export class EditProfileviewComponent {
     private profileService: ProfileService,
     private router: Router,
     private cloudinaryService: CloudinaryService,
-    private userService: UserService
+    private userService: UserService,
+    private editProfileService: EditProfileService
   ) {}
 
   isLargeScreen: boolean = true;
@@ -52,7 +54,6 @@ export class EditProfileviewComponent {
     this.userService.getUserById(this.idUser.id).subscribe(
       (data: any) => {
         this.user = data;
-        console.log(this.user);
         this.editedUser.role = this.user.role;
         this.editedUser.name = this.user.name;
         this.editedUser.email = this.user.email;
@@ -69,9 +70,21 @@ export class EditProfileviewComponent {
     if (this.editedUser.image === '') {
       this.editedUser.image = this.user.imagen;
     }
+
+    this.editProfileService
+      .updateProfile(this.user._id, this.editedUser)
+      .subscribe((updatedProfile) => {
+        if (updatedProfile) {
+          console.log('Perfil actualizado correctamente:', updatedProfile);
+        } else {
+          console.error('Error al actualizar el perfil');
+        }
+      });
+
     this.showEdit = false;
-    console.log(this.editedUser, 'edited');
+    window.location.reload()
   }
+
   showEditForm() {
     this.showEdit = !this.showEdit;
   }
@@ -79,16 +92,15 @@ export class EditProfileviewComponent {
   onProfileImageSelected(event: any) {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-      this.editedUser.image = URL.createObjectURL(file);
       this.uploadProfileImage(file);
+      this.editedUser.imagen = URL.createObjectURL(file);
     }
   }
 
   uploadProfileImage(image: File) {
     this.cloudinaryService.uploadImage(image).subscribe(
       (response: any) => {
-        this.editedUser.image = response.url;
-        console.log('Imagen de perfil cargada:', response.url);
+        this.editedUser.imagen = response.url;
       },
       (error) => {
         console.error('Error al cargar la imagen de perfil:', error);

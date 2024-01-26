@@ -11,6 +11,13 @@
   align-items: center;
   margin: 10px 0 0 0;
 }
+.image_div {
+  text-align: center;
+}
+.image_profile {
+  max-width: 40%;
+  border-radius: 100%;
+}
 .newImage {
   height: 90px;
   border-radius: 100%;
@@ -33,6 +40,9 @@
   cursor: pointer;
   padding: 3px 15px;
   border-radius: 10px;
+}
+.rows {
+  margin-bottom: 10px;
 }
 .buttons {
   margin: 10px 0;
