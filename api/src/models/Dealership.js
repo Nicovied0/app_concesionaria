@@ -9,6 +9,12 @@ const dealershipSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  emailDealership: {
+    type: String,
+  },
+  description: {
+    type: String,
+  },
   country: {
     type: String,
     required: true,

@@ -49,6 +49,8 @@ export interface Dealership {
   phone: string;
   country: string;
   state: string;
+  emailDealership: string;
+  description: string;
   city: boolean;
   cars: any;
   admins: any;

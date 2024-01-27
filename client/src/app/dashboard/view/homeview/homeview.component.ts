@@ -1,6 +1,7 @@
-import { Component,HostListener  } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ProfileService } from '../../../core/services/Profile.service';
 import { Router } from '@angular/router';
+import { DealershipService } from 'src/app/core/services/Dealership.service';
 
 @Component({
   selector: 'app-homeview',
@@ -8,16 +9,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./homeview.component.scss'],
 })
 export class HomeviewComponent {
-
-  constructor(private profileService: ProfileService, private router: Router) {}
+  constructor(
+    private profileService: ProfileService,
+    private router: Router,
+    private dealershipService: DealershipService
+  ) {}
 
   profile: any;
   role: any;
   isLargeScreen: boolean = true;
+  dealership: any;
 
   ngOnInit() {
     this.getProfile();
     this.isLargeScreen = this.checkScreenSize();
+    this.getVehicleById(this.profile.id)
   }
 
   getProfile() {
@@ -32,5 +38,17 @@ export class HomeviewComponent {
 
   checkScreenSize(): boolean {
     return window.innerWidth >= 750;
+  }
+
+  getVehicleById(profileId: any) {
+    this.dealershipService.getDealershipByUserId(profileId).subscribe(
+      (res) => {
+        this.dealership =res[0];
+        console.log(this.dealership);
+      },
+      (error) => {
+        console.error('Error fetching vehicle:', error);
+      }
+    );
   }
 }
