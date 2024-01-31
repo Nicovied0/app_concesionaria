@@ -1,5 +1,6 @@
 <div>
   <app-nav />
+
   <div [ngClass]="{ container: isLargeScreen }" class="mt-4 div">
     <div *ngIf="!activeForm">
       <h3 *ngIf="role === 'admin' || role === 'superAdmin'">
@@ -8,19 +9,36 @@
       <div *ngIf="role === 'public'">
         <h2 *ngIf="role === 'public'">Bienvenido al Dashboard</h2>
         <p>
-          Si eres personal a cargo o dueño de una consecionaria, y quieres ser
-          parte formar parte de nosotros rellena el siguente formulario
+          Si eres personal a cargo o dueño de una concesionaria, y quieres ser
+          parte de nosotros, completa el siguiente formulario
         </p>
-        <button (click)="toggleActiveForm()">Rellenar formulario</button>
+        <button (click)="toggleActiveForm()" class="btn btn-primary">
+          Rellenar formulario
+        </button>
       </div>
     </div>
     <div *ngIf="activeForm">
-      <h2>active</h2>
+      <div class="form-group">
+        <label for="consultationType">Selecciona tu tipo de consulta</label>
+        <select
+          id="consultationType"
+          class="form-control"
+          [(ngModel)]="selectedConsultationType"
+        >
+          <option value="new">Cargar nueva concesionaria</option>
+          <option value="existing">
+            Quiero administrar una concesionaria existente
+          </option>
+        </select>
+      </div>
+      <app-form-dealership
+        [consultationType]="selectedConsultationType"
+        [profile]="profile"
+      ></app-form-dealership>
     </div>
 
-    <div *ngIf="role === 'admin ' || role === 'superAdmin'">
+    <div *ngIf="role === 'admin' || role === 'superAdmin'">
       <p>Tu concesionaria es {{ dealership.name }}</p>
     </div>
   </div>
-
 </div>

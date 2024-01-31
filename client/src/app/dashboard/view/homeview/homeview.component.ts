@@ -19,12 +19,13 @@ export class HomeviewComponent {
   role: any;
   isLargeScreen: boolean = true;
   dealership: any;
-  activeForm:boolean = false;
+  activeForm: boolean = false;
+  selectedConsultationType: string = '';
 
   ngOnInit() {
     this.getProfile();
     this.isLargeScreen = this.checkScreenSize();
-    this.getVehicleById(this.profile.id)
+    this.getVehicleById(this.profile.id);
   }
 
   getProfile() {
@@ -44,7 +45,7 @@ export class HomeviewComponent {
   getVehicleById(profileId: any) {
     this.dealershipService.getDealershipByUserId(profileId).subscribe(
       (res) => {
-        this.dealership =res[0];
+        this.dealership = res[0];
         console.log(this.dealership);
       },
       (error) => {
@@ -52,7 +53,13 @@ export class HomeviewComponent {
       }
     );
   }
-  toggleActiveForm(){
+
+  toggleActiveForm() {
     this.activeForm = true;
+  }
+
+  onStateChange() {
+    this.selectedConsultationType = this.selectedConsultationType;
+    console.log(this.selectedConsultationType);
   }
 }

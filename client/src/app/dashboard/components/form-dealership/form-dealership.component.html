@@ -1,0 +1,12 @@
+<form *ngIf="typeForm !== undefined && typeForm">
+  <div>
+    <p>Consultation Type: {{ consultationType }}</p>
+    <p>User Profile: {{ profile | json }}</p>
+  </div>
+</form>
+
+<form *ngIf="typeForm !== undefined && typeForm === false">
+  <div>
+    <p>Consultation Type: {{ consultationType }}</p>
+  </div>
+</form>
