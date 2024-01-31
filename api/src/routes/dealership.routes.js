@@ -28,7 +28,16 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, phone, location, state, city, country,userCreatorId } = req.body;
+  const {
+    name,
+    phone,
+    location,
+    state,
+    city,
+    country,
+    userCreatorId,
+    emailDealership,
+  } = req.body;
 
   try {
     const existingDealership = await Dealership.findOne({ name });
@@ -47,6 +56,7 @@ router.post("/", async (req, res) => {
       city,
       userCreatorId,
       country,
+      emailDealership,
     });
     const savedDealership = await newDealership.save();
 
@@ -57,20 +67,22 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.get('/:userId/dealership', async (req, res) => {
+router.get("/:userId/dealership", async (req, res) => {
   try {
     const userId = req.params.userId;
 
     const dealerships = await Dealership.find({ admins: userId });
 
     if (!dealerships || dealerships.length === 0) {
-      return res.status(404).json({ error: 'Dealerships not found for this user' });
+      return res
+        .status(404)
+        .json({ error: "Dealerships not found for this user" });
     }
 
     res.json(dealerships);
   } catch (error) {
-    console.error('Error fetching user\'s dealerships:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Error fetching user's dealerships:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { UbicationsService } from 'src/app/core/services/Ubications.service';
 
 @Component({
   selector: 'app-form-dealership',
@@ -8,9 +9,30 @@ import { Component, Input, OnChanges } from '@angular/core';
 export class FormDealershipComponent implements OnChanges {
   @Input() consultationType: string | undefined;
   @Input() profile: any;
+  verification: Boolean = false;
   typeForm: boolean | undefined = undefined;
+  form1: any = {
+    userCreatorId: '',
+    country: 'Argentina',
+    admins: [],
+    dealershipName: '',
+    email: '',
+    phoneNumber: '',
+    state: '',
+    city: '',
+  };
 
-  constructor() {}
+  form2: any = { verificationCode: '' };
+  selectedStates: string = '';
+  dataToVerificate: any;
+  states: any;
+  citys: any[] = [];
+
+  constructor(private ubicationsService: UbicationsService) {}
+
+  ngOnInit() {
+    this.getStates();
+  }
 
   ngOnChanges() {
     if (this.consultationType === 'new') {
@@ -19,4 +41,76 @@ export class FormDealershipComponent implements OnChanges {
     if (this.consultationType === 'existing') {
       this.typeForm = false;
     }
-  }}
+  }
+
+  sendVerification() {
+    this.verification = true;
+    console.log(this.dataToVerificate, 'verificados');
+    console.log(this.verification, 'verificado');
+  }
+
+  submitForm1() {
+    this.form1.userCreatorId = this.profile.id;
+    this.form1.admins[0] = this.profile.id;
+    if (this.validateForm1()) {
+      console.log('Formulario válido:', this.form1);
+    } else {
+      console.log('Formulario inválido');
+    }
+
+  }
+  
+  submitForm2() {
+
+    console.log(this.form2);
+  }
+
+  getStates() {
+    this.ubicationsService.getStates().subscribe(
+      (data: any) => {
+        this.states = data.provincias;
+        this.onStateChange();
+      },
+      (error) => {
+        console.error('Error obteniendo estados:', error);
+      }
+    );
+  }
+
+  getMunicipalities(selectedStates: any) {
+    this.ubicationsService.getMunicipalities(selectedStates).subscribe(
+      (data: any) => {
+        this.citys = data.municipios;
+      },
+      (error) => {
+        console.error('Error obteniendo municipios:', error);
+      }
+    );
+  }
+
+  onStateChange() {
+    if (this.selectedStates) {
+      this.form1.state = this.selectedStates || '';
+      this.getMunicipalities(this.selectedStates);
+    }
+  }
+
+  validateForm1(): boolean {
+    return (
+      this.form1.dealershipName !== '' &&
+      this.form1.email !== '' &&
+      this.form1.phoneNumber !== '' &&
+      this.form1.state !== '' &&
+      this.form1.city !== ''
+    );
+  }
+  validateForm2(): boolean {
+    return (
+      this.form1.dealershipName !== '' &&
+      this.form1.email !== '' &&
+      this.form1.phoneNumber !== '' &&
+      this.form1.state !== '' &&
+      this.form1.city !== ''
+    );
+  }
+}
