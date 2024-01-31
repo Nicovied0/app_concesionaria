@@ -57,12 +57,14 @@ export class FormDealershipComponent implements OnChanges {
     } else {
       console.log('Formulario inválido');
     }
-
   }
-  
-  submitForm2() {
 
-    console.log(this.form2);
+  submitForm2() {
+    if (this.validateForm2()) {
+      console.log('Formulario válido:', this.form2);
+    } else {
+      console.log('Formulario inválido');
+    }
   }
 
   getStates() {
@@ -105,12 +107,6 @@ export class FormDealershipComponent implements OnChanges {
     );
   }
   validateForm2(): boolean {
-    return (
-      this.form1.dealershipName !== '' &&
-      this.form1.email !== '' &&
-      this.form1.phoneNumber !== '' &&
-      this.form1.state !== '' &&
-      this.form1.city !== ''
-    );
+    return this.form2.verificationCode !== '';
   }
 }
