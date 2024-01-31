@@ -70,19 +70,23 @@ export class EditProfileviewComponent {
     if (this.editedUser.image === '') {
       this.editedUser.image = this.user.imagen;
     }
-
-    this.editProfileService
-      .updateProfile(this.user._id, this.editedUser)
-      .subscribe((updatedProfile) => {
-        if (updatedProfile) {
-          console.log('Perfil actualizado correctamente:', updatedProfile);
-        } else {
-          console.error('Error al actualizar el perfil');
-        }
-      });
-
+  
+    this.editProfileService.updateProfile(this.user._id, this.editedUser).subscribe((updatedProfile) => {
+      if (updatedProfile) {
+        console.log('Perfil actualizado correctamente:', updatedProfile);
+        // Eliminar el dato de imagen antiguo del localStorage
+        localStorage.removeItem('userData');
+        // Actualizar el dato de imagen nuevo en el localStorage
+        const updatedUserData = this.profileService.getUserDataFromLocalStorage();
+        updatedUserData.imagen = this.editedUser.image;
+        localStorage.setItem('userData', JSON.stringify(updatedUserData));
+      } else {
+        console.error('Error al actualizar el perfil');
+      }
+    });
+  
     this.showEdit = false;
-    window.location.reload()
+    window.location.reload();
   }
 
   showEditForm() {

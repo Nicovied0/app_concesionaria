@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { ProfileService } from '../../../core/services/Profile.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/core/services/User.service';
 
 @Component({
   selector: 'app-profileview',
@@ -8,8 +9,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./profileview.component.scss'],
 })
 export class ProfileviewComponent {
-  constructor(private profileService: ProfileService, private router: Router) {}
+  constructor(
+    private profileService: ProfileService,
+    private router: Router,
+    private userService: UserService
+  ) {}
+
   profile: any;
+  user:any
   isLargeScreen: boolean = true;
 
   ngOnInit() {
@@ -20,6 +27,7 @@ export class ProfileviewComponent {
   getProfile() {
     this.profile = this.profileService.getUserDataFromLocalStorage();
     console.log(this.profile);
+    this.getProfileByBd();
   }
 
   goProfileEdit() {
@@ -33,5 +41,18 @@ export class ProfileviewComponent {
 
   checkScreenSize(): boolean {
     return window.innerWidth >= 750;
+  }
+
+  getProfileByBd() {
+    this.userService.getUserById(this.profile.id).subscribe(
+      (data: any) => {
+        this.user = data;
+        console.log(this.user);
+
+      },
+      (error) => {
+        console.error('Error obteniendo estados:', error);
+      }
+    );
   }
 }

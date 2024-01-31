@@ -19,6 +19,7 @@ export class HomeviewComponent {
   role: any;
   isLargeScreen: boolean = true;
   dealership: any;
+  activeForm:boolean = false;
 
   ngOnInit() {
     this.getProfile();
@@ -50,5 +51,8 @@ export class HomeviewComponent {
         console.error('Error fetching vehicle:', error);
       }
     );
+  }
+  toggleActiveForm(){
+    this.activeForm = true;
   }
 }

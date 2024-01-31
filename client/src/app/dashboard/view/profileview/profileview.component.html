@@ -1,18 +1,19 @@
 <div>
   <app-nav />
 
-  <div [ngClass]="{'container': isLargeScreen}" class="mt-4 div">
-    <h1>Bienvenido {{ profile.name }}</h1>
+  <div [ngClass]="{ container: isLargeScreen }" class="mt-4 div">
     <div>
-      <img
-        src="{{ profile?.imagen }}"
-        alt="Foto de perfil"
-        class="img-fluid rounded-circle mt-3"
-        style="max-width: 200px"
-      />
+      <h1>Bienvenido {{ profile.name }}</h1>
+      <div>
+        <img
+          src="{{ user?.imagen }}"
+          alt="Foto de perfil"
+          class="img-fluid rounded-circle mt-3"
+          style="max-width: 150px"
+        />
 
-      <p>Correo electrónico: {{ profile.email }}</p>
-      <a (click)="goProfileEdit()" class="btn btn-primary">Editar perfil</a>
+        <a (click)="goProfileEdit()" class="btn btn-primary">Editar perfil</a>
+      </div>
     </div>
 
     <h2>Actividades recientes</h2>
@@ -25,5 +26,4 @@
     <p>Estadística 1: {{ profile.stat1 }}</p>
     <p>Estadística 2: {{ profile.stat2 }}</p>
   </div>
-
 </div>
