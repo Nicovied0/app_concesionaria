@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { name, phone, location, state, city, country } = req.body;
+  const { name, phone, location, state, city, country,userCreatorId } = req.body;
 
   try {
     const existingDealership = await Dealership.findOne({ name });
@@ -45,6 +45,7 @@ router.post("/", async (req, res) => {
       location,
       state,
       city,
+      userCreatorId,
       country,
     });
     const savedDealership = await newDealership.save();

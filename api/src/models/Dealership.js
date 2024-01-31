@@ -17,7 +17,7 @@ const dealershipSchema = new mongoose.Schema({
   },
   country: {
     type: String,
-    required: true,
+    default: "Argentina",
   },
   state: {
     type: String,
