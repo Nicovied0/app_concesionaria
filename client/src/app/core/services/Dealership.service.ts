@@ -45,6 +45,11 @@ export class DealershipService {
   getDealershipByEmail(email: string): Observable<Dealership> {
     return this.http.get<Dealership>(`${this.apiUrl}/byEmail/${email}`);
   }
+  
+  addNewDealership(data: any) {
+    return this.http.post<any>(`${this.apiUrl}`, data);
+  }
+  
 }
 
 export interface Dealership {

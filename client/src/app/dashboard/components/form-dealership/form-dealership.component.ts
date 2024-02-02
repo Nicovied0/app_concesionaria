@@ -20,9 +20,9 @@ export class FormDealershipComponent implements OnChanges {
     userCreatorId: '',
     country: 'Argentina',
     admins: [],
-    dealershipName: '',
-    email: '',
-    phoneNumber: '',
+    name: '',
+    emailDealership: '',
+    phone: '',
     state: '',
     city: '',
   };
@@ -79,8 +79,27 @@ export class FormDealershipComponent implements OnChanges {
   submitForm1() {
     this.form1.userCreatorId = this.profile.id;
     this.form1.admins[0] = this.profile.id;
+
     if (this.validateForm1()) {
       console.log('Formulario válido:', this.form1);
+      this.dealershipService.addNewDealership(this.form1).subscribe(
+        (response) => {
+          console.log('Respuesta del servidor:', response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'Operation completed successfully.',
+          });
+        },
+        (error) => {
+          console.error('Error al enviar formulario:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: 'Operation failed. Please try again later.',
+          });
+        }
+      );
     } else {
       console.log('Formulario inválido');
     }

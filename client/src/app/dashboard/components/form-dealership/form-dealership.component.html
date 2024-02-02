@@ -9,7 +9,7 @@
         class="form-control"
         id="dealershipName"
         name="dealershipName"
-        [(ngModel)]="form1.dealershipName"
+        [(ngModel)]="form1.name"
         required
       />
     </div>
@@ -20,7 +20,7 @@
         class="form-control"
         id="email"
         name="email"
-        [(ngModel)]="form1.email"
+        [(ngModel)]="form1.emailDealership"
         required
       />
     </div>
@@ -31,7 +31,7 @@
         class="form-control"
         id="phoneNumber"
         name="phoneNumber"
-        [(ngModel)]="form1.phoneNumber"
+        [(ngModel)]="form1.phone"
       />
     </div>
     <div class="mb-3">
@@ -108,7 +108,7 @@
       </button>
     </div>
 
-    <div *ngIf="verification">
+    <div *ngIf="verification && !correctVerification">
       <h3>Codigo de verificacion</h3>
       <div class="mb-3">
         <p>Ingresa el codigo que enviamos al email de la consecionaria</p>
