@@ -30,7 +30,7 @@ const sendData = async (email, code) => {
 
   try {
     const response = await axios.post(
-      "https://notech-microservice.vercel.app/api/sendMail/code",
+      `${process.env.URL_MICROSERVICES}/sendMail/code`,
       requestData
     );
 
@@ -43,3 +43,4 @@ const sendData = async (email, code) => {
 };
 
 module.exports = sendData;
+
