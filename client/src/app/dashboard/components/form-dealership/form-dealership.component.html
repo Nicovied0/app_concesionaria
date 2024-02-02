@@ -84,16 +84,16 @@
 
   <div *ngIf="typeForm !== undefined && typeForm === false" class="card p-3">
     <div *ngIf="!verification">
-      <h3>Formulario 2</h3>
+      <h3>Verificación de que eres personal a cargo</h3>
       <div class="mb-3">
         <p>
-          Necesitamos que ingreses el email o número de teléfono de la
+          Necesitamos que ingreses el email de la
           concesionaria a la que te quieres asociar. Para esto, debes tener a
           mano el email con el cual fue registrada esta.
         </p>
         <input
           type="text"
-          placeholder="numero o email de la consecionaria"
+          placeholder="email de la consecionaria"
           class="form-control"
           name="dataToVerificate"
           [(ngModel)]="dataToVerificate"
@@ -109,7 +109,7 @@
     </div>
 
     <div *ngIf="verification">
-      <h3>Formulario 2</h3>
+      <h3>Codigo de verificacion</h3>
       <div class="mb-3">
         <p>Ingresa el codigo que enviamos al email de la consecionaria</p>
       </div>

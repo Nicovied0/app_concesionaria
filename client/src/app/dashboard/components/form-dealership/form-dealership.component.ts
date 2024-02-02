@@ -1,5 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { SendCodeService } from 'src/app/core/services/SendCode.service';
 import { UbicationsService } from 'src/app/core/services/Ubications.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-form-dealership',
@@ -28,7 +30,10 @@ export class FormDealershipComponent implements OnChanges {
   states: any;
   citys: any[] = [];
 
-  constructor(private ubicationsService: UbicationsService) {}
+  constructor(
+    private ubicationsService: UbicationsService,
+    private sendCodeService: SendCodeService
+  ) {}
 
   ngOnInit() {
     this.getStates();
@@ -44,9 +49,23 @@ export class FormDealershipComponent implements OnChanges {
   }
 
   sendVerification() {
-    this.verification = true;
     console.log(this.dataToVerificate, 'verificados');
     console.log(this.verification, 'verificado');
+    this.sendCodeService.sendCode(this.dataToVerificate).subscribe(
+      (response) => {
+        console.log('Email sent successfully:', response);
+
+        this.verification = true;
+      },
+      (error) => {
+        console.error('Error sending email:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error sending email',
+          text: 'try to enter a correct email',
+        });
+      }
+    );
   }
 
   submitForm1() {
