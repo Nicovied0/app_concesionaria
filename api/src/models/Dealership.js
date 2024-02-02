@@ -27,9 +27,11 @@ const dealershipSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  userCreatorId: {
+  codeLogin: {
     type: String,
-    required: true,
+  },
+  userCreatorId: {
+    type: String
   },
   cars: [
     {

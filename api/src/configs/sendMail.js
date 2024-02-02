@@ -1,13 +1,9 @@
 const axios = require("axios");
 
-const sendData = async (req, res) => {
-  const { email } = req.body;
-
-  const code = req.randomCode;
-
+const sendData = async (email, code) => {
   const requestData = {
     email: email,
-    subject: "Codigo de registro",
+    subject: "Código de registro",
     html: `
       <div style="margin: 0;padding: 0;">
         <div style="background-color: rgb(246, 251, 255);width: 100%;font-family:sans-serif;padding: 2rem 0;">
@@ -39,9 +35,10 @@ const sendData = async (req, res) => {
     );
 
     console.log(response.data);
-    res.json(response.data);
+    return response.data;
   } catch (error) {
     console.error("Error:", error);
+    throw error;
   }
 };
 
