@@ -87,9 +87,9 @@
       <h3>Verificación de que eres personal a cargo</h3>
       <div class="mb-3">
         <p>
-          Necesitamos que ingreses el email de la
-          concesionaria a la que te quieres asociar. Para esto, debes tener a
-          mano el email con el cual fue registrada esta.
+          Necesitamos que ingreses el email de la concesionaria a la que te
+          quieres asociar. Para esto, debes tener a mano el email con el cual
+          fue registrada esta.
         </p>
         <input
           type="text"
@@ -128,6 +128,12 @@
       <button type="button" class="btn btn-primary" (click)="submitForm2()">
         Enviar
       </button>
+    </div>
+
+    <div *ngIf="correctVerification" class="mb-3 mt-3">
+      <h3 style="text-align: center">
+        Verificado correctamente, ahora eres administrador!
+      </h3>
     </div>
   </div>
 </div>

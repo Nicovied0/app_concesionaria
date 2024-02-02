@@ -41,6 +41,10 @@ export class DealershipService {
       .get<any>(this.apiUrl2 + '/cars/' + id)
       .pipe(catchError(() => of(null)));
   }
+
+  getDealershipByEmail(email: string): Observable<Dealership> {
+    return this.http.get<Dealership>(`${this.apiUrl}/byEmail/${email}`);
+  }
 }
 
 export interface Dealership {
@@ -54,4 +58,5 @@ export interface Dealership {
   city: boolean;
   cars: any;
   admins: any;
+  codeLogin:any
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,15 @@ export class SendCodeService {
     return this.http.post<any>(`${this.apiUrl}/email/code`, body);
   }
 
-  virificateCode(){
-    
+
+  addAdmin(dealershipId: string, userId: string) {
+    console.log('dealershipId', dealershipId);
+    console.log('userId', userId);
+    return this.http.post<any>(`${this.apiUrl}/admins/${dealershipId}/addAdmin`, {
+      userId,
+    });
   }
+
+  
+
 }

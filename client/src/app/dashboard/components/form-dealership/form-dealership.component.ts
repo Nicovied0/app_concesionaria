@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { DealershipService } from 'src/app/core/services/Dealership.service';
+import { ProfileService } from 'src/app/core/services/Profile.service';
 import { SendCodeService } from 'src/app/core/services/SendCode.service';
 import { UbicationsService } from 'src/app/core/services/Ubications.service';
 import Swal from 'sweetalert2';
@@ -13,6 +15,7 @@ export class FormDealershipComponent implements OnChanges {
   @Input() profile: any;
   verification: Boolean = false;
   typeForm: boolean | undefined = undefined;
+  correctVerification: boolean = false;
   form1: any = {
     userCreatorId: '',
     country: 'Argentina',
@@ -32,7 +35,9 @@ export class FormDealershipComponent implements OnChanges {
 
   constructor(
     private ubicationsService: UbicationsService,
-    private sendCodeService: SendCodeService
+    private sendCodeService: SendCodeService,
+    private dealershipService: DealershipService,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit() {
@@ -54,8 +59,11 @@ export class FormDealershipComponent implements OnChanges {
     this.sendCodeService.sendCode(this.dataToVerificate).subscribe(
       (response) => {
         console.log('Email sent successfully:', response);
-
         this.verification = true;
+        Swal.fire({
+          icon: 'success',
+          title: 'Mail sent successfully',
+        });
       },
       (error) => {
         console.error('Error sending email:', error);
@@ -80,7 +88,58 @@ export class FormDealershipComponent implements OnChanges {
 
   submitForm2() {
     if (this.validateForm2()) {
-      console.log('Formulario válido:', this.form2);
+      console.log('Formulario válido:', this.form2.verificationCode);
+      const emailToVerify = this.dataToVerificate;
+      const verificationCode = this.form2.verificationCode;
+
+      console.log('emailToVerify', emailToVerify);
+      console.log('verificationCode', verificationCode);
+
+      this.dealershipService.getDealershipByEmail(emailToVerify).subscribe(
+        (response) => {
+          if (response && response.codeLogin === verificationCode) {
+            this.sendCodeService
+              .addAdmin(response._id, this.profile.id)
+              .subscribe(
+                (adminResponse) => {
+                  console.log(
+                    'Usuario agregado como administrador:',
+                    adminResponse
+                  );
+                  Swal.fire(
+                    'Success',
+                    'Usuario agregado como administrador',
+                    'success'
+                  );
+                  this.verification = false;
+                  this.correctVerification = true;
+                  this.profileService.updateRol();
+                },
+                (adminError) => {
+                  console.error(
+                    'Error al agregar usuario como administrador:',
+                    adminError
+                  );
+                  Swal.fire(
+                    'Error',
+                    'Hubo un error al agregar usuario como administrador',
+                    'error'
+                  );
+                }
+              );
+          } else {
+            Swal.fire('Error', 'El código ingresado es incorrecto', 'error');
+          }
+        },
+        (error) => {
+          console.error('Error fetching dealership by email:', error);
+          Swal.fire(
+            'Error',
+            'Hubo un error al obtener la concesionaria por correo electrónico',
+            'error'
+          );
+        }
+      );
     } else {
       console.log('Formulario inválido');
     }
