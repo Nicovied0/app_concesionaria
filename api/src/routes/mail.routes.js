@@ -33,7 +33,7 @@ userRoute.post("/code", generateCodeMiddleware, async (req, res) => {
 
 userRoute.post("/contact", generateCodeMiddleware, async (req, res) => {
   const { emailDealership,email, name, subject, message, idVehicle } = req.body;
-
+console.log("me ejecute")
   try {
     const dealership = await Dealership.findOne({ emailDealership: emailDealership });
 

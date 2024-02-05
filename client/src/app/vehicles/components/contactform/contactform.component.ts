@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ContactService } from 'src/app/core/services/Contact.service';
 import { DealershipService } from 'src/app/core/services/Dealership.service';
 import { VehiclesService } from 'src/app/core/services/Vehicle.service';
 
@@ -13,18 +14,20 @@ export class ContactformComponent implements OnInit {
   vehicle: any;
   dealership: any;
   form: any = {
+    emailDealership: '',
     name: '',
-    email: '',
     subject: '',
     message: '',
     idVehicle: '',
+    email: '',
   };
   formValidates = false;
 
   constructor(
     private dealershipService: DealershipService,
     private vehiclesService: VehiclesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private contactService: ContactService
   ) {}
 
   ngOnInit() {
@@ -36,18 +39,21 @@ export class ContactformComponent implements OnInit {
 
   onSubmit() {
     this.form.idVehicle = this.id;
+    this.form.emailDealership = this.dealership.emailDealership;
     if (this.validateForm()) {
-
       console.log('Formulario válido', this.form);
-      this.form = {
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        idVehicle: '',
-      };
+      this.contactService.sendMessage(this.form).subscribe(() => {
+        this.form = {
+          emailDealership: '',
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+          idVehicle: '',
+        };
+      });
     } else {
-      console.log('El formulario no es válido');
+      console.log('The form is not valid');
     }
   }
 
@@ -55,7 +61,6 @@ export class ContactformComponent implements OnInit {
     this.vehiclesService.getVehicleDetail(id).subscribe(
       (res) => {
         this.vehicle = res;
-        console.log(this.vehicle);
         this.getDealershipByName(this.vehicle.dealershipName);
       },
       (error) => {
@@ -68,7 +73,6 @@ export class ContactformComponent implements OnInit {
     this.dealershipService.getDealershipByname(name).subscribe(
       (res) => {
         this.dealership = res;
-        console.log(this.dealership);
       },
       (error) => {
         console.error('Error fetching vehicle:', error);
@@ -78,22 +82,21 @@ export class ContactformComponent implements OnInit {
 
   validateForm(): boolean {
     const form = this.form;
-    
+
     if (
       form.name === '' ||
       form.email === '' ||
       form.subject === '' ||
-      form.message === '' 
+      form.message === ''
     ) {
       return false;
     }
-  
+
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailPattern.test(form.email)) {
       return false;
     }
-  
+
     return true;
   }
-  
 }

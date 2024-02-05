@@ -32,7 +32,6 @@ export class VehicleDetailComponent implements OnInit {
     this.vehiclesService.getVehicleDetail(id).subscribe(
       (res) => {
         this.vehicle = res;
-        console.log(this.vehicle);
         this.getDealershipByName(this.vehicle.dealershipName);
       },
       (error) => {
@@ -45,7 +44,6 @@ export class VehicleDetailComponent implements OnInit {
     this.dealershipService.getDealershipByname(name).subscribe(
       (res) => {
         this.dealership = res;
-        console.log(this.dealership);
       },
       (error) => {
         console.error('Error fetching vehicle:', error);

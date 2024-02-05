@@ -74,8 +74,7 @@
         <button
           type="submit"
           class="contact-form__btn contact-form__btn--submit"
-          *ngIf="
-          validateForm()"
+          *ngIf="validateForm()"
         >
           {{ "CONTACT_FORM.BUTTON" | translate }}
         </button>
@@ -83,8 +82,7 @@
           type="submit"
           class="contact-form__btn contact-form__btn--submit no_valid"
           disabled
-          *ngIf="
-          !validateForm()"
+          *ngIf="!validateForm()"
         >
           {{ "CONTACT_FORM.BUTTON" | translate }}
         </button>
