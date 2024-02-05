@@ -103,5 +103,23 @@ router.get("/byEmail/:email", async (req, res) => {
   }
 });
 
+router.get("/byName/:name", async (req, res) => {
+  try {
+    const name = req.params.name;
+
+    const dealership = await Dealership.findOne({ name: name });
+
+    if (!dealership) {
+      return res.status(404).json({ error: "Dealership not found" });
+    }
+
+    res.json(dealership);
+  } catch (error) {
+    console.error("Error fetching a dealership by name:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
 
 module.exports = router;

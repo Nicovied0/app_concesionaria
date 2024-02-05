@@ -8,7 +8,7 @@ const searchRoute = require("./search.routes");
 const filterRoute = require("./filters.routes");
 const authRoute = require("./auth.routes");
 const adminsRoute = require("./admins.routes");
-const codeMailRoute = require("./codeMail.routes")
+const mailRoute = require("./mail.routes")
 
 router.use("/user", userRoute);
 router.use("/cars", carRoute);
@@ -17,6 +17,6 @@ router.use("/search", searchRoute);
 router.use("/filter", filterRoute);
 router.use("/auth", authRoute);
 router.use("/admins", adminsRoute);
-router.use("/email", codeMailRoute);
+router.use("/email", mailRoute);
 
 module.exports = router;

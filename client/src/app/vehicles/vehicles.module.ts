@@ -15,6 +15,10 @@ import { LoadersComponent } from './components/loaders/loaders.component';
 import { FiltesbyubicationComponent } from './components/filtesbyubication/filtesbyubication.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { SharedModule } from '../shared/shared.module';
+import { ContactviewComponent } from './view/contactview/contactview.component';
+import { ContactformComponent } from './components/contactform/contactform.component';
+
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,12 +30,15 @@ import { SharedModule } from '../shared/shared.module';
     LoadersComponent,
     FiltesbyubicationComponent,
     SearchbarComponent,
+    ContactviewComponent,
+    ContactformComponent,
   ],
   imports: [
     CommonModule,
     VehiclesRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     TranslateModule.forChild(),
   ],

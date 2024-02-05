@@ -1,0 +1,100 @@
+<div class="contenedor">
+  <div class="contact-form">
+    <form class="contact-form__container" (ngSubmit)="onSubmit()">
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--name">
+          {{ "CONTACT_FORM.VEHICLE_IDENTIFIER" | translate
+          }}<span class="contact-form__required">*</span>
+        </div>
+        <input
+          type="text"
+          name="idVehicle"
+          disabled
+          [(ngModel)]="this.id"
+          class="contact-form__input contact-form__input--name disabled"
+          [placeholder]="'idVehicle'"
+        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--name">
+          {{ "CONTACT_FORM.NAME" | translate
+          }}<span class="contact-form__required">*</span>
+        </div>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          [(ngModel)]="form.name"
+          class="contact-form__input contact-form__input--name"
+          [placeholder]="'CONTACT_FORM.NAME_PLACEHOLDER' | translate"
+        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--email">
+          {{ "CONTACT_FORM.EMAIL" | translate
+          }}<span class="contact-form__required">*</span>
+        </div>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          [(ngModel)]="form.email"
+          class="contact-form__input contact-form__input--email"
+          [placeholder]="'CONTACT_FORM.EMAIL_PLACEHOLDER' | translate"
+        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--asunto">
+          {{ "CONTACT_FORM.AFFAIR" | translate
+          }}<span class="contact-form__required">*</span>
+        </div>
+        <input
+          type="text"
+          name="subject"
+          id="subject"
+          [(ngModel)]="form.subject"
+          class="contact-form__input contact-form__input--asunto"
+          [placeholder]="'CONTACT_FORM.AFFAIR_PLACEHOLDER' | translate"
+        />
+      </div>
+      <div class="contact-form__group">
+        <div class="contact-form__label contact-form__label--mensaje">
+          {{ "CONTACT_FORM.MESSAGE" | translate
+          }}<span class="contact-form__required">*</span>
+        </div>
+        <textarea
+          name="message"
+          id="message"
+          [(ngModel)]="form.message"
+          class="contact-form__input contact-form__input--mensaje"
+          [placeholder]="'CONTACT_FORM.MESSAGE_PLACEHOLDER' | translate"
+        ></textarea>
+      </div>
+      <div class="contact-form__group">
+        <button
+          type="submit"
+          class="contact-form__btn contact-form__btn--submit"
+          *ngIf="
+          validateForm()"
+        >
+          {{ "CONTACT_FORM.BUTTON" | translate }}
+        </button>
+        <button
+          type="submit"
+          class="contact-form__btn contact-form__btn--submit no_valid"
+          disabled
+          *ngIf="
+          !validateForm()"
+        >
+          {{ "CONTACT_FORM.BUTTON" | translate }}
+        </button>
+
+        <div class="contact-form__aviso">
+          <span class="contact-form__required"
+            >* {{ "CONTACT_FORM.REQUIERED" | translate }}</span
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

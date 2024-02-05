@@ -49,8 +49,9 @@
     "AFFAIR_PLACEHOLDER": "Enter a subject",
     "MESSAGE": "Message",
     "MESSAGE_PLACEHOLDER": "Leave your comment",
-    "REQUIERED":"The fields are required.",
-      "BUTTON":"Send"
+    "REQUIERED": "The fields are required.",
+    "BUTTON": "Send",
+    "VEHICLE_IDENTIFIER": "Vehicle identifier"
   },
   "DETAILS": {
     "TITLE": "How does it work?",

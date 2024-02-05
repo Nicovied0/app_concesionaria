@@ -45,11 +45,14 @@ export class DealershipService {
   getDealershipByEmail(email: string): Observable<Dealership> {
     return this.http.get<Dealership>(`${this.apiUrl}/byEmail/${email}`);
   }
-  
+
+  getDealershipByname(name: string): Observable<Dealership> {
+    return this.http.get<Dealership>(`${this.apiUrl}/byName/${name}`);
+  }
+
   addNewDealership(data: any) {
     return this.http.post<any>(`${this.apiUrl}`, data);
   }
-  
 }
 
 export interface Dealership {
@@ -63,5 +66,5 @@ export interface Dealership {
   city: boolean;
   cars: any;
   admins: any;
-  codeLogin:any
+  codeLogin: any;
 }

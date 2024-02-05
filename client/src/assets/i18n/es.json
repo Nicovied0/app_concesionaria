@@ -51,7 +51,8 @@
       "MESSAGE":"Mensaje",
       "MESSAGE_PLACEHOLDER":"Deja tu comentario",
       "REQUIERED":"Los campos son obligatorios.",
-      "BUTTON":"Enviar"
+      "BUTTON":"Enviar",
+      "VEHICLE_IDENTIFIER":"Identificador de vehículo"
     },
     "DETAILS": {
       "TITLE": "Cómo funciona?",

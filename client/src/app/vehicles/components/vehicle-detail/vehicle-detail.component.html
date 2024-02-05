@@ -45,9 +45,18 @@
         {{ vehicle?.state }}, {{ vehicle?.city }}
       </p>
     </div>
-    <button class="btn btn-primary button">Contactar</button>
+    <button
+      target="_blank"
+      class="btn btn-primary button"
+      (click)="goContact()"
+      >Contactar
+    </button>
+    <h2>mailto:{{ dealership?.emailDealership }}</h2>
   </div>
 </div>
-<div class="divLoading" *ngIf="!vehicle?.images || vehicle?.images.length === 0">
+<div
+  class="divLoading"
+  *ngIf="!vehicle?.images || vehicle?.images.length === 0"
+>
   <h2 c>Cargando</h2>
 </div>
